@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Month = () => {
   return (
-    <div>month</div>
+    <h1>Month Page</h1>
   )
 }
 

@@ -1,0 +1,39 @@
+.header-section{
+    padding: 0 5%;
+}
+
+.header{
+    display: grid;
+    place-items: center;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+    padding: 10% 0;
+    &__logo{
+        font-size: 3rem;
+        font-weight: 400;
+        text-align: center;
+        color: $color-primary;
+    }
+}
+
+.page-details{
+    align-self: flex-start;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__name{
+        margin-bottom: auto;
+        font-size: 2rem;
+        font-weight: 300;
+        color: $color-primary;
+    }
+    &__date{
+        margin-bottom: auto;
+        font-size: 2rem;
+        font-weight: 300;
+    }
+}

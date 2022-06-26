@@ -1,0 +1,14 @@
+.navbar-mobile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    &__time{
+        font-size: 2rem;
+    }
+}
+
+.burger{
+    font-size: 4rem
+}

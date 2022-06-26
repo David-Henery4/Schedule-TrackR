@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Weeks = () => {
   return (
-    <div>weeks</div>
+    <h1>Weeks Page</h1>
   )
 }
 

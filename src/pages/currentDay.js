@@ -2,7 +2,7 @@ import React from 'react'
 
 export const CurrentDay = () => {
   return (
-    <div>currentDay</div>
+    <h1>Current Day</h1>
   )
 }
 
