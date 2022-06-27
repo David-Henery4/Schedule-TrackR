@@ -1,64 +1,76 @@
-import {jan,feb,march,april,may,june,july,august,september,october,november,demember} from "../month-images"
+// import {jan,feb,march,april,may,june,july,august,september,october,november,demember} from "../month-images"
+import jan from "../month-images/Jan.jpg";
+import feb from "../month-images/feb.jpg";
+import march from "../month-images/march.jpg";
+import april from "../month-images/april.jpg";
+import may from "../month-images/may.jpg";
+import june from "../month-images/june.jpg";
+import july from "../month-images/july.jpg";
+import august from "../month-images/august.jpg";
+import september from "../month-images/september.jpg";
+import october from "../month-images/october.jpg";
+import november from "../month-images/November.jpg";
+import december from "../month-images/december.jpg";
 
 export const mockMonths = [
     {
         id: 1,
-        month: "January",
+        monthName: "January",
         url: jan,
     },
     {
         id: 2,
-        month: "February",
+        monthName: "February",
         url: feb,
     },
     {
         id: 3,
-        month: "March",
+        monthName: "March",
         url: march,
     },
     {
         id: 4,
-        month: "April",
+        monthName: "April",
         url: april,
     },
     {
         id: 5,
-        month: "May",
+        monthName: "May",
         url: may,
     },
     {
         id: 6,
-        month: "June",
+        monthName: "June",
         url: june,
     },
     {
         id: 7,
-        month: "July",
+        monthName: "July",
         url:july,
     },
     {
         id: 8,
-        month: "August",
+        monthName: "August",
         url: august,
     },
     {
         id: 9,
-        month: "September",
+        monthName: "September",
         url: september,
     },
     {
         id: 10,
-        month: "October",
+        monthName: "October",
         url: october,
     },
     {
         id: 11,
-        month: "November",
+        monthName: "November",
         url: november,
     },
     {
         id: 12,
-        month: "December",
-        url: demember,
+        monthName: "December",
+        url: december,
     },
 ]

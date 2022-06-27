@@ -1,0 +1,1 @@
+const SIDEBAR_ACTIVE = false;
