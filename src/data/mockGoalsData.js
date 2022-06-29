@@ -1,4 +1,4 @@
-const mockGoalsData = [
+export const mockGoalsData = [
     {
         id: 1,
         start: "12th jan",
@@ -15,3 +15,5 @@ const mockGoalsData = [
         goal: "Eat more fruit."
     }
 ]
+
+export default mockGoalsData
