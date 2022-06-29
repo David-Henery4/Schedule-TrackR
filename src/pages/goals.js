@@ -1,19 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
+import GoalsOutcome from '../components/goalsOutcome';
 import { BsThreeDots } from "react-icons/bs";
-import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { FiXSquare, FiSquare, FiCheckSquare } from "react-icons/fi";
-
 
 export const Goals = () => {
-  const [checkedSuccess, setCheckedSuccess] = useState(false)
-  const [checkedFailed, setCheckedFailed] = useState(false)
-  //
-  const checkMarkSuccess = () => {
-    setCheckedSuccess(!checkedSuccess)
-  }
-  const checkMarkFailed = () => {
-    setCheckedFailed(!checkedFailed)
-  }
   //
   return (
     <section className="goals">
@@ -27,30 +16,7 @@ export const Goals = () => {
             cupiditate provident? Tempore asperiores rerum eveniet repellat ut
             laboriosam ipsum id similique!
           </article>
-          <div className="goals-outcome">
-            <p className="goals__question">How did you do?</p>
-            <div className="goals-completed">
-              <p className="goals__success">Achieved:</p>
-              <span>
-                {checkedSuccess ? (
-                  <FiCheckSquare
-                    className="goals-icon"
-                    onClick={checkMarkSuccess}
-                  />
-                ) : (
-                  <FiSquare className="goals-icon" onClick={checkMarkSuccess} />
-                )}
-              </span>
-              <p className="goals__failed">Failed:</p>
-              <span>
-                {checkedFailed ? (
-                  <FiXSquare className="goals-icon" onClick={checkMarkFailed} />
-                ) : (
-                  <FiSquare className="goals-icon" onClick={checkMarkFailed} />
-                )}
-              </span>
-            </div>
-          </div>
+          <GoalsOutcome/>
         </div>
       </div>
     </section>
