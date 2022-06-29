@@ -1,0 +1,54 @@
+.current-day{
+    width: 100%;
+    &-row{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+    &-tab{
+        min-height: 35rem;
+        width: 100vw;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &:nth-child(even){
+            background-color: $color-shade;
+        }
+    }
+    &__time{
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    &-content{
+        background-color: $color-primary;
+        padding: 5% 10%;
+        width: 100%;
+        min-height: 25rem;
+        border-radius: 20px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        color: $font-white;
+        &__title{
+            font-size: 1.5rem;
+            font-weight: 200;
+        }
+        &__desc{
+            word-break: break-word;
+            font-weight: 300;
+            font-size: 1.1rem;
+            align-self: start;
+        }
+    }
+    &-edit-icon{
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        font-size: 2rem;
+    }
+}

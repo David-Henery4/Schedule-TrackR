@@ -1,20 +1,31 @@
 import React from 'react'
 import { BsThreeDots } from "react-icons/bs";
+import mockCurrentDayData from '../data/mockCurrentDay';
 
 export const CurrentDay = () => {
   return (
-    <section className='current-day'>
+    <section className="current-day">
       <div className="current-day-row">
-        <div className="current-day-tab">
-          <h3 className='current-day__time'>09:00 - 10:00</h3>
-          <div className="current-day__content">
-            <h4>Drop the washing off</h4>
-            <article>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis id possimus illum, impedit distinctio facere sit officiis itaque! Nam nihil rem veniam earum est. Ut eos nulla nisi, ea itaque in dolorem architecto odit.</article>
-          </div>
-        </div>
+        {mockCurrentDayData.map(d => {
+          const {id, startTime, endTime, taskDesc, taskTitle} = d
+          return (
+            <div className="current-day-tab" key={id}>
+              <h3 className="current-day__time">{startTime} - {endTime}</h3>
+              <div className="current-day-content">
+                <BsThreeDots className="current-day-edit-icon" />
+                <h4 className="current-day-content__title">
+                  {taskTitle}
+                </h4>
+                <article className="current-day-content__desc">
+                  {taskDesc}
+                </article>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
-  )
+  );
 }
 
 export default CurrentDay
