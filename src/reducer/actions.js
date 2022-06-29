@@ -1,1 +1,2 @@
-const SIDEBAR_ACTIVE = false;
+export const SIDEBAR_ACTIVE = "SIDEBAR_ACTIVE";
+export const SIDEBAR_CLOSED = "SIDEBAR_CLOSED";

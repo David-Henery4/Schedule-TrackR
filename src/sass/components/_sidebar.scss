@@ -1,5 +1,6 @@
 .sidebar{
     position: fixed;
+    z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
@@ -54,6 +55,6 @@
 // SIDEBAR ACTIVE CLASS
 
 .sidebar-active{
-    transform: translate(0%);
+    transform: translateX(0%);
     transition: .8s all;
 }

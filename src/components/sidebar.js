@@ -6,12 +6,11 @@ import {Link} from "react-router-dom"
 // make Links!
 
 export const Sidebar = () => {
-  const data = useGlobalContext()
-  console.log(data)
+  const {closeSidebar, sidebarActive} = useGlobalContext()
   return (
-    <aside className="sidebar">
+    <aside className={`${sidebarActive ? "sidebar sidebar-active" : "sidebar"}`}>
       {/**/}
-      <FaTimes className='sidebar-icon'/>
+      <FaTimes className='sidebar-icon' onClick={closeSidebar}/>
       <div className="sidebar__logo">
         <p>
           Schedule <br /> Track<span>R</span>
@@ -23,7 +22,12 @@ export const Sidebar = () => {
           {navigationDates.map((link) => {
             const { id, text, page } = link;
             return (
-              <Link key={id} to={page} className="sidebar__list--item">
+              <Link
+                key={id}
+                to={page}
+                className="sidebar__list--item"
+                onClick={closeSidebar}
+              >
                 {text}
               </Link>
             );
@@ -36,7 +40,12 @@ export const Sidebar = () => {
           {navigationDosGoals.map((link) => {
             const { id, text, page } = link;
             return (
-              <Link key={id} to={page} className="sidebar__list--item">
+              <Link
+                key={id}
+                to={page}
+                className="sidebar__list--item"
+                onClick={closeSidebar}
+              >
                 {text}
               </Link>
             );

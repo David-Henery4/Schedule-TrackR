@@ -1,7 +1,9 @@
 import React from 'react'
 import {IoReorderThree} from "react-icons/io5"
+import { useGlobalContext } from "../context/provider";
 
 export const MobileNav = () => {
+  const {openSidebar} = useGlobalContext()
   return (
     <>
     <nav className='navbar-mobile'>
@@ -9,7 +11,7 @@ export const MobileNav = () => {
             <p>16:21</p>
         </div>
         <div className="navbar-mobile__icon">
-            <IoReorderThree className='burger'/>
+            <IoReorderThree className='burger' onClick={openSidebar}/>
         </div>
     </nav>
     </>

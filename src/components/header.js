@@ -1,7 +1,9 @@
 import React from 'react'
 import MobileNav from './mobileNav'
 
+
 export const Header = () => {
+
   return (
     <section className="header-section">
       <MobileNav />

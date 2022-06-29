@@ -1,0 +1,50 @@
+.todo{
+    height: 100%;
+    width: 100%;
+    &-row{
+        margin: 0 auto;
+        min-height: 50rem;
+        width: 95%;
+        padding: 10% 0;
+        border-radius: 20px;
+        background-color: $color-shade;
+        display: grid;
+        justify-items: center;
+        align-content: flex-start;
+        gap: 2rem;
+    }
+    &-tab{
+        color: $font-white;
+        width: 95%;
+        max-width: 95%;
+        min-height: 25rem;
+        padding: 5%;
+        border-radius: 20px;
+        background-color: $color-primary;
+        position: relative;
+        display: grid;
+        place-items: center;
+    }
+    &__start{
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 1.2rem;
+    }
+    &__edit{
+        position: absolute;
+        top: .7rem;
+        right: 1rem;
+        font-size: 2.5rem;
+    }
+    &__title{
+        margin: 3rem;
+        font-size: 1.5rem;
+    }
+    &__action{
+        // align-self: flex-start;
+        max-width: 75%;
+        font-size: 1.2rem;
+        word-break: break-word;
+    }
+}
