@@ -10,13 +10,12 @@ export const Header = () => {
       <header className="header">
         <h1 className="header__logo">
           Schedule
-          <br />
+          <span>
           TrackR
+          </span>
         </h1>
-        <div className="page-details">
-          <h3 className="page-details__name">Months 2022</h3>
-          <h4 className="page-details__date">June 12th</h4>
-        </div>
+          <h3 className="header__name">Months 2022</h3>
+          <h4 className="header__date">June 12th</h4>
       </header>
     </section>
   );

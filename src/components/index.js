@@ -1,9 +1,10 @@
-import Navbar from "./navbar";
+import NavbarDesk from "./navbarDesk";
 import Header from "./header";
 import Sidebar from "./sidebar";
-
+import LayoutGrid from "./layoutGrid";
 export{
-    Navbar,
+    NavbarDesk,
     Header,
-    Sidebar
+    Sidebar,
+    LayoutGrid
 }

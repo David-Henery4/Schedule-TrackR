@@ -7,6 +7,9 @@
     &__time{
         font-size: 2rem;
     }
+    @include respond (desktop) {
+        display: none;
+    }
 }
 
 .burger{

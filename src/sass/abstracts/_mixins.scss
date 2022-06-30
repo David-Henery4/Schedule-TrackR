@@ -1,0 +1,9 @@
+// MEDIA QUERY MIXINS
+
+@mixin respond ($breakpoint) {
+    @if $breakpoint == desktop{
+        @media (min-width: 60.62em) {
+            @content
+        }
+    }
+}

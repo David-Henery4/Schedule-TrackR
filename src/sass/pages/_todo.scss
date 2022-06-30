@@ -1,17 +1,29 @@
 .todo{
     height: 100%;
     width: 100%;
+    @include respond (desktop){
+        grid-column: 2/-1;
+        grid-row: 4/-1;
+    }
     &-row{
         margin: 0 auto;
         min-height: 50rem;
         width: 95%;
-        padding: 10% 0;
+        padding: 1.5rem;
         border-radius: 20px;
         background-color: $color-shade;
         display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
         justify-items: center;
         align-content: flex-start;
         gap: 2rem;
+        @include respond (desktop){
+            margin: 0;
+            width: 100%;
+            min-height: auto;
+            height: 100%;
+            overflow-y: scroll;
+        }
     }
     &-tab{
         color: $font-white;
