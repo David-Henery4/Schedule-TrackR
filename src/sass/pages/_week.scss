@@ -5,11 +5,19 @@
     grid-row: 4/-1;
   }
   &-container {
+    padding: 2% 0;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
     gap: 6rem;
+    @include respond (desktop){
+    padding: 4rem 1% 1%;
+    height: 100%;
+    overflow-y: scroll;
+    gap: 1.5rem;
+    row-gap: 5rem;
+    }
   }
   &-col {
     width: 90%;
@@ -21,6 +29,11 @@
     align-content: flex-start;
     gap: 2rem;
     border-radius: 20px;
+    @include respond (desktop){
+    width: 100%;
+    padding: 5%;
+    gap: 1rem;
+    }
   }
   &-title {
     width: 100%;
@@ -33,6 +46,9 @@
     position: relative;
     bottom: 4rem;
     border: 3px solid $color-primary;
+    @include respond (desktop){
+      bottom: 4rem;
+    }
     h3 {
       font-weight: 400;
     }
