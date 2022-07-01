@@ -3,6 +3,10 @@
     padding: 5%;
     background-color: $color-shade;
     color: $font-white;
+    @include respond (desktop){
+        grid-column: 2/-1;
+        grid-row: 4/-1;
+    }
     &__tab{
         width: 85%;
         height: 9rem;

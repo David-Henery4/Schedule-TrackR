@@ -1,2 +1,3 @@
 export const SIDEBAR_ACTIVE = "SIDEBAR_ACTIVE";
 export const SIDEBAR_CLOSED = "SIDEBAR_CLOSED";
+export const SET_ACTIVE_PAGE = "SET_ACTIVE_PAGE";

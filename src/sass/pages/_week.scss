@@ -1,12 +1,14 @@
 .week {
   width: 100%;
+  @include respond (desktop){
+    grid-column: 2/-1;
+    grid-row: 4/-1;
+  }
   &-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     justify-items: center;
-    // place-items: center;
-    // justify-content: flex-start;
     gap: 6rem;
   }
   &-col {

@@ -2,7 +2,8 @@
     padding: 0 5%;
     @include respond (desktop){
         grid-column: 2/-1;
-        grid-row: 1/2;
+        grid-row: 1/4;
+        padding: 0;
     }
 }
 
@@ -11,23 +12,51 @@
     place-items: center;
     height: 70vh;
     padding: 5% 0;
+    @include respond (desktop){
+        height: 100%;
+        padding: 0;
+        grid-template-columns: repeat(16, 1fr);
+    }
     &__logo{
         font-size: 3rem;
         font-weight: 400;
         text-align: center;
         color: $color-primary;
+        @include respond (desktop){
+            display: none;
+        }
         span{
             display: block;
+        }
+    }
+    &__time{
+        display: none;
+        font-size: 1.5rem;
+        @include respond (desktop){
+            display: block;
+            grid-column: 1/2;
         }
     }
     &__name{
         font-size: 2rem;
         font-weight: 300;
         color: $color-primary;
+        @include respond (desktop){
+            font-size: 2.5rem;
+            grid-column: 1/4;
+            grid-row: 3/4;
+            justify-self: flex-start;
+            padding-left: 0.5rem;
+        }
     }
     &__date{
         align-self: flex-start;
         font-size: 2rem;
         font-weight: 300;
+        @include respond (desktop){
+            font-size: 3rem;
+            grid-column: 6/12;
+            grid-row: 2/3;
+        }
     }
 }

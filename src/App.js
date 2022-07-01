@@ -5,7 +5,6 @@ import { NavbarDesk, Header, Sidebar, LayoutGrid} from "./components";
 
 function App() {
   // Will change month path!!!!!
-  // Maybe add container grid div
   return (
     <>
     <AppProvider>

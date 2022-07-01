@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSearchParams, useLocation } from 'react-router-dom'
 import MobileNav from './mobileNav'
-
+import { TODOPATH, CURRENTDAYPATH, MONTHPATH,WEEKPATH,WEEKSPATH, GOALSPATH } from '../data/pathNames'
+import { useGlobalContext } from '../context/provider'
 
 export const Header = () => {
-
+  const {selectActivePage, activePage} = useGlobalContext()
+  const {todoHeader, goalsHeader, weekHeader, weeksHeader, monthHeader, currentHeader} = activePage
+  let location = useLocation()
+  //
+  const activePageTitle = () => {
+    if (todoHeader) return "To dos"
+    if (goalsHeader) return "Goals"
+    if (weekHeader) return "Current Week"
+    if (weeksHeader) return "Weeks"
+    if (monthHeader) return "Month"
+    if (currentHeader) return "Current day"
+  }
+  //
+  useEffect(() => {
+    const pages = {
+      todoHeader: location.pathname === TODOPATH,
+      goalsHeader : location.pathname === GOALSPATH,
+      weekHeader : location.pathname === WEEKPATH,
+      monthHeader : location.pathname === MONTHPATH,
+      currentHeader : location.pathname === CURRENTDAYPATH,
+      weeksHeader : location.pathname === WEEKSPATH
+    };
+    selectActivePage(pages)
+  }, [location])
+  // 
   return (
     <section className="header-section">
       <MobileNav />
@@ -14,8 +40,9 @@ export const Header = () => {
           TrackR
           </span>
         </h1>
-          <h3 className="header__name">Months 2022</h3>
-          <h4 className="header__date">June 12th</h4>
+        <p className='header__time'>09:36</p>
+          <h3 className="header__name">{activePageTitle()}</h3>
+          <h4 className="header__date">Thursday 12th June</h4>
       </header>
     </section>
   );

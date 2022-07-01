@@ -1,0 +1,6 @@
+.weeks{
+    @include respond (desktop){
+        grid-column: 2/-1;
+        grid-row: 4/-1;
+    }
+}
