@@ -1,6 +1,11 @@
 .weeks{
+    width: 100%;
+    height: 100%;
+    background-color: $color-shade;
+    padding: 4%;
     @include respond (desktop){
         grid-column: 2/-1;
         grid-row: 4/-1;
+        padding: 2%;
     }
 }
