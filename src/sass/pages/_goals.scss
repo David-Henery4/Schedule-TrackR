@@ -3,13 +3,18 @@
   height: 100%;
   background-color: $color-shade;
   padding: 5% 0;
+  overflow-y: scroll;
   @include respond (desktop){
         grid-column: 2/-1;
         grid-row: 4/-1;
   }
   &-row {
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr)); // might switch back to 430px
+    justify-items: center; 
+    align-items: flex-start;
+    // justify-content: center; // aligns col track
+    // place-items: center;
     gap: 4rem;
   }
   &-tab {
