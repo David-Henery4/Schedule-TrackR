@@ -1,7 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { useGlobalContext } from "../context/provider";
 
 // CREATE DUMMY DATA TO LOOP OVER THE DATES
 export const Calandar = () => {
+  const {calandar} = useGlobalContext()
+  if (calandar){
+    const week1 = calandar.slice(0,7)
+    console.log(week1)
+    const week2 = calandar.slice(7, 14)
+    console.log(week2)
+    const week3 = calandar.slice(14, 21)
+    console.log(week3)
+    const week4 = calandar.slice(21, 28);
+    console.log(week4)
+    const week5 = calandar.slice(28, -1);
+    console.log(week5)
+  }
+  //
   return (
     <div className="calandar-container">
       <div className="calandar">
