@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useSearchParams, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import MobileNav from './mobileNav'
 import { TODOPATH, CURRENTDAYPATH, MONTHPATH,WEEKPATH,WEEKSPATH, GOALSPATH } from '../data/pathNames'
 import { useGlobalContext } from '../context/provider'
@@ -21,13 +21,14 @@ export const Header = () => {
   useEffect(() => {
     const pages = {
       todoHeader: location.pathname === TODOPATH,
-      goalsHeader : location.pathname === GOALSPATH,
-      weekHeader : location.pathname === WEEKPATH,
-      monthHeader : location.pathname === MONTHPATH,
-      currentHeader : location.pathname === CURRENTDAYPATH,
-      weeksHeader : location.pathname === WEEKSPATH
+      goalsHeader: location.pathname === GOALSPATH,
+      weekHeader: location.pathname === WEEKPATH,
+      monthHeader: location.pathname === MONTHPATH,
+      currentHeader: location.pathname === CURRENTDAYPATH,
+      weeksHeader: location.pathname === WEEKSPATH,
     };
-    selectActivePage(pages)
+    selectActivePage(pages);
+    // eslint-disable-next-line
   }, [location])
   // 
   return (
