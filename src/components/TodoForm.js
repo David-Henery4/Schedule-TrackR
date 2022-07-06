@@ -1,9 +1,13 @@
 import React from 'react'
 import { FaTimes } from "react-icons/fa";
+import { useGlobalContext } from '../context/provider';
 
 export const TodoForm = () => {
+  const {activeInputs} = useGlobalContext()
+  const { todoInput } = activeInputs;
+  // REMINDER: NEED TO CLOSE MODAL.
   return (
-    <div className='todo-form-modal'>
+    <div className={`${todoInput ? "todo-form-modal input-open" : "todo-form-modal"}`}>
         <div className="todo-form-container">
             <FaTimes className='todo-exit-icon'/>
             <form className='todo-form'>

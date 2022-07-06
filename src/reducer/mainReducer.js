@@ -4,6 +4,7 @@ import {
   SIDEBAR_CLOSED,
   SET_ACTIVE_PAGE,
   GET_INITIAL_CALANDAR_DATA,
+  INPUT_ACTIVE,
 } from "../reducer/actions";
 import { getDatesObj } from "../data/calandarData";
 
@@ -35,6 +36,16 @@ const mainReducer = (state, action) => {
         const calandar = getDatesObj(tempDays, tempYear, tempMonth);
         // monthString, tempMonth, tempYear, tempDays;
         return { ...state, calandar, monthString, tempDays, tempMonth, tempYear };
+    }
+    //
+    if (action.type === INPUT_ACTIVE){
+        if (state.activePage.todoHeader){
+            console.log("input form open");
+            const {activeInputs} = state
+            return {...state, activeInputs: {...activeInputs,todoInput: true }
+            };
+        }
+        return {...state}
     }
     //
     throw new Error(`No matching action type: ${action.type}`);

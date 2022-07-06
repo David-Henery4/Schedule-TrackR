@@ -59,4 +59,12 @@
             grid-row: 2/3;
         }
     }
+    &__add-icon{
+        font-size: 4rem;
+        color: $color-primary;
+        @include respond (desktop){
+            grid-column: 16/-1;
+            grid-row: 3/4;
+        }
+    }
 }

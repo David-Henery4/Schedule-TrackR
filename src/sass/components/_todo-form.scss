@@ -11,7 +11,7 @@
     align-items: center;
     gap: 2rem;
     &-modal{
-        // display: none; // temp
+        display: none; // temp
         height: 85%;
         width: 90%;
         border-radius: 2rem;
@@ -47,4 +47,8 @@
     right: 1.5rem;
     font-size: 2.5rem;
     color: $font-white;
+}
+
+.input-open{ // might be re-used, if so move to more generic folder.
+    display: block;
 }

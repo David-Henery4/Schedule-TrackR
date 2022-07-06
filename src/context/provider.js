@@ -5,13 +5,14 @@ import {
   SIDEBAR_CLOSED,
   SET_ACTIVE_PAGE,
   GET_INITIAL_CALANDAR_DATA,
+  INPUT_ACTIVE,
 } from "../reducer/actions";
 import reducer from "../reducer/mainReducer";
 
 const initialValue = {
   sidebarActive: false,
   todaysDate: new Date(),
-  currentYear:  new Date().getFullYear(),
+  currentYear: new Date().getFullYear(),
   currentMonth: new Date().getMonth() + 1,
   activePage: {
     todo: false,
@@ -20,8 +21,16 @@ const initialValue = {
     weeks: false,
     months: false,
     day: false,
-  }
-}
+  },
+  activeInputs: {
+    todoInput: false,
+    goalsInput: false,
+    weekInput: false,
+    weeksInput: false,
+    monthsInput: false,
+    dayInput: false,
+  },
+};
 
 const AppContext = React.createContext();
 
@@ -45,12 +54,17 @@ const AppProvider = ({ children }) => {
     dispatch({type: GET_INITIAL_CALANDAR_DATA, payload: {year,month}})
   }
   //
+  const inputFormOpen = () => {
+    // console.log("input form open")
+    dispatch({type: INPUT_ACTIVE})
+  }
+  //
   useEffect(() => {
     getInitialCalandarData(currentYear, currentMonth); // MIGHT DEPEND ON CHANGE
     // eslint-disable-next-line
   }, [])
   //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen}}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {

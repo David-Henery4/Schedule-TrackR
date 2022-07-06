@@ -2,6 +2,7 @@ import React from 'react'
 import {BsThreeDots} from "react-icons/bs"
 import mockTodos from '../data/mockTodoData'
 import { TodoForm } from '../components'
+// import { useGlobalContext } from '../context/provider'
 
 export const Todo = () => {
   return (
