@@ -22,7 +22,7 @@ export const Calandar = () => {
     weeksSplit();
     // eslint-disable-next-line
   }, [calandar])
-  console.log(weeks)
+  // console.log(weeks)
   //
   return (
     <div className="calandar-container">
