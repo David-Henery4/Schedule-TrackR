@@ -1,10 +1,12 @@
 import React from 'react'
 import {BsThreeDots} from "react-icons/bs"
 import mockTodos from '../data/mockTodoData'
+import { TodoForm } from '../components'
 
 export const Todo = () => {
   return (
     <section className='todo'>
+      <TodoForm/>
       <div className="todo-row">
         {mockTodos.map((t) => {
           const {id,start,title,todo} = t
