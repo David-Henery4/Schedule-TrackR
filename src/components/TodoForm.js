@@ -13,10 +13,17 @@ export const TodoForm = () => {
   //
   const handleSubmit = () => {
     addTodo({
-      when: todoWhen,
+      start: todoWhen,
       title: todoTitle,
-      description: todoDesc
+      todo: todoDesc
     })
+    resetInputs()
+  }
+  //
+  const resetInputs = () => {
+    setTodoDesc("")
+    setTodoTitle("")
+    setTodoWhen("")
   }
   //
   const handleFormCompletion = () => {
@@ -24,7 +31,7 @@ export const TodoForm = () => {
     setTimeout(() => {
       setFormCompleted(false)
       inputFormClose()
-    }, 3000)
+    }, 2000)
   }
   //
   return (

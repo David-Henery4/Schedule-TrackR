@@ -68,6 +68,7 @@ const AppProvider = ({ children }) => {
   }
   //
   const addTodo = (todoData) => {
+    // console.log(todoData)
     dispatch({type: ADD_TODO, payload: todoData})
   }
   useEffect(() => {

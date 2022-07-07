@@ -61,8 +61,14 @@ const mainReducer = (state, action) => {
     }
     //
     if (action.type === ADD_TODO){
-        console.log(action.payload)
-        return {...state}
+        if (state.activePage.todoHeader){
+            const {todoData} = state
+            const id = todoData.length + 1
+            action.payload.id = id
+            const newData = [...state.todoData, action.payload]
+            return {...state, todoData: newData}
+        }
+        return{...state}
     }
     //
     throw new Error(`No matching action type: ${action.type}`);
