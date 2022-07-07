@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { AppProvider } from "./context/provider";
 import { Goals, Todo, Week, Weeks, Month, CurrentDay } from "./pages";
-import { NavbarDesk, Header, Sidebar, LayoutGrid} from "./components";
+import { NavbarDesk, Header, Sidebar, LayoutGrid , Overlay} from "./components";
 
 function App() {
   // Will change month path!!!!!
@@ -9,6 +9,7 @@ function App() {
     <>
     <AppProvider>
       <Router>
+        <Overlay/>
           <Sidebar />
         <LayoutGrid>
           <Header />
