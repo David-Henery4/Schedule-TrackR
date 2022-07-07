@@ -5,6 +5,8 @@ import {
   SET_ACTIVE_PAGE,
   GET_INITIAL_CALANDAR_DATA,
   INPUT_ACTIVE,
+  INPUT_CLOSE,
+  ADD_TODO,
 } from "../reducer/actions";
 import { getDatesObj } from "../data/calandarData";
 
@@ -40,11 +42,26 @@ const mainReducer = (state, action) => {
     //
     if (action.type === INPUT_ACTIVE){
         if (state.activePage.todoHeader){
-            console.log("input form open");
             const {activeInputs} = state
             return {...state, activeInputs: {...activeInputs,todoInput: true }
             };
         }
+        return {...state}
+    }
+    //
+    if (action.type === INPUT_CLOSE){
+        if (state.activePage.todoHeader) {
+            const { activeInputs } = state;
+            return {
+                ...state,
+                activeInputs: { ...activeInputs, todoInput: false },
+            };
+        }
+        return { ...state };
+    }
+    //
+    if (action.type === ADD_TODO){
+        console.log(action.payload)
         return {...state}
     }
     //

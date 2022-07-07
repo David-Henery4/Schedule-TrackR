@@ -1,4 +1,5 @@
 import React, { useContext, useReducer, useEffect } from "react";
+import { TODOPATH } from "../data/pathNames";
 // import {useLocation} from "react-router-dom"
 import {
   SIDEBAR_ACTIVE,
@@ -6,6 +7,8 @@ import {
   SET_ACTIVE_PAGE,
   GET_INITIAL_CALANDAR_DATA,
   INPUT_ACTIVE,
+  INPUT_CLOSE,
+  ADD_TODO,
 } from "../reducer/actions";
 import reducer from "../reducer/mainReducer";
 
@@ -30,6 +33,7 @@ const initialValue = {
     monthsInput: false,
     dayInput: false,
   },
+  todoData: []
 };
 
 const AppContext = React.createContext();
@@ -59,12 +63,19 @@ const AppProvider = ({ children }) => {
     dispatch({type: INPUT_ACTIVE})
   }
   //
+  const inputFormClose = () => {
+    dispatch({type: INPUT_CLOSE})
+  }
+  //
+  const addTodo = (todoData) => {
+    dispatch({type: ADD_TODO, payload: todoData})
+  }
   useEffect(() => {
     getInitialCalandarData(currentYear, currentMonth); // MIGHT DEPEND ON CHANGE
     // eslint-disable-next-line
   }, [])
   //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo}}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {
