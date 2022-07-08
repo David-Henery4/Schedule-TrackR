@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
-export const EditDelete = ({ editActive }) => {
-    console.log(editActive)
+export const EditDelete = ({ activeTodo }) => {
+    // solve click OFF edit issue later
   return (
     <div
-      className={editActive ? "edit-delete-active edit-delete" : "edit-delete"}
+      className={activeTodo ? "edit-delete-active edit-delete" : "edit-delete"}
     >
       <button className="edit">
         Edit{" "}

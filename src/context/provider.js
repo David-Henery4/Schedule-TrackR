@@ -9,6 +9,7 @@ import {
   INPUT_ACTIVE,
   INPUT_CLOSE,
   ADD_TODO,
+  ACTIVE_TODO_TAB,
 } from "../reducer/actions";
 import reducer from "../reducer/mainReducer";
 
@@ -71,12 +72,17 @@ const AppProvider = ({ children }) => {
     // console.log(todoData)
     dispatch({type: ADD_TODO, payload: todoData})
   }
+  //
+  const activeTodoTab = (todoData) => {
+    dispatch({ type: ACTIVE_TODO_TAB, payload: todoData });
+  }
+  //
   useEffect(() => {
     getInitialCalandarData(currentYear, currentMonth); // MIGHT DEPEND ON CHANGE
     // eslint-disable-next-line
   }, [])
   //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab}}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {

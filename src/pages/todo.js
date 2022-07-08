@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {BsThreeDots} from "react-icons/bs";
 import mockTodos from '../data/mockTodoData';
 import { TodoForm, EditDelete } from '../components';
@@ -6,13 +6,39 @@ import { useGlobalContext } from '../context/provider'
 // import { useGlobalContext } from '../context/provider'
 
 export const Todo = () => {
-  const {todoData} = useGlobalContext()
-  const [editActive, setEditActive] = useState(false)
+  const {todoData, activeTodoTab} = useGlobalContext()
+  // const [editActive, setEditActive] = useState(false)
   //
   const handleEditClick = (id) => {
-    
-    setEditActive(!editActive);
+    const updatedData = todoData.map(t => {
+      if (id === t.id) {
+        t.activeTodo = true
+      }
+      if (id !== t.id){
+        t.activeTodo = false;
+      }
+      return t
+    })
+    activeTodoTab(updatedData)
   }
+  //
+  // const checkTodo = (id) => {
+  //   let activeTodo;
+  //   let nonActiveTodo;
+  //   todoData.forEach((t) => {
+  //     console.log(id)
+  //     if (id === t.id) {
+  //       console.log(activeTodo)
+  //       activeTodo = true
+  //     }
+  //     if (id !== t.id){
+  //       console.log(activeTodo)
+  //       activeTodo = false
+  //       // nonActiveTodo = false
+  //     }
+  //   });
+  //   return activeTodo
+  // }
   //
   return (
     <section className="todo">
@@ -20,7 +46,7 @@ export const Todo = () => {
       <div className="todo-row">
         {todoData.length < 1
           ? mockTodos.map((t) => {
-              const { id, start, title, todo } = t;
+              const { id, start, title, todo} = t;
               return (
                 <div className="todo-tab" key={id}>
                   <p className="todo__start">{start}</p>
@@ -31,12 +57,14 @@ export const Todo = () => {
               );
             })
           : todoData.map((t) => {
-              const { id, start, title, todo } = t;
+              const { id, start, title, todo, activeTodo } = t;
               return (
                 <div className="todo-tab" key={id}>
                   <p className="todo__start">{start}</p>
-                  <EditDelete className="edit-delete-comp" editActive={editActive}/>
-                  <BsThreeDots className="todo__edit" onClick={() => handleEditClick(id)}/>
+                  <BsThreeDots className="todo__edit" onClick={() => {
+                    handleEditClick(id)
+                  }}/>
+                  <EditDelete activeTodo={activeTodo} className="edit-delete-comp"/>
                   <h4 className="todo__title">{title}</h4>
                   <article className="todo__action">{todo}</article>
                 </div>

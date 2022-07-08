@@ -15,7 +15,8 @@ export const TodoForm = () => {
     addTodo({
       start: todoWhen,
       title: todoTitle,
-      todo: todoDesc
+      todo: todoDesc,
+      activeTodo: false
     })
     resetInputs()
   }
