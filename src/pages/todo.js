@@ -7,15 +7,16 @@ import { useGlobalContext } from '../context/provider'
 
 export const Todo = () => {
   const {todoData, activeTodoTab} = useGlobalContext()
-  // const [editActive, setEditActive] = useState(false)
   //
   const handleEditClick = (id) => {
     const updatedData = todoData.map(t => {
       if (id === t.id) {
         t.activeTodo = !t.activeTodo
+        t.editActive = false;
       }
       if (id !== t.id){
         t.activeTodo = false;
+        t.editActive = false; // prob not needed!
       }
       return t
     })
@@ -53,7 +54,7 @@ export const Todo = () => {
                   <BsThreeDots className="todo__edit" onClick={() => {
                     handleEditClick(id)
                   }}/>
-                  <EditDelete activeTodo={activeTodo} className="edit-delete-comp"/>
+                  <EditDelete activeTodo={activeTodo} id={id}className="edit-delete-comp"/>
                   <h4 className="todo__title">{title}</h4>
                   <article className="todo__action">{todo}</article>
                 </div>

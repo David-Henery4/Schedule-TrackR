@@ -1,22 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaTimes } from "react-icons/fa";
 import { BsCheckCircleFill} from "react-icons/bs";
 import { useGlobalContext } from '../context/provider';
 
+
+
 export const TodoForm = () => {
-  const {activeInputs,inputFormClose, addTodo} = useGlobalContext()
+  const { activeInputs, inputFormClose, addTodo, todoData } =
+    useGlobalContext();
   const { todoInput } = activeInputs;
   const [todoTitle,setTodoTitle] = useState("")
   const [todoWhen,setTodoWhen] = useState("")
   const [todoDesc,setTodoDesc] = useState("")
   const [formComplete, setFormCompleted] = useState(false)
   //
+  const editActive = todoData.some(t => t.editActive)
+  const [isEdit,setIsEdit] = useState(false)
+  //
   const handleSubmit = () => {
     addTodo({
       start: todoWhen,
       title: todoTitle,
       todo: todoDesc,
-      activeTodo: false
+      activeTodo: false,
+      editActive: false
     })
     resetInputs()
   }
@@ -35,6 +42,14 @@ export const TodoForm = () => {
     }, 2000)
   }
   //
+  const editMode = () => {
+    
+  }
+  //
+  useEffect(() => {
+    setIsEdit(editActive)
+    console.log(editActive) // true when edit button clicked
+  }, [editActive])
   return (
     <div className={`${todoInput ? "todo-form-modal input-open" : "todo-form-modal"}`}>
         <div className="todo-form-container">

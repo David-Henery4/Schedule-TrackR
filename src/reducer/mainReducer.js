@@ -8,6 +8,8 @@ import {
   INPUT_CLOSE,
   ADD_TODO,
   ACTIVE_TODO_TAB,
+  DELETE_TODO,
+  EDIT_TODO
 } from "../reducer/actions";
 import { getDatesObj } from "../data/calandarData";
 
@@ -75,6 +77,16 @@ const mainReducer = (state, action) => {
     //
     if (action.type === ACTIVE_TODO_TAB) {
         return { ...state, todoData: action.payload};
+    }
+    //
+    if (action.type === DELETE_TODO){
+        const newData = action.payload
+        return {...state, todoData: newData}
+    }
+    //
+    if (action.type === EDIT_TODO){
+        const newData = action.payload
+        return{...state, todoData: newData}
     }
     //
     throw new Error(`No matching action type: ${action.type}`);
