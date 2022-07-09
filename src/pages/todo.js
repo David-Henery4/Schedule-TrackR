@@ -12,7 +12,7 @@ export const Todo = () => {
   const handleEditClick = (id) => {
     const updatedData = todoData.map(t => {
       if (id === t.id) {
-        t.activeTodo = true
+        t.activeTodo = !t.activeTodo
       }
       if (id !== t.id){
         t.activeTodo = false;
@@ -21,24 +21,13 @@ export const Todo = () => {
     })
     activeTodoTab(updatedData)
   }
-  //
-  // const checkTodo = (id) => {
-  //   let activeTodo;
-  //   let nonActiveTodo;
-  //   todoData.forEach((t) => {
-  //     console.log(id)
-  //     if (id === t.id) {
-  //       console.log(activeTodo)
-  //       activeTodo = true
-  //     }
-  //     if (id !== t.id){
-  //       console.log(activeTodo)
-  //       activeTodo = false
-  //       // nonActiveTodo = false
-  //     }
-  //   });
-  //   return activeTodo
-  // }
+  // COME BACK TOO
+  // CLOSE EDIT MODAL ON BODY CLICK!
+  // document.body.addEventListener("click", function(){
+  //   console.log("body clicked")
+  //   const updated = todoData.map(t => t.activeTodo = false)
+  //   activeTodoTab(updated)
+  // })
   //
   return (
     <section className="todo">
