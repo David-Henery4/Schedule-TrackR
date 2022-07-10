@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from '../context/provider';
 
 export const GoalsForm = () => {
     const { activeInputs, inputFormClose } = useGlobalContext();
     const {goalsInput} = activeInputs
+    // input values
+    const [goalDate,setGoalDate] = useState("")
+    const [goalInput,setGoalInput] = useState("")
+    //[]
+    const handleSubmit = (e) => {
+      console.log(e.target)
+      inputFormClose()
+    }
+    //
   return (
     <div
       className={`${
@@ -13,10 +22,14 @@ export const GoalsForm = () => {
     >
       <div className="goals-form-container">
         <FaTimes className='exit-icon' onClick={inputFormClose}/>
-        <form className='goals-form'>
-          <input type="text" className='goals-form__date'/>
-          <textarea name="goal" id="goal" className='goals-form__input'></textarea>
-          <button type="submit" className='btn goals-form__submit'>Submit</button>
+        <form className='goals-form' onSubmit={(e) => e.preventDefault()}>
+          <input onChange={(e) => {
+            setGoalDate(e.target.value)
+          }} type="text" className='goals-form__date' value={goalDate}/>
+          <textarea onChange={(e) => {
+            setGoalInput(e.target.value)
+          }} name="goal" id="goal" className='goals-form__input' value={goalInput}></textarea>
+          <button onClick={handleSubmit} type="submit" className='btn goals-form__submit'>Submit</button>
         </form>
       </div>
     </div>
