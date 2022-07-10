@@ -5,6 +5,8 @@ import LayoutGrid from "./layoutGrid";
 import TodoForm from "./TodoForm";
 import Overlay from "./Overlay";
 import EditDelete from "./EditDelete";
+import GoalsForm from "./GoalsForm";
+import GoalsOutcome from "./goalsOutcome";
 export{
     NavbarDesk,
     Header,
@@ -12,5 +14,7 @@ export{
     LayoutGrid,
     TodoForm,
     Overlay,
-    EditDelete
+    EditDelete,
+    GoalsForm,
+    GoalsOutcome
 }

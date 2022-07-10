@@ -4,9 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { useGlobalContext } from '../context/provider';
 
 export const EditDelete = ({ activeTodo,id }) => {
-  const {todoData, deleteTodo, inputFormOpen, activeInputs, handleEditTodo} = useGlobalContext()
-  // const {todoInputs} = activeInputs
-
+  const {todoData, deleteTodo, inputFormOpen, handleEditTodo} = useGlobalContext()
   //
   const handleDelete = () => {
     const updatedData = todoData.filter(t => id !== t.id
@@ -17,7 +15,6 @@ export const EditDelete = ({ activeTodo,id }) => {
   const handleEdit = () => {
     const updatedData = todoData.map(t => {
       if (id === t.id){
-        // console.log(t)
         t.editActive = true;
         inputFormOpen()
       } else {

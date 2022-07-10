@@ -17,6 +17,7 @@ import reducer from "../reducer/mainReducer";
 
 const initialValue = {
   sidebarActive: false,
+  overlayActive: false,
   todaysDate: new Date(),
   currentYear: new Date().getFullYear(),
   currentMonth: new Date().getMonth() + 1,
@@ -62,7 +63,6 @@ const AppProvider = ({ children }) => {
   }
   //
   const inputFormOpen = () => {
-    // console.log("input form open")
     dispatch({type: INPUT_ACTIVE})
   }
   //
@@ -71,7 +71,6 @@ const AppProvider = ({ children }) => {
   }
   //
   const addTodo = (todoData) => {
-    // console.log(todoData)
     dispatch({type: ADD_TODO, payload: todoData})
   }
   //

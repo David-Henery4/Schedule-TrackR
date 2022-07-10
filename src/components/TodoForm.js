@@ -64,13 +64,12 @@ export const TodoForm = () => {
       setTodoWhenEdit(currentEdit.start)
       setTodoTitleEdit(currentEdit.title)
       setTodoDescEdit(currentEdit.todo)
-      console.log(currentEdit)
     }
   }
   //
   useEffect(() => {
-    editMode(editActive)
-    console.log(editActive)
+    editMode(editActive);
+    // eslint-disable-next-line
   }, [editActive])
   //
   return (
@@ -80,7 +79,7 @@ export const TodoForm = () => {
       }`}
     >
       <div className="todo-form-container">
-        <FaTimes className="todo-exit-icon" onClick={inputFormClose} />
+        <FaTimes className="exit-icon" onClick={inputFormClose} />
         <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
           <input
             value={editActive ? todoWhenEdit : todoWhen}

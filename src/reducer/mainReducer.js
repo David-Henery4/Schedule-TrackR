@@ -46,8 +46,19 @@ const mainReducer = (state, action) => {
     if (action.type === INPUT_ACTIVE){
         if (state.activePage.todoHeader){
             const {activeInputs} = state
-            return {...state, activeInputs: {...activeInputs,todoInput: true }
+            return {
+                ...state,
+                overlayActive: !state.overlayActive,
+                activeInputs: { ...activeInputs, todoInput: true },
             };
+        }
+        if (state.activePage.goalsHeader) {
+          const { activeInputs } = state;
+          return {
+            ...state,
+            overlayActive: !state.overlayActive,
+            activeInputs: { ...activeInputs, goalsInput: true },
+          };
         }
         return {...state}
     }
@@ -56,8 +67,17 @@ const mainReducer = (state, action) => {
         if (state.activePage.todoHeader) {
             const { activeInputs } = state;
             return {
-                ...state,
-                activeInputs: { ...activeInputs, todoInput: false },
+              ...state,
+              overlayActive: !state.overlayActive,
+              activeInputs: { ...activeInputs, todoInput: false },
+            };
+        }
+        if (state.activePage.goalsHeader) {
+            const { activeInputs } = state;
+            return {
+              ...state,
+              overlayActive: !state.overlayActive,
+              activeInputs: { ...activeInputs, goalsInput: false },
             };
         }
         return { ...state };

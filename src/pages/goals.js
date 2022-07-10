@@ -1,12 +1,14 @@
 import React from 'react'
-import GoalsOutcome from '../components/goalsOutcome';
+import {GoalsOutcome, GoalsForm} from '../components';
 import { BsThreeDots } from "react-icons/bs";
 import mockGoalsData from '../data/mockGoalsData';
+// import { GoalsForm } from '../components';
 
 export const Goals = () => {
   //
   return (
     <section className="goals">
+      <GoalsForm/>
       <div className="goals-row">
         {mockGoalsData.map(tab => {
           const {id, start, goal} = tab
