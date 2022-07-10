@@ -67,7 +67,7 @@ const mainReducer = (state, action) => {
         if (state.activePage.todoHeader){
             // dont think todo data copy needed
             const {todoData} = state
-            const id = todoData.length + 1
+            const id = Date.now()
             action.payload.id = id
             const newData = [...state.todoData, action.payload]
             return {...state, todoData: newData}

@@ -6,16 +6,18 @@ import { useGlobalContext } from '../context/provider';
 
 
 export const TodoForm = () => {
-  const { activeInputs, inputFormClose, addTodo, todoData } =
+  const { activeInputs, inputFormClose, addTodo, todoData, handleEditTodo } =
     useGlobalContext();
   const { todoInput } = activeInputs;
   const [todoTitle,setTodoTitle] = useState("")
   const [todoWhen,setTodoWhen] = useState("")
   const [todoDesc,setTodoDesc] = useState("")
   const [formComplete, setFormCompleted] = useState(false)
-  //
+  // Edit States
   const editActive = todoData.some(t => t.editActive)
-  const [isEdit,setIsEdit] = useState(false)
+  const [todoWhenEdit, setTodoWhenEdit] = useState("")
+  const [todoTitleEdit, setTodoTitleEdit] = useState("")
+  const [todoDescEdit, setTodoDescEdit] = useState("")
   //
   const handleSubmit = () => {
     addTodo({
@@ -42,38 +44,113 @@ export const TodoForm = () => {
     }, 2000)
   }
   //
-  const editMode = () => {
-    
+  const handleEditUpdate = () => {
+    const updatedTodo = todoData.map(t => {
+      if (t.editActive){
+        t.start =  todoWhenEdit;
+        t.title = todoTitleEdit;
+        t.todo = todoDescEdit;
+        t.activeTodo = false;
+        t.editActive = false;
+        }
+        return t
+    })
+    handleEditTodo(updatedTodo)
+  }
+  //
+  const editMode = (edit) => {
+    if (edit){
+      const currentEdit = todoData.find(t => t.editActive === true)
+      setTodoWhenEdit(currentEdit.start)
+      setTodoTitleEdit(currentEdit.title)
+      setTodoDescEdit(currentEdit.todo)
+      console.log(currentEdit)
+    }
   }
   //
   useEffect(() => {
-    setIsEdit(editActive)
-    console.log(editActive) // true when edit button clicked
+    editMode(editActive)
+    console.log(editActive)
   }, [editActive])
+  //
   return (
-    <div className={`${todoInput ? "todo-form-modal input-open" : "todo-form-modal"}`}>
-        <div className="todo-form-container">
-            <FaTimes className='todo-exit-icon' onClick={inputFormClose}/>
-            <form className='todo-form' onSubmit={(e) => e.preventDefault()}>
-                <input value={todoWhen} className='todo-form__start-input input-basic' type="text" name="todo-when" id="todo-when" placeholder='When...' onChange={(e) => {
-                  setTodoWhen(e.target.value)
-                }}/>
-                {/**/}
-                <input value={todoTitle} className='input-basic todo-form__title-input' type="text" name="todo-title" id="todo-title" placeholder='Title...' onChange={(e) => {
-                  setTodoTitle(e.target.value)
-                }}/>
-                {/**/}
-                <textarea value={todoDesc} className='input-basic todo-form__desc-input' name="todo-desc" id="todo-desc" placeholder='Description...' onChange={(e) => {
-                  setTodoDesc(e.target.value)
-                }}></textarea>
-                {formComplete ? <BsCheckCircleFill className='complete-icon'/> : <button className='btn' type="submit" onClick={() => {
-                  handleSubmit()
-                  handleFormCompletion()
-                }}>Submit</button>}
-            </form>
-        </div>
+    <div
+      className={`${
+        todoInput ? "todo-form-modal input-open" : "todo-form-modal"
+      }`}
+    >
+      <div className="todo-form-container">
+        <FaTimes className="todo-exit-icon" onClick={inputFormClose} />
+        <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
+          <input
+            value={editActive ? todoWhenEdit : todoWhen}
+            className="todo-form__start-input input-basic"
+            type="text"
+            name="todo-when"
+            id="todo-when"
+            placeholder="When..."
+            onChange={(e) => {
+              if (editActive) {
+                setTodoWhenEdit(e.target.value);
+              } else {
+                setTodoWhen(e.target.value);
+              }
+            }}
+          />
+          {/**/}
+          <input
+            value={editActive ? todoTitleEdit : todoTitle}
+            className="input-basic todo-form__title-input"
+            type="text"
+            name="todo-title"
+            id="todo-title"
+            placeholder="Title..."
+            onChange={(e) => {
+              if (editActive) {
+                setTodoTitleEdit(e.target.value);
+              } else {
+                setTodoTitle(e.target.value);
+              }
+            }}
+          />
+          {/**/}
+          <textarea
+            value={editActive ? todoDescEdit : todoDesc}
+            className="input-basic todo-form__desc-input"
+            name="todo-desc"
+            id="todo-desc"
+            placeholder="Description..."
+            onChange={(e) => {
+              if (editActive){
+                setTodoDescEdit(e.target.value)
+              } else{
+                setTodoDesc(e.target.value);
+              }
+            }}
+          ></textarea>
+          {formComplete ? (
+            <BsCheckCircleFill className="complete-icon" />
+          ) : (
+            <button
+              className="btn"
+              type="submit"
+              onClick={() => {
+                if (editActive){
+                  handleEditUpdate()
+                  handleFormCompletion();
+                } else{
+                  handleSubmit();
+                  handleFormCompletion();
+                }
+              }}
+            >
+              Submit
+            </button>
+          )}
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
 export default TodoForm

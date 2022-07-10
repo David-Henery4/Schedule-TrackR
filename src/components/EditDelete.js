@@ -19,7 +19,7 @@ export const EditDelete = ({ activeTodo,id }) => {
       if (id === t.id){
         // console.log(t)
         t.editActive = true;
-        // inputFormOpen()
+        inputFormOpen()
       } else {
         t.editActive = false;
       }
