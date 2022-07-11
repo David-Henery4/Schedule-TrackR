@@ -12,6 +12,7 @@ import {
   ACTIVE_TODO_TAB,
   DELETE_TODO,
   EDIT_TODO,
+  ADD_GOAL,
 } from "../reducer/actions";
 import reducer from "../reducer/mainReducer";
 
@@ -37,7 +38,8 @@ const initialValue = {
     monthsInput: false,
     dayInput: false,
   },
-  todoData: []
+  todoData: [],
+  goalsData: []
 };
 
 const AppContext = React.createContext();
@@ -86,12 +88,16 @@ const AppProvider = ({ children }) => {
     dispatch({type: EDIT_TODO, payload: todoData})
   }
   //
+  const addGoal = (goalData) => {
+    dispatch({type: ADD_GOAL, payload: goalData})
+  }
+  //
   useEffect(() => {
     getInitialCalandarData(currentYear, currentMonth); // MIGHT DEPEND ON CHANGE
     // eslint-disable-next-line
   }, [])
   //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal}}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {

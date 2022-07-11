@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   background-color: $color-shade;
-  padding: 5% 0;
+  padding: 2% 2%;
   overflow-y: scroll;
   @include respond (desktop){
         grid-column: 2/-1;
@@ -10,15 +10,19 @@
   }
   &-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr)); // might switch back to 430px
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // might switch back to 430px
     justify-items: center; 
     align-items: flex-start;
     // justify-content: center; // aligns col track
     // place-items: center;
     gap: 4rem;
+    @include respond (desktop){
+      justify-items: flex-start;
+    }
   }
   &-tab {
     width: 90%;
+    max-width: 385px;
     min-height: 45rem;
     border-radius: 20px;
     background-color: $color-primary;
@@ -33,6 +37,7 @@
     top: 1rem;
     left: 1rem;
     font-size: 1.2rem;
+    max-width: 18rem;
   }
   &__edit {
     position: absolute;

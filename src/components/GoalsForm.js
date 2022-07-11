@@ -3,14 +3,21 @@ import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from '../context/provider';
 
 export const GoalsForm = () => {
-    const { activeInputs, inputFormClose } = useGlobalContext();
+    const { activeInputs, inputFormClose, addGoal } = useGlobalContext();
     const {goalsInput} = activeInputs
     // input values
     const [goalDate,setGoalDate] = useState("")
     const [goalInput,setGoalInput] = useState("")
-    //[]
+    //
+    const [isEdit,setIsedit] = useState(false)
+    //
     const handleSubmit = (e) => {
-      console.log(e.target)
+      const goalData = {
+        id : Date.now(),
+        goalDate,
+        goalInput
+      }
+      addGoal(goalData)
       inputFormClose()
     }
     //

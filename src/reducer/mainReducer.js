@@ -9,7 +9,8 @@ import {
   ADD_TODO,
   ACTIVE_TODO_TAB,
   DELETE_TODO,
-  EDIT_TODO
+  EDIT_TODO,
+  ADD_GOAL,
 } from "../reducer/actions";
 import { getDatesObj } from "../data/calandarData";
 
@@ -107,6 +108,12 @@ const mainReducer = (state, action) => {
     if (action.type === EDIT_TODO){
         const newData = action.payload
         return{...state, todoData: newData}
+    }
+    //
+    if (action.type === ADD_GOAL){
+        const newGoals = action.payload
+        const addedGoals = [...state.goalsData, newGoals]
+        return {...state, goalsData: addedGoals}
     }
     //
     throw new Error(`No matching action type: ${action.type}`);
