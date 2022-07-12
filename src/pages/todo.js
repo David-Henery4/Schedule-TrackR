@@ -54,7 +54,7 @@ export const Todo = () => {
                   <BsThreeDots className="todo__edit" onClick={() => {
                     handleEditClick(id)
                   }}/>
-                  <EditDelete activeTodo={activeTodo} id={id}className="edit-delete-comp"/>
+                  <EditDelete activeTab={activeTodo} id={id}className="edit-delete-comp"/>
                   <h4 className="todo__title">{title}</h4>
                   <article className="todo__action">{todo}</article>
                 </div>

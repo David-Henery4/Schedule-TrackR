@@ -11,5 +11,6 @@ export const ACTIVE_TODO_TAB = "ACTIVE_TODO_TAB";
 export const DELETE_TODO = "DELETE_TODO";
 export const EDIT_TODO = "EDIT_TODO";
 export const ADD_GOAL = "ADD_GOAL";
-export const REMOVE_GOAL = "REMOVE_GOAL";
 export const DELETE_GOAL = "DELETE_GOAL";
+export const EDIT_GOAL = "EDIT_GOAL";
+export const ACTIVE_GOAL = "ACTIVE_GOAL";

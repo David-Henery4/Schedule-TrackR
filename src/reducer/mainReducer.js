@@ -11,8 +11,12 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   ADD_GOAL,
+  ACTIVE_GOAL,
+  EDIT_GOAL,
+  DELETE_GOAL,
 } from "../reducer/actions";
 import { getDatesObj } from "../data/calandarData";
+import { EditDelete } from "../components";
 
 
 
@@ -69,7 +73,7 @@ const mainReducer = (state, action) => {
             const { activeInputs } = state;
             return {
               ...state,
-              overlayActive: !state.overlayActive,
+              overlayActive: false,
               activeInputs: { ...activeInputs, todoInput: false },
             };
         }
@@ -77,7 +81,7 @@ const mainReducer = (state, action) => {
             const { activeInputs } = state;
             return {
               ...state,
-              overlayActive: !state.overlayActive,
+              overlayActive: false,
               activeInputs: { ...activeInputs, goalsInput: false },
             };
         }
@@ -114,6 +118,20 @@ const mainReducer = (state, action) => {
         const newGoals = action.payload
         const addedGoals = [...state.goalsData, newGoals]
         return {...state, goalsData: addedGoals}
+    }
+    //
+    if (action.type === ACTIVE_GOAL){
+        const newData = action.payload
+        return {...state, goalsData: newData}
+    }
+    if (action.type === EDIT_GOAL){
+        const newData = action.payload
+        return{...state, goalsData: newData}
+    }
+    //
+    if(action.type === DELETE_GOAL){
+        const newData = action.payload
+        return {...state, goalsData: newData}
     }
     //
     throw new Error(`No matching action type: ${action.type}`);

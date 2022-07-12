@@ -1,13 +1,27 @@
-import React from 'react'
-import {GoalsOutcome, GoalsForm} from '../components';
+import React, { useState } from "react";
+import {GoalsOutcome, GoalsForm, EditDelete} from '../components';
 import { BsThreeDots } from "react-icons/bs";
 import mockGoalsData from '../data/mockGoalsData';
 import { useGlobalContext } from '../context/provider';
 
 
+
 export const Goals = () => {
-  const {goalsData} = useGlobalContext()
-  console.log(goalsData.length)
+  const {goalsData, activeGoalTab} = useGlobalContext()
+  //
+  const handleThreeDotClick = (id) => {
+    const newData = goalsData.map(goal => {
+      if (goal.id === id){
+        goal.activeTab = !goal.activeTab
+        goal.editActive = false
+      } else {
+        goal.activeTab = false
+        goal.editActive = false
+      }
+      return goal
+    })
+    activeGoalTab(newData)
+  }
   //
   return (
     <section className="goals">
@@ -26,11 +40,17 @@ export const Goals = () => {
               );
             })
           : goalsData.map((tab) => {
-              const { id, goalDate, goalInput } = tab;
+              const { id, goalDate, goalInput, activeTab } = tab;
               return (
                 <div className="goals-tab" key={id}>
                   <p className="goals__start">{goalDate}</p>
-                  <BsThreeDots className="goals__edit" />
+                  <EditDelete activeTab={activeTab} id={id} />
+                  <BsThreeDots
+                    onClick={() => {
+                      handleThreeDotClick(id);
+                    }}
+                    className="goals__edit"
+                  />
                   <article className="goals__action">{goalInput}</article>
                   <GoalsOutcome />
                 </div>

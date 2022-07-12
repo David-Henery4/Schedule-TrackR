@@ -13,6 +13,9 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   ADD_GOAL,
+  ACTIVE_GOAL,
+  EDIT_GOAL,
+  DELETE_GOAL,
 } from "../reducer/actions";
 import reducer from "../reducer/mainReducer";
 
@@ -92,12 +95,24 @@ const AppProvider = ({ children }) => {
     dispatch({type: ADD_GOAL, payload: goalData})
   }
   //
+  const activeGoalTab = (goalData) => {
+    dispatch({type: ACTIVE_GOAL, payload: goalData})
+  }
+  //
+  const editGoal = (goalData) => {
+    dispatch({type: EDIT_GOAL, payload: goalData})
+  }
+  //
+  const deleteGoal = (goalData) => {
+    dispatch({ type: DELETE_GOAL, payload: goalData});
+  }
+  //
   useEffect(() => {
     getInitialCalandarData(currentYear, currentMonth); // MIGHT DEPEND ON CHANGE
     // eslint-disable-next-line
   }, [])
   //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal, activeGoalTab, editGoal, deleteGoal}}>{children}</AppContext.Provider>;
 };
 
 export const useGlobalContext = () => {
