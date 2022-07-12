@@ -26,7 +26,7 @@ export const GoalsForm = () => {
         editActive: false
       }
       addGoal(goalData)
-      inputFormClose()
+      // inputFormClose()
       resetInputs()
     }
     //
@@ -35,7 +35,13 @@ export const GoalsForm = () => {
       setGoalInput("")
     };
     //
-    // const handleFormCompletion = () => {}
+    const handleFormCompletion = () => {
+      setFormCompleted(true);
+      setTimeout(() => {
+        setFormCompleted(false);
+        inputFormClose();
+      }, 2000);
+    }
     //
     const handleEditUpdate = () => {
       const updatedData = goalsData.map(goal => {
@@ -48,7 +54,7 @@ export const GoalsForm = () => {
         return goal
       })
       editGoal(updatedData)
-      inputFormClose();
+      // inputFormClose();
     }
     //
     const setEdit = (edit) => {
@@ -56,14 +62,12 @@ export const GoalsForm = () => {
         const currentGoalEdit = goalsData.find(goal => goal.editActive === true)
         setEditGoalDate(currentGoalEdit.goalDate);
         setEditGoalInput(currentGoalEdit.goalInput);
-        // setIsEditActive(currentGoalEdit.editActive);
       }
     }
     //
     useEffect(() => {
-      // currentEdit effecting functionality
-      console.log(currentEdit)
-      setEdit(currentEdit)
+      setEdit(currentEdit);
+      // eslint-disable-next-line
     }, [currentEdit])
     //
   return (
@@ -73,29 +77,52 @@ export const GoalsForm = () => {
       }`}
     >
       <div className="goals-form-container">
-        <FaTimes className='exit-icon' onClick={inputFormClose}/>
-        <form className='goals-form' onSubmit={(e) => e.preventDefault()}>
-          <input onChange={(e) => {
-            if (currentEdit) {
-              setEditGoalDate(e.target.value)
-            } else{
-              setGoalDate(e.target.value)
-            }
-          }} type="text" className='goals-form__date' value={currentEdit ? editGoalDate: goalDate}/>
-          <textarea onChange={(e) => {
-            if (currentEdit){
-              setEditGoalInput(e.target.value)
-            } else{
-              setGoalInput(e.target.value)
-            }
-          }} name="goal" id="goal" className='goals-form__input' value={currentEdit ? editGoalInput : goalInput}></textarea>
-          <button onClick={() => {
-            if (currentEdit){
-              handleEditUpdate()
-            } else{
-              handleSubmit()
-            }
-          }} type="submit" className='btn goals-form__submit'>Submit</button>
+        <FaTimes className="exit-icon" onClick={inputFormClose} />
+        <form className="goals-form" onSubmit={(e) => e.preventDefault()}>
+          <input
+            onChange={(e) => {
+              if (currentEdit) {
+                setEditGoalDate(e.target.value);
+              } else {
+                setGoalDate(e.target.value);
+              }
+            }}
+            type="text"
+            className="goals-form__date"
+            value={currentEdit ? editGoalDate : goalDate}
+          />
+          <textarea
+            onChange={(e) => {
+              if (currentEdit) {
+                setEditGoalInput(e.target.value);
+              } else {
+                setGoalInput(e.target.value);
+              }
+            }}
+            name="goal"
+            id="goal"
+            className="goals-form__input"
+            value={currentEdit ? editGoalInput : goalInput}
+          ></textarea>
+          {formCompleted ? (
+            <BsCheckCircleFill className="complete-icon" />
+          ) : (
+            <button
+              onClick={() => {
+                if (currentEdit) {
+                  handleEditUpdate();
+                  handleFormCompletion();
+                } else {
+                  handleSubmit();
+                  handleFormCompletion();
+                }
+              }}
+              type="submit"
+              className="btn goals-form__submit"
+            >
+              Submit
+            </button>
+          )}
         </form>
       </div>
     </div>

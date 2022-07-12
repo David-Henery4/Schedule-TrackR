@@ -16,7 +16,7 @@ import {
   DELETE_GOAL,
 } from "../reducer/actions";
 import { getDatesObj } from "../data/calandarData";
-import { EditDelete } from "../components";
+
 
 
 

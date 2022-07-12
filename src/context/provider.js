@@ -115,8 +115,11 @@ const AppProvider = ({ children }) => {
   return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal, activeGoalTab, editGoal, deleteGoal}}>{children}</AppContext.Provider>;
 };
 
+// Custom helps overwise we would need to import 'useContext' and 'AppContext' to use the data in other components
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };
 
+// AppContext not need because of custom hook
+// AppProvider need to wrap components
 export { AppContext, AppProvider };
