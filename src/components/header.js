@@ -17,7 +17,7 @@ export const Header = () => {
     if (weekHeader) return "Current Week"
     if (weeksHeader) return "Weeks"
     if (monthHeader) return "Month"
-    if (currentHeader) return "Current day"
+    if (currentHeader) return "Day"
   }
   //
   useEffect(() => {

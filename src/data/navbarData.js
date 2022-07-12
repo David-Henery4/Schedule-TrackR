@@ -16,8 +16,8 @@ export const navigationDates = [
   },
   {
     id: 4,
-    text: "Current Day",
-    page: "currentday",
+    text: "Day",
+    page: "/currentday",
   },
 ];
 

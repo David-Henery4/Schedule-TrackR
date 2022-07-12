@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from "../context/provider";
+import { Link } from 'react-router-dom';
 
 // CREATE DUMMY DATA TO LOOP OVER THE DATES
-export const Calandar = () => {
+export const Calandar = (monthData) => {
   const {calandar} = useGlobalContext()
   const [weeks,setWeeks] = useState(null)
+  // console.log(monthData)
   //
   const weeksSplit = () => {
     if (calandar){
@@ -40,7 +42,7 @@ export const Calandar = () => {
               const { day } = w;
               return (
                 <p key={i} className={`grid-item-position--${i + 1}`}>
-                  {day}
+                  <Link className='day-link' to="/currentday">{day}</Link>
                 </p>
               );
             })}
@@ -51,7 +53,9 @@ export const Calandar = () => {
               const { day } = w;
               return (
                 <p key={i} className={`grid-item-position--${i + 1}`}>
-                  {day}
+                  <Link className="day-link" to="/currentday">
+                    {day}
+                  </Link>
                 </p>
               );
             })}
@@ -62,7 +66,9 @@ export const Calandar = () => {
               const { day } = w;
               return (
                 <p key={i} className={`grid-item-position--${i + 1}`}>
-                  {day}
+                  <Link className="day-link" to="/currentday">
+                    {day}
+                  </Link>
                 </p>
               );
             })}
@@ -73,7 +79,9 @@ export const Calandar = () => {
               const { day } = w;
               return (
                 <p key={i} className={`grid-item-position--${i + 1}`}>
-                  {day}
+                  <Link className="day-link" to="/currentday">
+                    {day}
+                  </Link>
                 </p>
               );
             })}
@@ -84,7 +92,9 @@ export const Calandar = () => {
               const { day } = w;
               return (
                 <p key={i} className={`grid-item-position--${i + 1}`}>
-                  {day}
+                  <Link className="day-link" to="/currentday">
+                    {day}
+                  </Link>
                 </p>
               );
             })}
