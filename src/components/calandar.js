@@ -1,12 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from "../context/provider";
 import { Link } from 'react-router-dom';
+import { getDatesObj } from '../data/calandarData';
 
 // CREATE DUMMY DATA TO LOOP OVER THE DATES
 export const Calandar = (monthData) => {
-  const {calandar} = useGlobalContext()
+  const {calandar, currentYear, currentMonth} = useGlobalContext()
   const [weeks,setWeeks] = useState(null)
+  //
+  const [tempMonthNumber, setTempMonthNumber] = useState()
+  const [tempMonth, setTempMonth] = useState()
+  const [shownMonth,setShownMonth] = useState()
+  //
+  // console.log(currentMonth)
+  // console.log(currentYear)
   // console.log(monthData)
+  //
+  const handleMonthDataInput = () => {
+    if (Object.entries(monthData).length > 0){
+      const {monthNumber} = monthData
+      setTempMonthNumber(monthNumber)
+    }
+  }
+  //
+  const getTempMonthData = () => {
+    const tempMonthDays = new Date(currentYear, tempMonthNumber, 0).getDate();
+    const tempMonthData = getDatesObj(tempMonthDays,currentYear,tempMonthNumber)
+    console.log(tempMonthData)
+    tempWeeksSplit(tempMonthData);
+  }
+  //
+  const tempWeeksSplit = (monthData) => {
+    setTempMonth({
+      week1: monthData.slice(0, 7),
+      week2: monthData.slice(7, 14),
+      week3: monthData.slice(14, 21),
+      week4: monthData.slice(21, 28),
+      week5: monthData.slice(28, -1),
+    });
+  }
   //
   const weeksSplit = () => {
     if (calandar){
@@ -20,11 +52,22 @@ export const Calandar = (monthData) => {
     }
   }
   //
+  const currentDisplayedMonth = () => {
+    // FINISH TOMORROW
+    // RETURN BOTH DATA SETS UNDER CONDITIONS
+    // CREATE USEREFFECT ON TEMPMONTH VALUE CHANGE
+  }
+  //
+  useEffect(() => {
+    getTempMonthData()
+    handleMonthDataInput();
+    // eslint-disable-next-line
+  }, [monthData])
+  //
   useEffect(() => {
     weeksSplit();
     // eslint-disable-next-line
   }, [calandar])
-  // console.log(weeks)
   //
   return (
     <div className="calandar-container">
