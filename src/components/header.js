@@ -4,12 +4,43 @@ import MobileNav from './mobileNav'
 import { TODOPATH, CURRENTDAYPATH, MONTHPATH,WEEKPATH,WEEKSPATH, GOALSPATH } from '../data/pathNames'
 import { useGlobalContext } from '../context/provider'
 import { IoIosAddCircle } from "react-icons/io";
+import { useScheduleContext } from '../context/scheduleContext'
+import { useState } from 'react'
 
 export const Header = () => {
   const { selectActivePage, activePage, inputFormOpen} =
     useGlobalContext();
   const {todoHeader, goalsHeader, weekHeader, weeksHeader, monthHeader, currentHeader} = activePage
   let location = useLocation()
+  const {tempMonthData} = useScheduleContext()
+  const [currentMonthTitle, setCurrentMonthTitle] = useState("")
+  const [tempMonthTitle, setTempMonthTitle] = useState("")
+  //
+  const getMonthTitle = () => {
+    const currentDate = new Date()
+    const currentMonth = currentDate.toLocaleDateString("default", {
+      month: "long"
+    })
+    setCurrentMonthTitle(currentMonth);
+    //
+    if (tempMonthData !== null){
+      const tempDataExists = Object.entries(tempMonthData).length;
+      if (tempDataExists > 0){
+        const {monthName} = tempMonthData
+        setTempMonthTitle(monthName)
+      }
+    }
+  }
+  //
+  const chooseMonthTitle = () => {
+    if (tempMonthTitle === "") return currentMonthTitle;
+    if (tempMonthTitle !== "") return tempMonthTitle;
+  }
+  //
+  useEffect(() => {
+    getMonthTitle();
+    // eslint-disable-next-line
+  }, [tempMonthData])
   //
   const activePageTitle = () => {
     if (todoHeader) return "To dos"
@@ -39,14 +70,13 @@ export const Header = () => {
       <header className="header">
         <h1 className="header__logo">
           Schedule
-          <span>
-          TrackR
-          </span>
+          <span>TrackR</span>
         </h1>
-        <p className='header__time'>09:36</p>
-          <h3 className="header__name">{activePageTitle()}</h3>
-          <h4 className="header__date">Thursday 12th June</h4>
-          <IoIosAddCircle className='header__add-icon' onClick={inputFormOpen}/>
+        <p className="header__time">09:36</p>
+        <h3 className="header__name">{activePageTitle()}</h3>
+        <h4 className="header__date">Thursday 12th {!weeksHeader ? "june" : ""}</h4>
+        {weeksHeader && <h4 className="header__title">{chooseMonthTitle()}</h4>}
+        <IoIosAddCircle className="header__add-icon" onClick={inputFormOpen} />
       </header>
     </section>
   );

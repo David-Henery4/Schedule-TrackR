@@ -59,6 +59,16 @@
             grid-row: 2/3;
         }
     }
+    &__title{
+        align-self: flex-start;
+        font-weight: 300;
+        font-size: 2rem;
+        @include respond (desktop){
+            font-size: 3rem;
+            grid-row: 3/4;
+            grid-column: 6/12;
+        }
+    }
     &__add-icon{
         font-size: 4rem;
         color: $color-primary;
