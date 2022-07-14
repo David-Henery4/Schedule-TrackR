@@ -6,6 +6,7 @@ import { useGlobalContext } from '../context/provider'
 import { IoIosAddCircle } from "react-icons/io";
 import { useScheduleContext } from '../context/scheduleContext'
 import { useState } from 'react'
+import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
 export const Header = () => {
   const { selectActivePage, activePage, inputFormOpen} =
@@ -63,6 +64,8 @@ export const Header = () => {
     selectActivePage(pages);
     // eslint-disable-next-line
   }, [location])
+  //
+  
   // 
   return (
     <section className="header-section">
@@ -74,8 +77,16 @@ export const Header = () => {
         </h1>
         <p className="header__time">09:36</p>
         <h3 className="header__name">{activePageTitle()}</h3>
-        <h4 className="header__date">Thursday 12th {!weeksHeader ? "june" : ""}</h4>
-        {weeksHeader && <h4 className="header__title">{chooseMonthTitle()}</h4>}
+        <h4 className="header__date">
+          Thursday 12th {!weeksHeader ? "june" : ""}
+        </h4>
+        {weeksHeader && (
+          <div className="header__calandar-items">
+            <BiChevronLeft className="header__calandar--right" />
+            <h4 className="header__title">{chooseMonthTitle()}</h4>
+            <BiChevronRight className="header__calandar--left" />
+          </div>
+        )}
         <IoIosAddCircle className="header__add-icon" onClick={inputFormOpen} />
       </header>
     </section>
