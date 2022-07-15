@@ -13,22 +13,33 @@ export const Header = () => {
     useGlobalContext();
   const {todoHeader, goalsHeader, weekHeader, weeksHeader, monthHeader, currentHeader} = activePage
   let location = useLocation()
-  const {tempMonthData} = useScheduleContext()
+  const { tempMonthData, incDecMonth } = useScheduleContext();
+  //
+  const [currentYear, setCurrentYear] = useState("")
   const [currentMonthTitle, setCurrentMonthTitle] = useState("")
+  //
+  const [tempYear, setTempYear] = useState("")
   const [tempMonthTitle, setTempMonthTitle] = useState("")
   //
-  const getMonthTitle = () => {
+  const handleMonthChanges = (change) => {
+    incDecMonth(change)
+  }
+  //
+  const getMonthTitleAndYear = () => {
+    const currentYear = new Date().getFullYear()
     const currentDate = new Date()
     const currentMonth = currentDate.toLocaleDateString("default", {
       month: "long"
     })
     setCurrentMonthTitle(currentMonth);
+    setCurrentYear(currentYear)
     //
     if (tempMonthData !== null){
       const tempDataExists = Object.entries(tempMonthData).length;
       if (tempDataExists > 0){
-        const {monthName} = tempMonthData
+        const {monthName, year} = tempMonthData
         setTempMonthTitle(monthName)
+        setTempYear(year)
       }
     }
   }
@@ -37,9 +48,13 @@ export const Header = () => {
     if (tempMonthTitle === "") return currentMonthTitle;
     if (tempMonthTitle !== "") return tempMonthTitle;
   }
+  const chooseYear = () => {
+    if (tempYear === "") return currentYear
+    if (tempYear !== "") return tempYear
+  }
   //
   useEffect(() => {
-    getMonthTitle();
+    getMonthTitleAndYear();
     // eslint-disable-next-line
   }, [tempMonthData])
   //
@@ -65,8 +80,6 @@ export const Header = () => {
     // eslint-disable-next-line
   }, [location])
   //
-  
-  // 
   return (
     <section className="header-section">
       <MobileNav />
@@ -82,9 +95,13 @@ export const Header = () => {
         </h4>
         {weeksHeader && (
           <div className="header__calandar-items">
-            <BiChevronLeft className="header__calandar--right" />
-            <h4 className="header__title">{chooseMonthTitle()}</h4>
-            <BiChevronRight className="header__calandar--left" />
+            <BiChevronLeft className="header__calandar--left" onClick={() => {
+              handleMonthChanges("dec")
+            }}/>
+            <h4 className="header__title">{chooseMonthTitle()} {chooseYear()}</h4>
+            <BiChevronRight className="header__calandar--right" onClick={() => {
+              handleMonthChanges("inc")
+            }}/>
           </div>
         )}
         <IoIosAddCircle className="header__add-icon" onClick={inputFormOpen} />

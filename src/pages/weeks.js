@@ -14,7 +14,7 @@ export const Weeks = () => {
   //
   return (
     <section className='weeks'>
-      <Calandar {...state}/>
+      <Calandar/>
     </section>
   )
 }

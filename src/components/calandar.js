@@ -5,33 +5,37 @@ import { getDatesObj } from "../data/calandarData";
 import { useScheduleContext } from "../context/scheduleContext";
 
 // CREATE DUMMY DATA TO LOOP OVER THE DATES
-export const Calandar = (monthData) => {
+export const Calandar = () => {
   const { calandar, currentYear, currentMonth } = useGlobalContext();
   const {tempMonthData} = useScheduleContext()
   const [weeks, setWeeks] = useState(null);
   //
   const [tempMonthNumber, setTempMonthNumber] = useState();
+  const [tempYear, setTempYear] = useState();
   const [tempMonth, setTempMonth] = useState();
   const [shownMonth, setShownMonth] = useState();
   //
   // MAYBE SET BACK TO CURRENT MONTH WHEN 'WEEKS' IS CLICKED ON
   //
   const handleMonthDataInput = () => {
-    if (Object.entries(monthData).length > 0) {
-      const { monthNumber } = monthData;
-      setTempMonthNumber(monthNumber);
-      console.log(tempMonthData) // Was here
+    if (tempMonthData !== null){
+      if (Object.entries(tempMonthData).length > 0) {
+        const { monthNumber, year } = tempMonthData;
+        setTempMonthNumber(monthNumber);
+        setTempYear(year)
+      }
     }
   };
   //
   const getTempMonthData = () => {
-    const tempMonthDays = new Date(currentYear, tempMonthNumber, 0).getDate();
+    const tempMonthDays = new Date(tempYear, tempMonthNumber, 0).getDate();
     const tempMonthData = getDatesObj(
       tempMonthDays,
-      currentYear,
+      tempYear,
       tempMonthNumber
     );
     tempWeeksSplit(tempMonthData);
+    // console.log(tempMonthNumber)
   };
   //
   const tempWeeksSplit = (monthData) => {
@@ -57,10 +61,12 @@ export const Calandar = (monthData) => {
   };
   //
   const currentDisplayedMonth = () => {
-    if (Object.entries(monthData).length > 0) {
-      setShownMonth(tempMonth)
-    } else{
-      setShownMonth(weeks)
+    setShownMonth(weeks)
+    if (tempMonthData !== null){
+      if (Object.entries(tempMonthData).length > 0) {
+        setShownMonth(tempMonth)
+        // console.log("being called")
+      } 
     }
   };
   //
@@ -73,7 +79,7 @@ export const Calandar = (monthData) => {
     getTempMonthData();
     handleMonthDataInput();
     // eslint-disable-next-line
-  }, [monthData]);
+  }, [tempMonthNumber, tempMonthData]); // might need weeks
   //
   useEffect(() => {
     weeksSplit();

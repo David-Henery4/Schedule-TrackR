@@ -1,6 +1,9 @@
 import React ,{ useContext, useReducer } from "react";
 import scheduleReducer from "../reducer/scheduleReducer";
-import { UPDATE_TEMP_MONTH } from "../reducer/scheduleActions";
+import {
+  UPDATE_TEMP_MONTH,
+  INCREASE_DECREASE_MONTH,
+} from "../reducer/scheduleActions";
 
 const initialState = {
     tempMonthData: {}
@@ -16,7 +19,17 @@ const ScheduleProvider = ({children}) => {
         dispatch({type: UPDATE_TEMP_MONTH, payload: monthData})
     }
     //
-    return <ScheduleContext.Provider value={{...state,updateTempMonth}}>{children}</ScheduleContext.Provider>
+    const incDecMonth = (value) =>{
+        dispatch({type: INCREASE_DECREASE_MONTH, payload: value})
+    }
+    //
+    return (
+      <ScheduleContext.Provider
+        value={{ ...state, updateTempMonth, incDecMonth }}
+      >
+        {children}
+      </ScheduleContext.Provider>
+    );
 }
 //
 export const useScheduleContext = () => {

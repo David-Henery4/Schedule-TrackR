@@ -3,12 +3,16 @@ import { mockMonths } from "../data/mockDates";
 import { Link } from "react-router-dom";
 
 export const Month = () => {
+  // const currentMonth = new Date().toLocaleDateString("default", {
+  //   month: "long",
+  // });
   return (
     <section className="month">
       {mockMonths.map((month) => {
         const { id, monthName, url } = month;
+        const year = new Date().getFullYear()
         return (
-          <Link to={"/weeks"} state={{monthNumber: id, monthName}} key={id} className="month__link">
+          <Link to={"/weeks"} state={{monthNumber: id, monthName, year}} key={id} className="month__link">
             <div
               className="month__tab"
               style={{
