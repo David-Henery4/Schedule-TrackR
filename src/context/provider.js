@@ -1,11 +1,9 @@
-import React, { useContext, useReducer, useEffect } from "react";
-import { TODOPATH } from "../data/pathNames";
-// import {useLocation} from "react-router-dom"
+import React, { useContext, useReducer} from "react";
+//
 import {
   SIDEBAR_ACTIVE,
   SIDEBAR_CLOSED,
   SET_ACTIVE_PAGE,
-  GET_INITIAL_CALANDAR_DATA,
   INPUT_ACTIVE,
   INPUT_CLOSE,
   ADD_TODO,
@@ -17,8 +15,9 @@ import {
   EDIT_GOAL,
   DELETE_GOAL,
 } from "../reducer/actions";
+//
 import reducer from "../reducer/mainReducer";
-
+//
 const initialValue = {
   sidebarActive: false,
   overlayActive: false,
@@ -44,12 +43,11 @@ const initialValue = {
   todoData: [],
   goalsData: []
 };
-
+//
 const AppContext = React.createContext();
-
+//
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer,initialValue)
-  const {currentYear,currentMonth} = state
   //
   const openSidebar = () => {
   dispatch({type: SIDEBAR_ACTIVE})
@@ -61,10 +59,6 @@ const AppProvider = ({ children }) => {
   //
   const selectActivePage = (pages) => {
     dispatch({ type: SET_ACTIVE_PAGE, payload: pages});
-  }
-  //
-  const getInitialCalandarData = (year,month) => {
-    dispatch({type: GET_INITIAL_CALANDAR_DATA, payload: {year,month}})
   }
   //
   const inputFormOpen = () => {
@@ -107,12 +101,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: DELETE_GOAL, payload: goalData});
   }
   //
-  useEffect(() => {
-    getInitialCalandarData(currentYear, currentMonth); // MIGHT DEPEND ON CHANGE
-    // eslint-disable-next-line
-  }, [])
-  //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, getInitialCalandarData, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal, activeGoalTab, editGoal, deleteGoal}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal, activeGoalTab, editGoal, deleteGoal}}>{children}</AppContext.Provider>;
 };
 
 // Custom helps overwise we would need to import 'useContext' and 'AppContext' to use the data in other components

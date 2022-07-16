@@ -3,9 +3,6 @@ import { mockMonths } from "../data/mockDates";
 import { Link } from "react-router-dom";
 
 export const Month = () => {
-  // const currentMonth = new Date().toLocaleDateString("default", {
-  //   month: "long",
-  // });
   return (
     <section className="month">
       {mockMonths.map((month) => {

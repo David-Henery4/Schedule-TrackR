@@ -1,41 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../context/provider";
 import { Link } from "react-router-dom";
 import { getDatesObj } from "../data/calandarData";
 import { useScheduleContext } from "../context/scheduleContext";
 
 // CREATE DUMMY DATA TO LOOP OVER THE DATES
 export const Calandar = () => {
-  const { calandar, currentYear, currentMonth } = useGlobalContext();
-  const {tempMonthData} = useScheduleContext()
-  const [weeks, setWeeks] = useState(null);
+  const { tempMonthData } = useScheduleContext();
   //
   const [tempMonthNumber, setTempMonthNumber] = useState();
   const [tempYear, setTempYear] = useState();
   const [tempMonth, setTempMonth] = useState();
   const [shownMonth, setShownMonth] = useState();
   //
-  // MAYBE SET BACK TO CURRENT MONTH WHEN 'WEEKS' IS CLICKED ON
-  //
   const handleMonthDataInput = () => {
-    if (tempMonthData !== null){
+    if (tempMonthData !== null) {
       if (Object.entries(tempMonthData).length > 0) {
         const { monthNumber, year } = tempMonthData;
         setTempMonthNumber(monthNumber);
-        setTempYear(year)
+        setTempYear(year);
       }
     }
   };
   //
   const getTempMonthData = () => {
     const tempMonthDays = new Date(tempYear, tempMonthNumber, 0).getDate();
-    const tempMonthData = getDatesObj(
-      tempMonthDays,
-      tempYear,
-      tempMonthNumber
-    );
+    const tempMonthData = getDatesObj(tempMonthDays, tempYear, tempMonthNumber);
     tempWeeksSplit(tempMonthData);
-    // console.log(tempMonthNumber)
   };
   //
   const tempWeeksSplit = (monthData) => {
@@ -44,47 +34,28 @@ export const Calandar = () => {
       week2: monthData.slice(7, 14),
       week3: monthData.slice(14, 21),
       week4: monthData.slice(21, 28),
-      week5: monthData.slice(28, -1),
+      week5: monthData.slice(28),
     });
   };
   //
-  const weeksSplit = () => {
-    if (calandar) {
-      setWeeks({
-        week1: calandar.slice(0, 7),
-        week2: calandar.slice(7, 14),
-        week3: calandar.slice(14, 21),
-        week4: calandar.slice(21, 28),
-        week5: calandar.slice(28, -1),
-      });
-    }
-  };
-  //
   const currentDisplayedMonth = () => {
-    setShownMonth(weeks)
-    if (tempMonthData !== null){
+    if (tempMonthData !== null) {
       if (Object.entries(tempMonthData).length > 0) {
-        setShownMonth(tempMonth)
-        // console.log("being called")
-      } 
+        setShownMonth(tempMonth);
+      }
     }
   };
   //
   useEffect(() => {
     currentDisplayedMonth();
     // eslint-disable-next-line
-  }, [weeks, tempMonth])
+  }, [tempMonth]);
   //
   useEffect(() => {
     getTempMonthData();
     handleMonthDataInput();
     // eslint-disable-next-line
-  }, [tempMonthNumber, tempMonthData]); // might need weeks
-  //
-  useEffect(() => {
-    weeksSplit();
-    // eslint-disable-next-line
-  }, [calandar]);
+  }, [tempMonthNumber, tempMonthData]);
   //
   return (
     <div className="calandar-container">

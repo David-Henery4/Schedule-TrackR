@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
 export const Header = () => {
+  // CHECK FOR REDUNDANT CODE HERE! (MIGHT BE STILL OLD DEFAULT)
   const { selectActivePage, activePage, inputFormOpen} =
     useGlobalContext();
   const {todoHeader, goalsHeader, weekHeader, weeksHeader, monthHeader, currentHeader} = activePage
