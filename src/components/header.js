@@ -9,16 +9,18 @@ import { useState } from 'react'
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
 export const Header = () => {
-  // CHECK FOR REDUNDANT CODE HERE! (MIGHT BE STILL OLD DEFAULT)
   const { selectActivePage, activePage, inputFormOpen} =
     useGlobalContext();
   const {todoHeader, goalsHeader, weekHeader, weeksHeader, monthHeader, currentHeader} = activePage
   let location = useLocation()
-  const { tempMonthData, incDecMonth } = useScheduleContext();
+  const { tempMonthData, incDecMonth, todaysDate, todaysDateFormated } =
+    useScheduleContext();
+  const {day,date,month,year} = todaysDateFormated;
   //
-  const [currentYear, setCurrentYear] = useState("")
-  const [currentMonthTitle, setCurrentMonthTitle] = useState("")
-  //
+  const [time, setTime] = useState({
+    hours: new Date().getHours(),
+    mins: new Date().getMinutes()
+  })
   const [tempYear, setTempYear] = useState("")
   const [tempMonthTitle, setTempMonthTitle] = useState("")
   //
@@ -27,14 +29,6 @@ export const Header = () => {
   }
   //
   const getMonthTitleAndYear = () => {
-    const currentYear = new Date().getFullYear()
-    const currentDate = new Date()
-    const currentMonth = currentDate.toLocaleDateString("default", {
-      month: "long"
-    })
-    setCurrentMonthTitle(currentMonth);
-    setCurrentYear(currentYear)
-    //
     if (tempMonthData !== null){
       const tempDataExists = Object.entries(tempMonthData).length;
       if (tempDataExists > 0){
@@ -43,15 +37,6 @@ export const Header = () => {
         setTempYear(year)
       }
     }
-  }
-  //
-  const chooseMonthTitle = () => {
-    if (tempMonthTitle === "") return currentMonthTitle;
-    if (tempMonthTitle !== "") return tempMonthTitle;
-  }
-  const chooseYear = () => {
-    if (tempYear === "") return currentYear
-    if (tempYear !== "") return tempYear
   }
   //
   useEffect(() => {
@@ -81,6 +66,19 @@ export const Header = () => {
     // eslint-disable-next-line
   }, [location])
   //
+  const getTime = () => {
+      const hours = new Date().getHours();
+      const mins = new Date().getMinutes();
+      setTime({hours,mins})
+  }
+  //
+  useEffect(() => {
+    setInterval(() => {
+      getTime()
+    }, [1000]);
+    // return () => clearInterval()
+  }, [])
+  //
   return (
     <section className="header-section">
       <MobileNav />
@@ -89,20 +87,30 @@ export const Header = () => {
           Schedule
           <span>TrackR</span>
         </h1>
-        <p className="header__time">09:36</p>
+        <p className="header__time">{`${time.hours} : ${time.mins}`}</p>
         <h3 className="header__name">{activePageTitle()}</h3>
         <h4 className="header__date">
-          Thursday 12th {!weeksHeader ? "june" : ""}
+          {Object.entries(todaysDateFormated).length <= 0
+            ? "Loading..."
+            : `${day} ${date} ${month} ${year}`}
         </h4>
         {weeksHeader && (
           <div className="header__calandar-items">
-            <BiChevronLeft className="header__calandar--left" onClick={() => {
-              handleMonthChanges("dec")
-            }}/>
-            <h4 className="header__title">{chooseMonthTitle()} {chooseYear()}</h4>
-            <BiChevronRight className="header__calandar--right" onClick={() => {
-              handleMonthChanges("inc")
-            }}/>
+            <BiChevronLeft
+              className="header__calandar--left"
+              onClick={() => {
+                handleMonthChanges("dec");
+              }}
+            />
+            <h4 className="header__title">
+              {tempMonthTitle} {tempYear}
+            </h4>
+            <BiChevronRight
+              className="header__calandar--right"
+              onClick={() => {
+                handleMonthChanges("inc");
+              }}
+            />
           </div>
         )}
         <IoIosAddCircle className="header__add-icon" onClick={inputFormOpen} />

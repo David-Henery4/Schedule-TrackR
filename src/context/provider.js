@@ -21,7 +21,6 @@ import reducer from "../reducer/mainReducer";
 const initialValue = {
   sidebarActive: false,
   overlayActive: false,
-  todaysDate: new Date(),
   currentYear: new Date().getFullYear(),
   currentMonth: new Date().getMonth() + 1,
   activePage: {

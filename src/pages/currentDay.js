@@ -1,8 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { BsThreeDots } from "react-icons/bs";
+import { useLocation } from 'react-router-dom';
 import mockCurrentDayData from '../data/mockCurrentDay';
 
 export const CurrentDay = () => {
+  const {state} = useLocation()
+  console.log(state)
   return (
     <section className="current-day">
       <div className="current-day-row">

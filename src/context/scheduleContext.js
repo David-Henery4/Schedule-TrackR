@@ -4,10 +4,13 @@ import {
   UPDATE_TEMP_MONTH,
   INCREASE_DECREASE_MONTH,
   SET_CURRENT_MONTH,
+  FORMAT_CURRENT_DATE,
 } from "../reducer/scheduleActions";
 import { useEffect } from "react";
 
 const initialState = {
+  todaysDate: new Date(),
+  todaysDateFormated: {},
   year: new Date().getFullYear() ,
   monthNumber: new Date().getMonth()+1,
   monthName: new Date().toLocaleDateString("default", {
@@ -26,6 +29,10 @@ const ScheduleProvider = ({children}) => {
       dispatch({type: SET_CURRENT_MONTH})
     }
     //
+    const formatCurrentDate = () => {
+      dispatch({type: FORMAT_CURRENT_DATE})
+    }
+    //
     const updateTempMonth = (monthData) => {
         dispatch({type: UPDATE_TEMP_MONTH, payload: monthData})
     }
@@ -36,6 +43,7 @@ const ScheduleProvider = ({children}) => {
     //
     useEffect(() => {
       setCurrentMonth()
+      formatCurrentDate()
     }, [])
     return (
       <ScheduleContext.Provider
