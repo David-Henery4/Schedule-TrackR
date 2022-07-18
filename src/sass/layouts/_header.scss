@@ -59,7 +59,8 @@
             grid-row: 2/3;
         }
     }
-    &__calandar-items{ // These styles were on the title!
+    // Calendar title & icons
+    &__calandar-items{
         width: 100%;
         display: flex;
         justify-content: space-evenly;
@@ -74,15 +75,6 @@
     }
     &__title{
         font-weight: 300;
-        // align-self: flex-start;
-        // font-weight: 300;
-        // font-size: 2rem;
-        // @include respond (desktop){
-        //     font-size: 3rem;
-        //     align-self: center;
-        //     grid-row: 3/4;
-        //     grid-column: 6/12;
-        // }
     }
     &__add-icon{
         font-size: 4rem;
@@ -97,5 +89,14 @@
     }
     &__calandar--left{
         font-size: 3rem;
+    }
+    // current page dates
+    &__current-day-title{
+        grid-row: 3/4;
+        grid-column: 6/12;
+        font-size: 2rem;
+        h4{
+            font-weight: 300;
+        }
     }
 }

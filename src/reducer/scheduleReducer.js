@@ -3,9 +3,28 @@ import {
   INCREASE_DECREASE_MONTH,
   SET_CURRENT_MONTH,
   FORMAT_CURRENT_DATE,
+  UPDATE_CURRENT_DATE_HEADER,
 } from "./scheduleActions";
 
 const scheduleReducer = (state, action) => {
+  //
+  if (action.type === UPDATE_CURRENT_DATE_HEADER){
+    const updatedOrDefault = action.payload ? action.payload.fullDates : new Date();
+    // const updatedOrDefault = new Date();
+    const formated = updatedOrDefault.toLocaleDateString("default", {
+      month: "long",
+      weekday: "long",
+      year: "numeric",
+      day: "numeric"
+    });
+    const formatedDate = {
+      day: formated.split(" ").slice(0, 1).toString().slice(0,-1),
+      date: formated.split(" ").slice(1, 2).toString(),
+      month: formated.split(" ").slice(2, 3).toString(),
+      year: formated.split(" ").slice(3, 4).toString(),
+    };
+    return { ...state, dayPageHeaderDate: formatedDate };
+  }
   //
   if (action.type === FORMAT_CURRENT_DATE){
     const {todaysDate} = state
