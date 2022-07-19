@@ -31,7 +31,6 @@ export const Header = () => {
   const {
     tempMonthData,
     incDecMonth,
-    todaysDate,
     dayPageHeaderDate,
     todaysDateFormated,
   } = useScheduleContext();
@@ -103,7 +102,9 @@ export const Header = () => {
           Schedule
           <span>TrackR</span>
         </h1>
-        <p className="header__time">{`${time.hours} : ${time.mins}`}</p>
+        <p className="header__time">{`${time.hours
+          .toString()
+          .padStart(2, "0")} : ${time.mins.toString().padStart(2, "0")}`}</p>
         <h3 className="header__name">{activePageTitle()}</h3>
         <h4 className="header__date">
           {Object.entries(todaysDateFormated).length <= 0

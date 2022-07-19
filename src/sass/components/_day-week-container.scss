@@ -1,0 +1,60 @@
+.dw{
+    display: none; // temp
+    height: 80%;
+    width: 90%;
+    padding: 4rem 2%;
+    max-width: 540px;
+    border-radius: 2rem;
+    background-color: #7A72ED;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1000;
+    font-size: 1.4rem;
+    //
+    input,
+    textarea{
+        display: block;
+    }
+    label{
+        position: relative;
+        bottom: 2rem;
+        color: $font-white;
+    }
+    //
+    &-form{
+        height: 100%;
+        width: 100%;
+        display: grid;
+        place-items: center;
+    }
+    //
+    &-form__time{
+        input{
+            padding: 0.5rem 1rem ;
+        }
+    }
+    //
+    &-form__title{
+        align-self: flex-start;
+        input{
+            padding: 0.5rem 1rem ;
+        }
+    }
+    //
+    &-form__text{
+        align-self: flex-start;
+        height: 100%;
+        width: 80%;
+        textarea{
+            width: 100%;
+            height: 70%;
+        }
+    }
+}
+
+.dw-active{
+    display: block;
+}

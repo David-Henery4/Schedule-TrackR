@@ -1,102 +1,105 @@
-.header-section{
-    padding: 0 5%;
-    @include respond (desktop){
-        grid-column: 2/-1;
-        grid-row: 1/4;
-        padding: 0;
-    }
+.header-section {
+  padding: 0 5%;
+  @include respond(desktop) {
+    grid-column: 2/-1;
+    grid-row: 1/4;
+    padding: 0;
+  }
 }
 
-.header{
-    display: grid;
-    place-items: center;
-    height: 70vh;
-    padding: 5% 0;
-    @include respond (desktop){
-        height: 100%;
-        padding: 0;
-        grid-template-columns: repeat(16, 1fr);
+.header {
+  display: grid;
+  place-items: center;
+  height: 70vh;
+  padding: 5% 0;
+  @include respond(desktop) {
+    height: 100%;
+    padding: 0;
+    grid-template-columns: repeat(16, 1fr);
+  }
+  &__logo {
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    color: $color-primary;
+    @include respond(desktop) {
+      display: none;
     }
-    &__logo{
-        font-size: 3rem;
-        font-weight: 400;
-        text-align: center;
-        color: $color-primary;
-        @include respond (desktop){
-            display: none;
-        }
-        span{
-            display: block;
-        }
+    span {
+      display: block;
     }
-    &__time{
-        display: none;
-        font-size: 1.5rem;
-        @include respond (desktop){
-            display: block;
-            grid-column: 1/2;
-        }
+  }
+  &__time {
+    display: none;
+    font-size: 1.5rem;
+    @include respond(desktop) {
+      display: block;
+      grid-column: 1/2;
     }
-    &__name{
-        font-size: 2rem;
-        font-weight: 300;
-        color: $color-primary;
-        @include respond (desktop){
-            font-size: 2.5rem;
-            grid-column: 1/5;
-            grid-row: 3/4;
-            justify-self: flex-start;
-            padding-left: 0.5rem;
-        }
+  }
+  &__name {
+    font-size: 2rem;
+    font-weight: 300;
+    color: $color-primary;
+    @include respond(desktop) {
+      font-size: 2.5rem;
+      grid-column: 1/5;
+      grid-row: 3/4;
+      justify-self: flex-start;
+      padding-left: 0.5rem;
     }
-    &__date{
-        align-self: flex-start;
-        font-size: 2rem;
-        font-weight: 300;
-        @include respond (desktop){
-            font-size: 3rem;
-            grid-column: 6/12;
-            grid-row: 2/3;
-        }
+  }
+  &__date {
+    align-self: flex-start;
+    font-size: 2rem;
+    font-weight: 300;
+    @include respond(desktop) {
+      font-size: 3rem;
+      grid-column: 6/12;
+      grid-row: 2/3;
     }
-    // Calendar title & icons
-    &__calandar-items{
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        font-size: 2rem;
-        @include respond (desktop){
-            font-size: 3rem;
-            align-self: center;
-            grid-row: 3/4;
-            grid-column: 6/12;
-        }
+  }
+  // Calendar title & icons
+  &__calandar-items {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2rem;
+    @include respond(desktop) {
+      font-size: 3rem;
+      align-self: center;
+      grid-row: 3/4;
+      grid-column: 6/12;
     }
-    &__title{
-        font-weight: 300;
+  }
+  &__title {
+    font-weight: 300;
+  }
+  &__add-icon {
+    font-size: 4rem;
+    color: $color-primary;
+    @include respond(desktop) {
+      grid-column: 16/-1;
+      grid-row: 3/4;
     }
-    &__add-icon{
-        font-size: 4rem;
-        color: $color-primary;
-        @include respond (desktop){
-            grid-column: 16/-1;
-            grid-row: 3/4;
-        }
+  }
+  &__calandar--right {
+    font-size: 3rem;
+  }
+  &__calandar--left {
+    font-size: 3rem;
+  }
+  // current page dates
+  &__current-day-title {
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 300;
     }
-    &__calandar--right{
-        font-size: 3rem;
+    @include respond(desktop) {
+      font-size: 2rem;
+      grid-row: 3/4;
+      grid-column: 6/12;
     }
-    &__calandar--left{
-        font-size: 3rem;
-    }
-    // current page dates
-    &__current-day-title{
-        grid-row: 3/4;
-        grid-column: 6/12;
-        font-size: 2rem;
-        h4{
-            font-weight: 300;
-        }
-    }
+  }
 }

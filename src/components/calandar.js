@@ -70,7 +70,7 @@ export const Calandar = () => {
         <div className="week-1 grid-item-position">
           {shownMonth &&
             shownMonth.week1.map((w, i) => {
-              const { day,fullDates } = w;
+              const { day } = w;
               return (
                 <p key={i} className={`grid-item-position--${i + 1}`}>
                   <Link className="day-link" to={"/currentday"} state={w}>

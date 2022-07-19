@@ -17,6 +17,7 @@
         background-color: $color-shade;
         @include respond (desktop){
             padding: 2% 1%;
+            justify-items: flex-start;
         }
     }
     &-tab{

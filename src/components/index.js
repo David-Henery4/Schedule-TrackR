@@ -7,6 +7,7 @@ import Overlay from "./Overlay";
 import EditDelete from "./EditDelete";
 import GoalsForm from "./GoalsForm";
 import GoalsOutcome from "./goalsOutcome";
+import DayWeekContainer from "./DayWeekContainer";
 export{
     NavbarDesk,
     Header,
@@ -16,5 +17,6 @@ export{
     Overlay,
     EditDelete,
     GoalsForm,
-    GoalsOutcome
+    GoalsOutcome,
+    DayWeekContainer
 }

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const SingleDayHeader = ({ dayPageHeaderDate, todaysDateFormated }) => {
   const { day, date, month, year } = dayPageHeaderDate;
-  const { day:todaysDay, date: todaysDate, month: todaysMonth, year: todaysYear } = todaysDateFormated
+  const {date: todaysDate, month: todaysMonth, year: todaysYear } = todaysDateFormated
   //
   const compareDates = () => {
     const todaysDateString = new Date(`${todaysMonth}${todaysDate},${todaysYear}`)
