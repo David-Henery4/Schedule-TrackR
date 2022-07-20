@@ -7,8 +7,31 @@ import mockCurrentDayData from "../data/mockCurrentDay";
 import { DayWeekContainer } from "../components";
 
 export const CurrentDay = () => {
-  const {updateCurrentDayHeader } = useScheduleContext();
   const { state } = useLocation();
+  //
+  const {
+    updateCurrentDayHeader,
+    scheduleOverallData,
+    dayPageHeaderDate,
+    todaysDateFormated,
+  } = useScheduleContext();
+  const {date, month, year } = dayPageHeaderDate;
+  const {date: todaysDate, month: todaysMonth, year: todaysYear,
+  } = todaysDateFormated;
+  //
+  const comparingDates = () => {
+    // WAS HERE!!!!!!!!!
+    // (COMPARE ACTIVITY OBJECTS IN THE LIST TO THE CUSTOM DATE & DISPLAY THE RELEVENT JOB!!!)
+    // might not need current.
+    // const currentDate = new Date(`${todaysMonth}${todaysDate},${todaysYear}`);
+    // console.log(+currentDate)
+    const customDate = new Date(`${month}${date},${year}`);
+    console.log(+customDate)
+  }
+  //
+  useEffect(() => {
+    comparingDates()
+  }, [dayPageHeaderDate, todaysDateFormated])
   //
   useEffect(() => {
     updateCurrentDayHeader(state);

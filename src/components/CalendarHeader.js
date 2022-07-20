@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 
 const CalendarHeader = ({ incDecMonth, tempYear, tempMonthTitle }) => {
@@ -26,4 +26,4 @@ const CalendarHeader = ({ incDecMonth, tempYear, tempMonthTitle }) => {
   );
 };
 
-export default CalendarHeader
+export default CalendarHeader;

@@ -6,8 +6,15 @@ import {
   SET_CURRENT_MONTH,
   FORMAT_CURRENT_DATE,
   UPDATE_CURRENT_DATE_HEADER,
+  ADD_TO_MAIN_SCHEDULE,
 } from "../reducer/scheduleActions";
 import { useEffect } from "react";
+
+const initialScheduleState = {
+  scheduleOverallData:[],
+  scheduleTodaysData: [],
+  scheduleWeekData: [],
+}
 
 const initialState = {
   todaysDate: new Date(),
@@ -19,6 +26,8 @@ const initialState = {
       month: "long",
     }),
   tempMonthData: {},
+  //
+  ...initialScheduleState
 }
 
 const ScheduleContext = React.createContext()
@@ -26,6 +35,10 @@ const ScheduleContext = React.createContext()
 
 const ScheduleProvider = ({children}) => {
     const [state, dispatch] = useReducer(scheduleReducer,initialState)
+    //
+    const addToMainSchedule = (activity) => {
+      dispatch({type: ADD_TO_MAIN_SCHEDULE, payload: activity})
+    }
     //
     const setCurrentMonth = () => {
       dispatch({type: SET_CURRENT_MONTH})
@@ -53,7 +66,7 @@ const ScheduleProvider = ({children}) => {
     }, [])
     return (
       <ScheduleContext.Provider
-        value={{ ...state, updateTempMonth, incDecMonth, updateCurrentDayHeader }}
+        value={{ ...state, updateTempMonth, incDecMonth, updateCurrentDayHeader, addToMainSchedule }}
       >
         {children}
       </ScheduleContext.Provider>

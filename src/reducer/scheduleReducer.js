@@ -4,51 +4,40 @@ import {
   SET_CURRENT_MONTH,
   FORMAT_CURRENT_DATE,
   UPDATE_CURRENT_DATE_HEADER,
+  ADD_TO_MAIN_SCHEDULE,
 } from "./scheduleActions";
+import formatDate from "../utils/formatDate";
 
 const scheduleReducer = (state, action) => {
-  //
+
+  // ADDING OBJECTS/ACTIVITIES TO MAIN SCHEDULE ARRAY
+  if (action.type === ADD_TO_MAIN_SCHEDULE){
+    // console.log(action.payload)
+    // console.log("New item added")
+    const newItem = action.payload
+    return { ...state, scheduleOverallData: [ ...state.scheduleOverallData,  newItem]}
+  }
+
+  // DISPLAYING FORMATED DATES FOR THE CURRENT DAYS
   if (action.type === UPDATE_CURRENT_DATE_HEADER){
     const updatedOrDefault = action.payload ? action.payload.fullDates : new Date();
-    // const updatedOrDefault = new Date();
-    const formated = updatedOrDefault.toLocaleDateString("default", {
-      month: "long",
-      weekday: "long",
-      year: "numeric",
-      day: "numeric"
-    });
-    const formatedDate = {
-      day: formated.split(" ").slice(0, 1).toString().slice(0,-1),
-      date: formated.split(" ").slice(1, 2).toString(),
-      month: formated.split(" ").slice(2, 3).toString(),
-      year: formated.split(" ").slice(3, 4).toString(),
-    };
-    return { ...state, dayPageHeaderDate: formatedDate };
+    const formated = formatDate(updatedOrDefault);
+    return { ...state, dayPageHeaderDate: formated };
   }
   //
   if (action.type === FORMAT_CURRENT_DATE){
     const {todaysDate} = state
-    const formated = todaysDate.toLocaleDateString("default", {
-      month: "long",
-      weekday: "long",
-      year: "numeric",
-      day: "numeric"
-    });
-    const formatedDate = {
-      day: formated.split(" ").slice(0, 1).toString().slice(0,-1),
-      date: formated.split(" ").slice(1, 2).toString(),
-      month: formated.split(" ").slice(2, 3).toString(),
-      year: formated.split(" ").slice(3, 4).toString(),
-    };
-    // console.log(formatedDate)
-    return { ...state, todaysDateFormated: formatedDate };
+    const formated = formatDate(todaysDate);
+    return { ...state, todaysDateFormated: formated };
   }
-  //
+
+
+  // SETTING THE CURRENT DATES IN THE MONTH IN THE CALENDAR
   if (action.type === SET_CURRENT_MONTH){
     const { monthNumber, year, monthName } = state;
     return {...state, tempMonthData: {monthNumber,year,monthName}}
   }
-  //
+  // SETTING THE CHANGING DATES OF THE MONTH IN THE CALENDAR
   if (action.type === UPDATE_TEMP_MONTH) {
     const updatedTempMonth = action.payload;
     const { monthNumber, year, monthName } = state;
@@ -57,7 +46,9 @@ const scheduleReducer = (state, action) => {
       tempMonthData: updatedTempMonth || { monthNumber, year, monthName },
     };
   }
-  //
+
+
+  // INCREMENT THOUGH CALENDAR MONTHS DATES LOGIC
   if(action.type === INCREASE_DECREASE_MONTH){
     const value = action.payload
     let {monthNumber, year} = state.tempMonthData

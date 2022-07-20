@@ -6,7 +6,7 @@ import { DayWeekContainer } from '../components';
 export const Week = () => {
   return (
     <section className="week">
-      {/* ?!?!?might have input form here?!?! */}
+      {/* ?!?!?might have input form here?!?! (DAYWEEKCONTAINER) */}
       <div className="week-container">
         {defaultWeekData.map(d => {
           const {id,date,day,tasks} = d

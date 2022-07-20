@@ -2,7 +2,7 @@
     display: none; // temp
     height: 80%;
     width: 90%;
-    padding: 4rem 2%;
+    padding: 4rem 2% 1rem;
     max-width: 540px;
     border-radius: 2rem;
     background-color: #7A72ED;
@@ -20,7 +20,7 @@
     }
     label{
         position: relative;
-        bottom: 2rem;
+        bottom: 1rem;
         color: $font-white;
     }
     //
@@ -29,6 +29,7 @@
         width: 100%;
         display: grid;
         place-items: center;
+        grid-template-rows: repeat(3, 1fr) 7rem;
     }
     //
     &-form__time{
