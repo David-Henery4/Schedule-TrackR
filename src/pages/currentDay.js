@@ -1,63 +1,70 @@
 import React from "react";
 import { useEffect } from "react";
-import { BsThreeDots } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 import { useScheduleContext } from "../context/scheduleContext";
 import mockCurrentDayData from "../data/mockCurrentDay";
-import { DayWeekContainer } from "../components";
+import { DayWeekContainer, CurrentDayCustom, CurrentDayDefault } from "../components";
+import { useState } from "react";
+
+// might not need current.
+// const currentDate = new Date(`${todaysMonth{todaysDate},${todaysYear}`);
+// console.log(+currentDate)
+// const {
+//   date: todaysDate,
+//   month: todaysMonth,
+//   year: todaysYear,
+// } = todaysDateFormated;
+// todaysDateFormated
 
 export const CurrentDay = () => {
   const { state } = useLocation();
+  const [tempDate,setTempDate] = useState();
+  const [todaysActivities, setTodaysActivities] = useState([])
   //
   const {
     updateCurrentDayHeader,
     scheduleOverallData,
     dayPageHeaderDate,
-    todaysDateFormated,
   } = useScheduleContext();
   const {date, month, year } = dayPageHeaderDate;
-  const {date: todaysDate, month: todaysMonth, year: todaysYear,
-  } = todaysDateFormated;
   //
   const comparingDates = () => {
-    // WAS HERE!!!!!!!!!
-    // (COMPARE ACTIVITY OBJECTS IN THE LIST TO THE CUSTOM DATE & DISPLAY THE RELEVENT JOB!!!)
-    // might not need current.
-    // const currentDate = new Date(`${todaysMonth}${todaysDate},${todaysYear}`);
-    // console.log(+currentDate)
     const customDate = new Date(`${month}${date},${year}`);
-    console.log(+customDate)
+    setTempDate(+customDate)
+  }
+  //
+  const todayActivities = () => {
+    const scheduleData = scheduleOverallData.slice()
+    const currentActivities = scheduleData.filter((a) => a.dateStamp === tempDate)
+    console.log(scheduleData)
+    console.log(currentActivities)
+    setTodaysActivities(currentActivities)
   }
   //
   useEffect(() => {
-    comparingDates()
-  }, [dayPageHeaderDate, todaysDateFormated])
+    todayActivities();
+    // eslint-disable-next-line
+  }, [tempDate,scheduleOverallData])
+  //
+  useEffect(() => {
+    comparingDates();
+    // eslint-disable-next-line
+  }, [dayPageHeaderDate])
   //
   useEffect(() => {
     updateCurrentDayHeader(state);
     // eslint-disable-next-line
   }, [state]);
+  //
   return (
     <section className="current-day">
-      <DayWeekContainer/>
+      <DayWeekContainer />
       <div className="current-day-row">
-        {mockCurrentDayData.map((d) => {
-          const { id, startTime, endTime, taskDesc, taskTitle } = d;
-          return (
-            <div className="current-day-tab" key={id}>
-              <h3 className="current-day__time">
-                {startTime} - {endTime}
-              </h3>
-              <div className="current-day-content">
-                <BsThreeDots className="current-day-edit-icon" />
-                <h4 className="current-day-content__title">{taskTitle}</h4>
-                <article className="current-day-content__desc">
-                  {taskDesc}
-                </article>
-              </div>
-            </div>
-          );
-        })}
+        {todaysActivities <= 0 ? (
+          <CurrentDayDefault mockCurrentDayData={mockCurrentDayData}/>
+        ) : (
+          <CurrentDayCustom todaysActivities={todaysActivities} />
+        )}
       </div>
     </section>
   );

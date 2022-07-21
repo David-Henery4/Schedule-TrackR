@@ -8,6 +8,8 @@ import EditDelete from "./EditDelete";
 import GoalsForm from "./GoalsForm";
 import GoalsOutcome from "./goalsOutcome";
 import DayWeekContainer from "./DayWeekContainer";
+import CurrentDayCustom from "./CurrentDayCustom";
+import CurrentDayDefault from "./CurrentDayDefault";
 export{
     NavbarDesk,
     Header,
@@ -18,5 +20,7 @@ export{
     EditDelete,
     GoalsForm,
     GoalsOutcome,
-    DayWeekContainer
+    DayWeekContainer,
+    CurrentDayCustom,
+    CurrentDayDefault
 }
