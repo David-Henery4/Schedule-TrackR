@@ -38,7 +38,7 @@ const ScheduleContext = React.createContext()
 
 const ScheduleProvider = ({children}) => {
     const [state, dispatch] = useReducer(scheduleReducer,initialState)
-    // 
+    //
     const editScheduleTab = (newData) => {
       dispatch({type: EDIT_SCHEDULE_TAB, payload: newData})
     }

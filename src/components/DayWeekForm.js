@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useGlobalContext } from "../context/provider";
 import { useScheduleContext } from "../context/scheduleContext";
 
-// const currentDate = new Date(
-//   `${todaysMonth}${todaysDate},${todaysYear}`
-// );
-// works so far with just temp date.
-
 const DayWeekForm = () => {
-const { dayPageHeaderDate, todaysDateFormated, addToMainSchedule } = useScheduleContext();
-const { day, date, month, year } = dayPageHeaderDate;
+const {
+  dayPageHeaderDate,
+  addToMainSchedule,
+  scheduleOverallData,
+  editScheduleTab,
+} = useScheduleContext();
+const { date, month, year } = dayPageHeaderDate;
+const {inputFormClose} = useGlobalContext()
+//
+const editActive = scheduleOverallData.some(s => s.editActive)
 //
 const [startTime, setStartTime] = useState("");
 const [endTime, setEndTime] = useState("");
@@ -32,7 +36,55 @@ const creatingActivity = (e) => {
       taskDesc: text,
     };
     addToMainSchedule(activity)
+    closeAndClearAfterSubmit()
 };
+//
+const creatingEditActivity = (e) => {
+  e.preventDefault();
+  const updatedTab = scheduleOverallData.map(s => {
+    if (s.editActive){
+      s.startTime  = startTime
+      s.endTime = endTime
+      s.taskTitle = title
+      s.taskDesc = text
+      s.editActive = false;
+      s.activeTab = false;
+    }
+    return s
+  })
+  // set new array to the state
+  editScheduleTab(updatedTab)
+  closeAndClearAfterSubmit()
+}
+//
+const setEditValues = (edit) => {
+  if (edit){
+    const currentTab = scheduleOverallData.find(s => s.editActive === true)
+    setStartTime(currentTab.startTime);
+    setEndTime(currentTab.endTime);
+    setTitle(currentTab.taskTitle);
+    setText(currentTab.taskDesc);
+  }
+}
+//
+const closeAndClearAfterSubmit = () => {
+  setTimeout(() => {
+    clearValues();
+    inputFormClose();
+  }, 2000);
+};
+//
+const clearValues = () => {
+  setStartTime("");
+  setEndTime("");
+  setText("");
+  setTitle("");
+};
+//
+useEffect(() => {
+  setEditValues(editActive);
+  // eslint-disable-next-line
+}, [editActive])
 //
     return (
       <form className="dw-form">
@@ -89,7 +141,8 @@ const creatingActivity = (e) => {
           ></textarea>
         </span>
         {/* SUBMIT BTN */}
-        <button type="button" className="btn" onClick={creatingActivity}>
+        <button type="button" className="btn" onClick={(e) => editActive ?creatingEditActivity(e) : creatingActivity(e)
+        }>
           Submit
         </button>
       </form>
