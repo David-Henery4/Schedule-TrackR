@@ -7,6 +7,9 @@ import {
   FORMAT_CURRENT_DATE,
   UPDATE_CURRENT_DATE_HEADER,
   ADD_TO_MAIN_SCHEDULE,
+  ACTIVE_SCHEDULE_TAB,
+  DELETE_FROM_SCHEDULE,
+  EDIT_SCHEDULE_TAB,
 } from "../reducer/scheduleActions";
 import { useEffect } from "react";
 
@@ -35,6 +38,18 @@ const ScheduleContext = React.createContext()
 
 const ScheduleProvider = ({children}) => {
     const [state, dispatch] = useReducer(scheduleReducer,initialState)
+    // 
+    const editScheduleTab = (newData) => {
+      dispatch({type: EDIT_SCHEDULE_TAB, payload: newData})
+    }
+    //
+    const deleteFromSchedule = (newData) => {
+      dispatch({type: DELETE_FROM_SCHEDULE, payload: newData})
+    }
+    //
+    const markActiveScheduleTab = (newData) => {
+      dispatch({type: ACTIVE_SCHEDULE_TAB, payload: newData})
+    }
     //
     const addToMainSchedule = (activity) => {
       dispatch({type: ADD_TO_MAIN_SCHEDULE, payload: activity})
@@ -66,7 +81,16 @@ const ScheduleProvider = ({children}) => {
     }, [])
     return (
       <ScheduleContext.Provider
-        value={{ ...state, updateTempMonth, incDecMonth, updateCurrentDayHeader, addToMainSchedule }}
+        value={{
+          ...state,
+          updateTempMonth,
+          incDecMonth,
+          updateCurrentDayHeader,
+          addToMainSchedule,
+          markActiveScheduleTab,
+          deleteFromSchedule,
+          editScheduleTab,
+        }}
       >
         {children}
       </ScheduleContext.Provider>

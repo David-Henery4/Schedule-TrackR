@@ -5,15 +5,33 @@ import {
   FORMAT_CURRENT_DATE,
   UPDATE_CURRENT_DATE_HEADER,
   ADD_TO_MAIN_SCHEDULE,
+  ACTIVE_SCHEDULE_TAB,
+  DELETE_FROM_SCHEDULE,
+  EDIT_SCHEDULE_TAB,
 } from "./scheduleActions";
 import formatDate from "../utils/formatDate";
 
 const scheduleReducer = (state, action) => {
+  // EDIT SCHEDULE TAB
+  if (action.type === EDIT_SCHEDULE_TAB){
+    const updatedRay = action.payload
+    return { ...state, scheduleOverallData : updatedRay};
+  }
+
+  // DELETEING FROM SCHEDULE
+  if (action.type === DELETE_FROM_SCHEDULE){
+    const updatedRay = action.payload
+    return { ...state, scheduleOverallData: updatedRay };
+  }
+
+  // MARKING ACTIVE SCHEDULE TAB
+  if (action.type === ACTIVE_SCHEDULE_TAB){
+    const updatedRay = action.payload
+    return { ...state, scheduleOverallData : updatedRay};
+  }
 
   // ADDING OBJECTS/ACTIVITIES TO MAIN SCHEDULE ARRAY
   if (action.type === ADD_TO_MAIN_SCHEDULE){
-    // console.log(action.payload)
-    // console.log("New item added")
     const newItem = action.payload
     return { ...state, scheduleOverallData: [ ...state.scheduleOverallData,  newItem]}
   }

@@ -22,6 +22,8 @@ const creatingActivity = (e) => {
     const id = new Date().getTime()
     const activity = {
       id,
+      activeTab: false,
+      editActive: false,
       date: { date: tempDate, formatedDate: dayPageHeaderDate },
       dateStamp: +tempDate,
       startTime,

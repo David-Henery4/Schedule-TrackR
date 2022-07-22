@@ -2,12 +2,16 @@ import React from 'react'
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useGlobalContext } from '../context/provider';
+import { useScheduleContext } from '../context/scheduleContext';
+import findActiveEditTab from '../utils/findTabToEdit';
 
 export const EditDelete = ({ activeTab, id }) => {
   const { todoData, deleteTodo, inputFormOpen, handleEditTodo, activePage, goalsData, editGoal, deleteGoal } =
     useGlobalContext();
+    const { scheduleOverallData, deleteFromSchedule, editScheduleTab } = useScheduleContext();
     const goalsPage = activePage.goalsHeader
     const todoPage = activePage.todoHeader
+    const dayPage = activePage.currentHeader;
   //
   const handleDelete = () => {
     if (todoPage){
@@ -18,38 +22,26 @@ export const EditDelete = ({ activeTab, id }) => {
       const updatedData = goalsData.filter((t) => id !== t.id);
       deleteGoal(updatedData)
     }
+    if (dayPage){
+      const updatedData = scheduleOverallData.filter((s) => id !== s.id)
+      deleteFromSchedule(updatedData)
+    }
   };
   //
   const handleEdit = () => {
     if (todoPage){
-      const updatedData = todoData.map((t) => {
-        if (id === t.id) {
-          t.editActive = true;
-          inputFormOpen();
-        } else {
-          t.editActive = false;
-        }
-        return t;
-      });
+      const updatedData = findActiveEditTab(id, todoData, inputFormOpen);
       handleEditTodo(updatedData);
     }
     if (goalsPage){
-      handleGoalEdit()
+      const updatedData = findActiveEditTab(id, goalsData, inputFormOpen);
+      editGoal(updatedData);
+    }
+    if (dayPage){
+      const updatedData = findActiveEditTab(id,scheduleOverallData, inputFormOpen);
+      editScheduleTab(updatedData)
     }
   };
-  //
-  const handleGoalEdit = () =>{
-    const updatedData = goalsData.map((goal) => {
-      if (id === goal.id) {
-        goal.editActive = true;
-        inputFormOpen();
-      } else {
-        goal.editActive = false;
-      }
-      return goal;
-    });
-    editGoal(updatedData)
-  }
   //
   return (
     <div
