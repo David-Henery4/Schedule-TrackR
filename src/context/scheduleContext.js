@@ -14,10 +14,10 @@ import {
 import { useEffect } from "react";
 
 const initialScheduleState = {
-  scheduleOverallData:[],
+  scheduleOverallData: JSON.parse(localStorage.getItem("scheduleOverallData")),
   scheduleTodaysData: [],
   scheduleWeekData: [],
-}
+};
 
 const initialState = {
   todaysDate: new Date(),
@@ -79,6 +79,14 @@ const ScheduleProvider = ({children}) => {
       setCurrentMonth()
       formatCurrentDate()
     }, [])
+    //
+    useEffect(() => {
+      localStorage.setItem(
+        "scheduleOverallData",
+        JSON.stringify(state.scheduleOverallData)
+      );
+    }, [state])
+    //
     return (
       <ScheduleContext.Provider
         value={{

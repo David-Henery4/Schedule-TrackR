@@ -1,4 +1,4 @@
-import React, { useContext, useReducer} from "react";
+import React, { useContext, useReducer, useEffect } from "react";
 //
 import {
   SIDEBAR_ACTIVE,
@@ -39,8 +39,8 @@ const initialValue = {
     monthsInput: false,
     dayInput: false,
   },
-  todoData: [],
-  goalsData: []
+  todoData: JSON.parse(localStorage.getItem("todoData")),
+  goalsData: JSON.parse(localStorage.getItem("goalsData")),
 };
 //
 const AppContext = React.createContext();
@@ -99,6 +99,11 @@ const AppProvider = ({ children }) => {
   const deleteGoal = (goalData) => {
     dispatch({ type: DELETE_GOAL, payload: goalData});
   }
+  //
+  useEffect(() => {
+    localStorage.setItem("todoData", JSON.stringify(state.todoData));
+    localStorage.setItem("goalsData", JSON.stringify(state.goalsData));
+  }, [state])
   //
   return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal, activeGoalTab, editGoal, deleteGoal}}>{children}</AppContext.Provider>;
 };
