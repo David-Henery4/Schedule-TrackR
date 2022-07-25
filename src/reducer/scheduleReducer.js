@@ -37,7 +37,7 @@ const scheduleReducer = (state, action) => {
     const newItem = action.payload;
     return {
       ...state,
-      scheduleOverallData: [...state.scheduleOverallData, newItem],
+      scheduleOverallData: [...state.scheduleOverallData, newItem].sort((a,b) => (a.startTime > b.startTime) ?  1: -1),
     };
   }
 

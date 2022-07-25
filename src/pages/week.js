@@ -47,12 +47,14 @@ export const Week = () => {
                   {day} {date}
                 </h3>
               </div>
-              {scheduleOverallData.map((t) => {
+              {scheduleOverallData.length < 1 ? defaultWeekData.map((t) => {
                 const { id, dateStamp } = t;
-                console.log(weekDateStamp);
-                console.log(dateStamp);
                 if (weekDateStamp === dateStamp){
-                  console.log("true")
+                  return <WeekDay key={id} {...t} />;
+                }
+              }) : scheduleOverallData.map((t) => {
+                const { id, dateStamp } = t;
+                if (weekDateStamp === dateStamp){
                   return <WeekDay key={id} {...t} />;
                 }
               })}

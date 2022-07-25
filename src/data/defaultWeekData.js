@@ -1,39 +1,75 @@
+
+const settingWeek = () => {
+  const weekDates = []
+  for (let i = 1; i < 8; i++){
+    const mondayDate = new Date().getDate() - new Date().getDay() + i;
+    const fullMondayDate = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      mondayDate
+      );
+      weekDates.push(+fullMondayDate)
+    }
+  return weekDates
+}
+
+
 const defaultWeekData = [
   {
     id: 1,
-    dateStamp: +new Date(2022, 6, 25),
-    startTime: "09:00",
-    endTime: "10:00",
-    taskTitle: "start working out",
-    taskDesc:
-      "lorem ipsum dolor sit amet consector elit sint magni, quis volupate. eum haram quidem et moollitia animir rem volupatates.",
+    dateStamp: settingWeek()[0],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
   },
   {
     id: 2,
-    dateStamp: +new Date(2022, 6, 26),
-    startTime: "10:00",
-    endTime: "12:00",
-    taskTitle: "work",
-    taskDesc:
-      "lorem ipsum dolor sit amet consector elit sint magni, quis volupate. eum haram quidem et moollitia animir rem volupatates.",
+    dateStamp: settingWeek()[1],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
   },
   {
     id: 3,
-    dateStamp: +new Date(2022, 6, 25),
-    startTime: "12:00",
-    endTime: "13:00",
-    taskTitle: "lunch",
-    taskDesc:
-      "lorem ipsum dolor sit amet consector elit sint magni, quis volupate. eum haram quidem et moollitia animir rem volupatates.",
+    dateStamp: settingWeek()[2],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
   },
   {
     id: 4,
-    dateStamp: +new Date(2022, 6, 25),
-    startTime: "13:00",
-    endTime: "16:30",
-    taskTitle: "work",
-    taskDesc:
-      "lorem ipsum dolor sit amet consector elit sint magni, quis volupate. eum haram quidem et moollitia animir rem volupatates.",
+    dateStamp: settingWeek()[3],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
+  },
+  {
+    id: 5,
+    dateStamp: settingWeek()[4],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
+  },
+  {
+    id: 6,
+    dateStamp: settingWeek()[5],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
+  },
+  {
+    id: 7,
+    dateStamp: settingWeek()[6],
+    startTime: "Start time",
+    endTime: "End time",
+    taskTitle: "Task",
+    taskDesc: "Task description.",
   },
 ];
 

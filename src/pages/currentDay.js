@@ -36,8 +36,8 @@ export const CurrentDay = () => {
   const todayActivities = () => {
     const scheduleData = scheduleOverallData.slice()
     const currentActivities = scheduleData.filter((a) => a.dateStamp === tempDate)
-    console.log(scheduleData)
-    console.log(currentActivities)
+    // console.log(scheduleData)
+    // console.log(currentActivities)
     setTodaysActivities(currentActivities)
   }
   //

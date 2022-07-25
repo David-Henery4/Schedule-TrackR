@@ -96,7 +96,7 @@ useEffect(() => {
             <input
               id="dw__time-input--start"
               name="dw__time-input--start"
-              type="text"
+              type="time"
               value={startTime}
               onChange={(e) => {setStartTime(e.target.value)}}
             />
@@ -107,7 +107,7 @@ useEffect(() => {
             <input
               id="dw__time-input--end"
               name="dw__time-input--end"
-              type="text"
+              type="time"
               value={endTime}
               onChange={(e) => {
                 setEndTime(e.target.value)
