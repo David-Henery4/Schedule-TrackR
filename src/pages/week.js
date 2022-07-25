@@ -25,9 +25,8 @@ export const Week = () => {
       }
       datesOfWeek.push(dateObj)
     }
-    console.log(datesOfWeek)
     setDatesOfTheWeek(datesOfWeek)
-  };
+  }
   //
   useEffect(() => {
     setCurrentWeek();

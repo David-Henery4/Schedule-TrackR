@@ -2,6 +2,7 @@ import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { useScheduleContext } from "../context/scheduleContext";
 import { EditDelete } from "./EditDelete";
+import handleEditClickSchedule from "../utils/handleEditClickSchedule";
 
 // TODO: CREATING THE DELETE, EDIT AND POPUP MENU BY CHANGING THE 'EDITACTIVE' & 'ACTIVETAB' STATE VALUES.`
 
@@ -9,17 +10,7 @@ const CurrentDayCustom = ({ todaysActivities }) => {
   const { markActiveScheduleTab, scheduleOverallData } = useScheduleContext();
 
   const handleEditClick = (id) => {
-    const updatedActiveTab = scheduleOverallData.map(a => {
-      if (a.id === id){
-        a.activeTab = !a.activeTab
-        a.editActive = false
-      }
-      if (a.id !== id){
-        a.activeTab = false
-        a.editActive = false
-      }
-      return a
-    })
+    const updatedActiveTab = handleEditClickSchedule(id, scheduleOverallData);
     markActiveScheduleTab(updatedActiveTab)
   };
 
