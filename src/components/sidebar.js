@@ -2,11 +2,13 @@ import React from 'react'
 import {FaTimes} from "react-icons/fa"
 import { navigationDates, navigationDosGoals } from '../data/navbarData'
 import { useGlobalContext } from '../context/provider'
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 // make Links!
 
 export const Sidebar = () => {
   const {closeSidebar, sidebarActive} = useGlobalContext()
+  let location = useLocation()
+  const {pathname} = location
   return (
     <aside className={`${sidebarActive ? "sidebar sidebar-active" : "sidebar"}`}>
       {/**/}
@@ -25,7 +27,11 @@ export const Sidebar = () => {
               <Link
                 key={id}
                 to={page}
-                className="sidebar__list--item"
+                className={
+                  pathname === page
+                    ? "active-page sidebar__list--item"
+                    : "sidebar__list--item"
+                }
                 onClick={closeSidebar}
               >
                 {text}
@@ -43,7 +49,11 @@ export const Sidebar = () => {
               <Link
                 key={id}
                 to={page}
-                className="sidebar__list--item"
+                className={
+                  pathname === page
+                    ? "active-page sidebar__list--item"
+                    : "sidebar__list--item"
+                }
                 onClick={closeSidebar}
               >
                 {text}

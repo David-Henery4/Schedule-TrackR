@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useLocation } from 'react-router-dom'
 import { navigationDosGoals, navigationDates } from '../data/navbarData';
 
 export const NavbarDesk = () => {
+  let location = useLocation()
+  const {pathname} = location
   return (
     <aside className="desk-nav">
       <div className="desk-nav-content">
@@ -17,7 +19,7 @@ export const NavbarDesk = () => {
           {navigationDates.map((l) => {
             const { id, page, text } = l;
             return (
-              <li key={id}>
+              <li key={id} className={pathname === page ? "active-page" : ""}>
                 <Link className="desk-nav-link" to={page}>
                   {text}
                 </Link>
@@ -30,7 +32,7 @@ export const NavbarDesk = () => {
           {navigationDosGoals.map((l) => {
             const { id, page, text } = l;
             return (
-              <li key={id}>
+              <li key={id} className={pathname === page ? "active-page" : ""}>
                 <Link className="desk-nav-link" to={page}>
                   {text}
                 </Link>
