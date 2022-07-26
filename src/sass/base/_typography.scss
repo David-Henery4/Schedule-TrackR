@@ -1,6 +1,12 @@
 html{
     font-size: 62.5%; // default 10px = 1rem
     font-family: $font-family-main;
+    @include respond (tablet){
+        font-size: 68.75%;
+    }
+    @include respond (xldesktop){
+        font-size: 75%;
+    }
 }
 
 input{
