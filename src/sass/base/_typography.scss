@@ -2,3 +2,12 @@ html{
     font-size: 62.5%; // default 10px = 1rem
     font-family: $font-family-main;
 }
+
+input{
+    font-family: $font-family-main;
+    font-weight: 500;
+}
+
+textarea{
+    font-family: $font-family-main;
+}

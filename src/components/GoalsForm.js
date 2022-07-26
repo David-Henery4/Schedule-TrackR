@@ -77,7 +77,10 @@ export const GoalsForm = () => {
       }`}
     >
       <div className="goals-form-container">
-        <FaTimes className="exit-icon" onClick={inputFormClose} />
+        <FaTimes className="exit-icon" onClick={() => {
+          inputFormClose()
+          resetInputs()
+        }} />
         <form className="goals-form" onSubmit={(e) => e.preventDefault()}>
           <input
             onChange={(e) => {
@@ -89,6 +92,7 @@ export const GoalsForm = () => {
             }}
             type="text"
             className="goals-form__date"
+            placeholder="Timeframe..."
             value={currentEdit ? editGoalDate : goalDate}
           />
           <textarea
@@ -102,6 +106,7 @@ export const GoalsForm = () => {
             name="goal"
             id="goal"
             className="goals-form__input"
+            placeholder="Goal details..."
             value={currentEdit ? editGoalInput : goalInput}
           ></textarea>
           {formCompleted ? (

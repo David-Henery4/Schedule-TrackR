@@ -85,7 +85,6 @@ export const Header = () => {
     const hours = new Date().getHours();
     const mins = new Date().getMinutes();
     setTime({ hours, mins });
-    // NEED TO PAD TIME!!!!!!!!!!!!!!
   };
   //
   useEffect(() => {
@@ -126,7 +125,8 @@ export const Header = () => {
             dayPageHeaderDate={dayPageHeaderDate}
           />
         )}
-        <IoIosAddCircle className="header__add-icon" onClick={inputFormOpen} />
+        {todoHeader || goalsHeader || currentHeader ? <IoIosAddCircle className="header__add-icon" onClick={inputFormOpen}/> : ""}
+        
       </header>
     </section>
   );

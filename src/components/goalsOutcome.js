@@ -7,9 +7,11 @@ export const GoalsOutcome = () => {
   //
   const checkMarkSuccess = () => {
     setCheckedSuccess(!checkedSuccess);
+    if (checkedFailed) setCheckedFailed(false)
   };
   const checkMarkFailed = () => {
     setCheckedFailed(!checkedFailed);
+    if (checkedSuccess) setCheckedSuccess(false)
   };
   //
   return (

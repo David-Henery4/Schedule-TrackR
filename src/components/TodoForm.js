@@ -72,6 +72,8 @@ export const TodoForm = () => {
     // eslint-disable-next-line
   }, [editActive])
   //
+  
+  //
   return (
     <div
       className={`${
@@ -79,7 +81,10 @@ export const TodoForm = () => {
       }`}
     >
       <div className="todo-form-container">
-        <FaTimes className="exit-icon" onClick={inputFormClose} />
+        <FaTimes className="exit-icon" onClick={() => {
+          inputFormClose()
+          resetInputs()
+        }} />
         <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
           <input
             value={editActive ? todoWhenEdit : todoWhen}

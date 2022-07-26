@@ -14,7 +14,7 @@
   padding: 5% 0;
   @include respond(desktop) {
     height: 100%;
-    padding: 0;
+    padding: 0 1.5rem;
     grid-template-columns: repeat(16, 1fr);
   }
   &__logo {
@@ -79,6 +79,9 @@
   &__add-icon {
     font-size: 4rem;
     color: $color-primary;
+    &:hover{
+      cursor: pointer;
+    }
     @include respond(desktop) {
       grid-column: 16/-1;
       grid-row: 3/4;
@@ -86,9 +89,15 @@
   }
   &__calandar--right {
     font-size: 3rem;
+    &:hover{
+      cursor: pointer;
+    }
   }
   &__calandar--left {
     font-size: 3rem;
+    &:hover{
+      cursor: pointer;
+    }
   }
   // current page dates
   &__current-day-title {

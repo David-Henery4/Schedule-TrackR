@@ -1,25 +1,28 @@
 .week {
   width: 100%;
   overflow-y: scroll;
+  // padding: 4rem 1.5rem;
   @include respond (desktop){
+    border-top: 2px solid $color-secondary;
     grid-column: 2/-1;
     grid-row: 4/-1;
+    padding: 0;
   }
   &-container {
-    padding: 2% 0;
+    // padding: 2% 0;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
-    gap: 6rem;
-    @include respond (desktop){
-    padding: 4rem 1% 1%;
     gap: 1.5rem;
     row-gap: 5rem;
+    padding: 2.5rem 0.5rem;
+    @include respond (desktop){
+    padding: 3.5rem 1.5rem;
     }
   }
   &-col {
-    width: 90%;
+    width: 100%;
     min-height: 60rem;
     height: 100%;
     padding: 5%;
@@ -30,8 +33,6 @@
     gap: 2rem;
     border-radius: 20px;
     @include respond (desktop){
-    width: 100%;
-    padding: 5%;
     gap: 1rem;
     }
   }
@@ -76,6 +77,9 @@
     top: 0.6rem;
     right: 1rem;
     font-size: 2.5rem;
+    &:hover{
+      cursor: pointer;
+    }
   }
   &__activity-title {
     font-size: 1.5rem;

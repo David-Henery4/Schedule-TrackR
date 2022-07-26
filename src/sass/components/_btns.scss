@@ -6,4 +6,7 @@
     color: $font-white;
     font-weight: 300;
     font-family: $font-family-main;
+    &:hover{
+        cursor: pointer;
+    }
 }

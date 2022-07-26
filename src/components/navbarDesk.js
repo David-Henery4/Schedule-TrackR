@@ -13,9 +13,9 @@ export const NavbarDesk = () => {
           </span>
         </h4>
         {/**/}
-        <ul className="desk-nav-links">
-          {navigationDates.map(l => {
-            const {id, page, text} = l
+        <ul className="desk-nav-links desk-nav-links--schedule">
+          {navigationDates.map((l) => {
+            const { id, page, text } = l;
             return (
               <li key={id}>
                 <Link className="desk-nav-link" to={page}>
@@ -26,9 +26,9 @@ export const NavbarDesk = () => {
           })}
         </ul>
         {/**/}
-        <ul className="desk-nav-links">
-          {navigationDosGoals.map(l => {
-            const {id,page,text} = l
+        <ul className="desk-nav-links desk-nav-links--todo-goals">
+          {navigationDosGoals.map((l) => {
+            const { id, page, text } = l;
             return (
               <li key={id}>
                 <Link className="desk-nav-link" to={page}>

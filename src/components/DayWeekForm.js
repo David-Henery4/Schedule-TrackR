@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useGlobalContext } from "../context/provider";
 import { useScheduleContext } from "../context/scheduleContext";
 
-const DayWeekForm = () => {
+const DayWeekForm = ({clearValue}) => {
 const {
   dayPageHeaderDate,
   addToMainSchedule,
@@ -11,7 +11,7 @@ const {
   editScheduleTab,
 } = useScheduleContext();
 const { date, month, year } = dayPageHeaderDate;
-const {inputFormClose} = useGlobalContext()
+const { inputFormClose } = useGlobalContext();
 //
 const editActive = scheduleOverallData.some(s => s.editActive)
 //
@@ -80,6 +80,10 @@ const clearValues = () => {
   setText("");
   setTitle("");
 };
+//
+useEffect(() => {
+  clearValues()
+}, [clearValue])
 //
 useEffect(() => {
   setEditValues(editActive);
