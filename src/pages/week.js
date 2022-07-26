@@ -34,7 +34,7 @@ export const Week = () => {
   //
   return (
     <section className="week">
-      {/* ?!?!?might have input form here?!?! (DAYWEEKCONTAINER) */}
+      <DayWeekContainer/>
       <div className="week-container">
         {datesOfTheWeek.map((d) => {
           const { id, formatedDate, weekDateStamp } = d;

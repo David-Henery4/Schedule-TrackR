@@ -12,6 +12,7 @@ export const EditDelete = ({ activeTab, id }) => {
     const goalsPage = activePage.goalsHeader
     const todoPage = activePage.todoHeader
     const dayPage = activePage.currentHeader;
+    const weekPage = activePage.weekHeader;
   //
   const handleDelete = () => {
     if (todoPage){
@@ -22,7 +23,7 @@ export const EditDelete = ({ activeTab, id }) => {
       const updatedData = goalsData.filter((t) => id !== t.id);
       deleteGoal(updatedData)
     }
-    if (dayPage){
+    if (dayPage || weekPage){
       const updatedData = scheduleOverallData.filter((s) => id !== s.id)
       deleteFromSchedule(updatedData)
     }
@@ -37,7 +38,7 @@ export const EditDelete = ({ activeTab, id }) => {
       const updatedData = findActiveEditTab(id, goalsData, inputFormOpen);
       editGoal(updatedData);
     }
-    if (dayPage){
+    if (dayPage || weekPage){
       const updatedData = findActiveEditTab(id,scheduleOverallData, inputFormOpen);
       editScheduleTab(updatedData)
     }

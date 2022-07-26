@@ -29,6 +29,13 @@ const mainReducer = (state, action) => {
   // INPUT OPEN
   if (action.type === INPUT_ACTIVE) {
     const { activeInputs } = state;
+    if (state.activePage.weekHeader) {
+      return {
+        ...state,
+        overlayActive: !state.overlayActive,
+        activeInputs: { ...activeInputs, weekInput: true },
+      };
+    }
     if (state.activePage.currentHeader) {
       return {
         ...state,
@@ -57,6 +64,13 @@ const mainReducer = (state, action) => {
   // INPUT CLOSED
   if (action.type === INPUT_CLOSE) {
     const { activeInputs } = state;
+    if (state.activePage.weekHeader) {
+      return {
+        ...state,
+        overlayActive: false,
+        activeInputs: { ...activeInputs, weekInput: false },
+      };
+    }
     if (state.activePage.currentHeader) {
       return {
         ...state,

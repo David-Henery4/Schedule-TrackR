@@ -6,10 +6,10 @@ import { useGlobalContext } from '../context/provider';
 // make form component
 const DayWeekContainer = () => {
     const { activeInputs, inputFormClose } = useGlobalContext();
-    const {dayInput} = activeInputs
+    const { dayInput, weekInput } = activeInputs;
   return (
-    <div className={dayInput ? "dw dw-active" : "dw"}>
-      <FaTimes className="exit-icon" onClick={inputFormClose}/>
+    <div className={dayInput || weekInput ? "dw dw-active" : "dw"}>
+      <FaTimes className="exit-icon" onClick={inputFormClose} />
       <DayWeekForm />
     </div>
   );
