@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from '../context/provider';
 import { BsCheckCircleFill } from "react-icons/bs";
+import {toast} from "react-toastify"
 
 export const GoalsForm = () => {
     const { activeInputs, inputFormClose, addGoal, goalsData, editGoal } = useGlobalContext();
@@ -26,6 +27,9 @@ export const GoalsForm = () => {
         editActive: false
       }
       addGoal(goalData)
+      toast.success("Goal has been added!", {
+        hideProgressBar: false,
+      });
       // inputFormClose()
       resetInputs()
     }
@@ -54,6 +58,9 @@ export const GoalsForm = () => {
         return goal
       })
       editGoal(updatedData)
+      toast.success("Goal has been edited!", {
+        hideProgressBar: false,
+      });
       // inputFormClose();
     }
     //

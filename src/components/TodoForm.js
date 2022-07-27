@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaTimes } from "react-icons/fa";
 import { BsCheckCircleFill} from "react-icons/bs";
 import { useGlobalContext } from '../context/provider';
+import {toast} from "react-toastify"
 
 
 
@@ -28,6 +29,9 @@ export const TodoForm = () => {
       editActive: false
     })
     resetInputs()
+    toast.success("Todo created!", {
+      hideProgressBar: false,
+    });
   }
   //
   const resetInputs = () => {
@@ -56,6 +60,9 @@ export const TodoForm = () => {
         return t
     })
     handleEditTodo(updatedTodo)
+    toast.success("Todo has been edited!", {
+      hideProgressBar: false,
+    });
   }
   //
   const editMode = (edit) => {

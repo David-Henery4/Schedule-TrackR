@@ -3,6 +3,8 @@ import { AppProvider } from "./context/provider";
 import { Goals, Todo, Week, Weeks, Month, CurrentDay } from "./pages";
 import { NavbarDesk, Header, Sidebar, LayoutGrid, Overlay } from "./components";
 import { ScheduleProvider } from "./context/scheduleContext";
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
   // Will change month path!!!!!
@@ -26,6 +28,7 @@ function App() {
               </Routes>
             </LayoutGrid>
           </Router>
+          <ToastContainer position="top-center"/>
         </ScheduleProvider>
       </AppProvider>
     </>

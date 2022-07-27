@@ -4,6 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { useGlobalContext } from '../context/provider';
 import { useScheduleContext } from '../context/scheduleContext';
 import findActiveEditTab from '../utils/findTabToEdit';
+import {toast} from "react-toastify"
 
 export const EditDelete = ({ activeTab, id }) => {
   const { todoData, deleteTodo, inputFormOpen, handleEditTodo, activePage, goalsData, editGoal, deleteGoal } =
@@ -18,14 +19,23 @@ export const EditDelete = ({ activeTab, id }) => {
     if (todoPage){
       const updatedData = todoData.filter((t) => id !== t.id);
       deleteTodo(updatedData);
+      toast.success("Todo successfully removed!", {
+        hideProgressBar: false,
+      });
     }
     if (goalsPage){
       const updatedData = goalsData.filter((t) => id !== t.id);
       deleteGoal(updatedData)
+      toast.success("Goal successfully removed!", {
+        hideProgressBar: false,
+      });
     }
     if (dayPage || weekPage){
       const updatedData = scheduleOverallData.filter((s) => id !== s.id)
       deleteFromSchedule(updatedData)
+      toast.success("Schedule Activity successfully removed!", {
+        hideProgressBar: false,
+      });
     }
   };
   //

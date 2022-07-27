@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useGlobalContext } from "../context/provider";
 import { useScheduleContext } from "../context/scheduleContext";
+import {toast} from "react-toastify"
 
 const DayWeekForm = ({clearValue}) => {
 const {
@@ -36,6 +37,9 @@ const creatingActivity = (e) => {
       taskDesc: text,
     };
     addToMainSchedule(activity)
+    toast.success("Schedule activity has been added!", {
+      hideProgressBar: false,
+    });
     closeAndClearAfterSubmit()
 };
 //
@@ -54,6 +58,9 @@ const creatingEditActivity = (e) => {
   })
   // set new array to the state
   editScheduleTab(updatedTab)
+  toast.success("Schedule activity has been Edited!", {
+    hideProgressBar: false,
+  });
   closeAndClearAfterSubmit()
 }
 //
