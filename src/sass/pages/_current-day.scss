@@ -27,15 +27,15 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-        // &:nth-child(even){
-        //     background-color: $color-shade;
-        // }
+        align-items: center;
     }
     &__time{
         text-align: center;
         font-size: 1.5rem;
         font-weight: 400;
+    }
+    &__underline{
+        margin: 0 0 1.2rem;
     }
     &-content{
         background-color: $color-primary;

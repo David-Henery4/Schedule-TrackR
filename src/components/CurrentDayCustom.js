@@ -3,8 +3,10 @@ import { BsThreeDots } from "react-icons/bs";
 import { useScheduleContext } from "../context/scheduleContext";
 import { EditDelete } from "./EditDelete";
 import handleEditClickSchedule from "../utils/handleEditClickSchedule";
+import { ReactComponent as Underline } from "../svgs/Sqiggle.svg";
 
-// TODO: CREATING THE DELETE, EDIT AND POPUP MENU BY CHANGING THE 'EDITACTIVE' & 'ACTIVETAB' STATE VALUES.`
+
+// TODO: CREATING THE DELETE, EDIT AND POPUP MENU BY CHANGING THE 'EDITACTIVE' & 'ACTIVETAB' STATE VALUES.
 
 const CurrentDayCustom = ({ todaysActivities }) => {
   const { markActiveScheduleTab, scheduleOverallData } = useScheduleContext();
@@ -21,6 +23,7 @@ const CurrentDayCustom = ({ todaysActivities }) => {
         <h3 className="current-day__time">
           {startTime} - {endTime}
         </h3>
+          <Underline className="current-day__underline"/>
         <div className="current-day-content">
           <BsThreeDots className="current-day-edit-icon" onClick={() => {
             handleEditClick(id)
