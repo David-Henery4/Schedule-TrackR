@@ -4,6 +4,7 @@ import Month from "./month";
 import Week from "./week";
 import Weeks from "./weeks";
 import Todo from "./todo";
+import ErrorPage from "./ErrorPage";
 
 export {
     Goals,
@@ -11,5 +12,6 @@ export {
     Month,
     Week,
     Weeks,
-    Todo
+    Todo,
+    ErrorPage
 }

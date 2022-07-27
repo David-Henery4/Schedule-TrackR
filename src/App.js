@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./context/provider";
-import { Goals, Todo, Week, Weeks, Month, CurrentDay } from "./pages";
+import { Goals, Todo, Week, Weeks, Month, CurrentDay, ErrorPage } from "./pages";
 import { NavbarDesk, Header, Sidebar, LayoutGrid, Overlay } from "./components";
 import { ScheduleProvider } from "./context/scheduleContext";
 import {ToastContainer} from "react-toastify"
@@ -25,6 +25,7 @@ function App() {
                 <Route path="currentday" element={<CurrentDay />} />
                 <Route path="todo" element={<Todo />} />
                 <Route path="goals" element={<Goals />} />
+                <Route path="*" element={<ErrorPage/>}/>
               </Routes>
             </LayoutGrid>
           </Router>
