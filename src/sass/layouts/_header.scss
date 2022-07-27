@@ -52,7 +52,8 @@
   &__date {
     align-self: flex-start;
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 400;
+    font-family: $font-family-secondary;
     @include respond(desktop) {
       font-size: 3rem;
       grid-column: 5/13;

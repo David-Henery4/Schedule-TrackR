@@ -11,6 +11,7 @@ export const Calandar = () => {
   const [tempYear, setTempYear] = useState();
   const [tempMonth, setTempMonth] = useState();
   const [shownMonth, setShownMonth] = useState();
+  // const [currentDate, setCurrentDate] = useState()
   //
   const handleMonthDataInput = () => {
     if (tempMonthData !== null) {
@@ -46,8 +47,19 @@ export const Calandar = () => {
     }
   };
   //
+  const activeMonth = () => {
+    const currentMonth = new Date().getMonth() + 1
+    const currentYear = new Date().getFullYear()
+    if (tempMonthNumber === currentMonth && tempYear === currentYear){
+      return true
+    } else {
+      return false
+    }
+  }
+  //
   useEffect(() => {
     currentDisplayedMonth();
+    // activeMonth()
     // eslint-disable-next-line
   }, [tempMonth]);
   //
@@ -67,7 +79,17 @@ export const Calandar = () => {
               return <h4 key={i}>{name}</h4>;
             })}
         </div>
-        <div className="week-1 grid-item-position">
+        <div
+          className={
+            shownMonth &&
+            shownMonth.week1.some((d) => {
+              return d.day >= 1 && d.day <= 7 && d.day === new Date().getDate();
+            }) &&
+            activeMonth()
+              ? "week-1 grid-item-position active-week"
+              : "week-1 grid-item-position"
+          }
+        >
           {shownMonth &&
             shownMonth.week1.map((w, i) => {
               const { day } = w;
@@ -80,7 +102,19 @@ export const Calandar = () => {
               );
             })}
         </div>
-        <div className="week-2 grid-item-position">
+        <div
+          className={
+            shownMonth &&
+            shownMonth.week2.some((d) => {
+              return (
+                d.day >= 8 && d.day <= 14 && d.day === new Date().getDate()
+              );
+            }) &&
+            activeMonth()
+              ? "week-2 grid-item-position active-week"
+              : "week-2 grid-item-position"
+          }
+        >
           {shownMonth &&
             shownMonth.week2.map((w, i) => {
               const { day } = w;
@@ -93,7 +127,19 @@ export const Calandar = () => {
               );
             })}
         </div>
-        <div className="week-3 grid-item-position">
+        <div
+          className={
+            shownMonth &&
+            shownMonth.week3.some((d) => {
+              return (
+                d.day >= 15 && d.day <= 21 && d.day === new Date().getDate()
+              );
+            }) &&
+            activeMonth()
+              ? "week-3 grid-item-position active-week"
+              : "week-3 grid-item-position"
+          }
+        >
           {shownMonth &&
             shownMonth.week3.map((w, i) => {
               const { day } = w;
@@ -106,7 +152,19 @@ export const Calandar = () => {
               );
             })}
         </div>
-        <div className="week-4 grid-item-position">
+        <div
+          className={
+            shownMonth &&
+            shownMonth.week4.some((d) => {
+              return (
+                d.day >= 22 && d.day <= 28 && d.day === new Date().getDate()
+              );
+            }) &&
+            activeMonth()
+              ? "week-4 grid-item-position active-week"
+              : "week-4 grid-item-position"
+          }
+        >
           {shownMonth &&
             shownMonth.week4.map((w, i) => {
               const { day } = w;
@@ -119,7 +177,19 @@ export const Calandar = () => {
               );
             })}
         </div>
-        <div className="week-5 grid-item-position">
+        <div
+          className={
+            shownMonth &&
+            shownMonth.week5.some((d) => {
+              return (
+                d.day >= 29 && d.day <= 31 && d.day === new Date().getDate()
+              );
+            }) &&
+            activeMonth()
+              ? "week-5 grid-item-position active-week"
+              : "week-5 grid-item-position"
+          }
+        >
           {shownMonth &&
             shownMonth.week5.map((w, i) => {
               const { day } = w;
