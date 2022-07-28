@@ -2,17 +2,41 @@ import React from 'react'
 import {FaTimes} from "react-icons/fa"
 import { navigationDates, navigationDosGoals } from '../data/navbarData'
 import { useGlobalContext } from '../context/provider'
+import { useScheduleContext } from '../context/scheduleContext'
 import {Link, useLocation} from "react-router-dom"
 // make Links!
 
 export const Sidebar = () => {
-  const {closeSidebar, sidebarActive} = useGlobalContext()
+  const {
+    closeSidebar,
+    sidebarActive,
+    clearWholeTodoData,
+    clearWholeGoalsData,
+    activePage
+  } = useGlobalContext();
+  const { clearScheduleData } = useScheduleContext();
   let location = useLocation()
   const {pathname} = location
+  const {todoHeader,goalsHeader} = activePage
+  //
+  const handleClearData = () => {
+    if (todoHeader) {
+      // clear todo data
+      clearWholeTodoData();
+    } else if (goalsHeader) {
+      // clear goals data
+      clearWholeGoalsData();
+    } else {
+      // clear schedule data
+      clearScheduleData();
+    }
+  };
   return (
-    <aside className={`${sidebarActive ? "sidebar sidebar-active" : "sidebar"}`}>
+    <aside
+      className={`${sidebarActive ? "sidebar sidebar-active" : "sidebar"}`}
+    >
       {/**/}
-      <FaTimes className='sidebar-icon' onClick={closeSidebar}/>
+      <FaTimes className="sidebar-icon" onClick={closeSidebar} />
       <div className="sidebar__logo">
         <p>
           Schedule <br /> Track<span>R</span>
@@ -62,6 +86,10 @@ export const Sidebar = () => {
           })}
         </ul>
       </div>
+      <button className="btn clear-btn" onClick={handleClearData}>
+        Clear all {todoHeader ? "todo" : goalsHeader ? "goals" : "schedule"}{" "}
+        data{" "}
+      </button>
     </aside>
   );
 }
