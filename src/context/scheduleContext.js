@@ -10,6 +10,7 @@ import {
   ACTIVE_SCHEDULE_TAB,
   DELETE_FROM_SCHEDULE,
   EDIT_SCHEDULE_TAB,
+  CLEAR_WHOLE_SCHEDULE_DATA,
 } from "../reducer/scheduleActions";
 import { useEffect } from "react";
 
@@ -38,6 +39,10 @@ const ScheduleContext = React.createContext()
 
 const ScheduleProvider = ({children}) => {
     const [state, dispatch] = useReducer(scheduleReducer,initialState)
+    //
+    const clearScheduleData = () => {
+      dispatch({type: CLEAR_WHOLE_SCHEDULE_DATA})
+    }
     //
     const editScheduleTab = (newData) => {
       dispatch({type: EDIT_SCHEDULE_TAB, payload: newData})
@@ -98,6 +103,7 @@ const ScheduleProvider = ({children}) => {
           markActiveScheduleTab,
           deleteFromSchedule,
           editScheduleTab,
+          clearScheduleData,
         }}
       >
         {children}

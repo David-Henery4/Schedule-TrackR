@@ -1,10 +1,30 @@
 import React from 'react'
 import { Link,useLocation } from 'react-router-dom'
 import { navigationDosGoals, navigationDates } from '../data/navbarData';
+import { useGlobalContext } from '../context/provider';
+import { useScheduleContext } from '../context/scheduleContext';
 
 export const NavbarDesk = () => {
+  const { activePage, clearWholeTodoData, clearWholeGoalsData } =
+    useGlobalContext();
+  const { clearScheduleData } = useScheduleContext();
+  const { goalsHeader, todoHeader } = activePage;
+  //
   let location = useLocation()
   const {pathname} = location
+  //
+  const handleClearData = () => {
+    if(todoHeader){ // clear todo data
+      clearWholeTodoData()
+    }
+    else if (goalsHeader){ // clear goals data
+      clearWholeGoalsData()
+    }
+    else { // clear schedule data
+      clearScheduleData()
+    }
+  }
+  //
   return (
     <aside className="desk-nav">
       <div className="desk-nav-content">
@@ -40,6 +60,8 @@ export const NavbarDesk = () => {
             );
           })}
         </ul>
+        {/**/}
+        <button className='btn clear-btn' onClick={handleClearData}>Clear all {todoHeader ? "todo" : goalsHeader ? "goals" : "schedule"} data </button>
       </div>
     </aside>
   );

@@ -57,10 +57,10 @@
             }
         }
         &--schedule{
-            grid-row: 4/9;
+            grid-row: 4/8;
         }
         &--todo-goals{
-            grid-row: 10/12;
+            grid-row: 9/11;
         }
     }
 
@@ -69,6 +69,13 @@
         text-decoration: none;
         color: $font-white;
     }
+}
+
+.clear-btn{
+    grid-row: 12/13;
+    font-size: 1rem;
+    // border: 1px solid white;
+    padding: 1rem;
 }
 
 .active-page{

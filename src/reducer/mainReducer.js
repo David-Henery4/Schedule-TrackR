@@ -12,9 +12,20 @@ import {
   ACTIVE_GOAL,
   EDIT_GOAL,
   DELETE_GOAL,
+  CLEAR_WHOLE_GOAL_DATA,
+  CLEAR_WHOLE_TODO_DATA,
 } from "../reducer/actions";
 
 const mainReducer = (state, action) => {
+  //
+  if (action.type === CLEAR_WHOLE_GOAL_DATA){
+    return {...state, goalsData: []}
+  }
+  //
+  if (action.type === CLEAR_WHOLE_TODO_DATA){
+    return {...state, todoData:[]}
+  }
+  //
   if (action.type === SIDEBAR_ACTIVE) {
     return { ...state, sidebarActive: true };
   }

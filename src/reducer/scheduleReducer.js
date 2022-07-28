@@ -8,11 +8,16 @@ import {
   ACTIVE_SCHEDULE_TAB,
   DELETE_FROM_SCHEDULE,
   EDIT_SCHEDULE_TAB,
+  CLEAR_WHOLE_SCHEDULE_DATA,
 } from "./scheduleActions";
 import formatDate from "../utils/formatDate";
 
 const scheduleReducer = (state, action) => {
 
+  // CLEAR WHOLE SCHEDULE DATA
+  if (action.type === CLEAR_WHOLE_SCHEDULE_DATA){
+    return {...state, scheduleOverallData: []}
+  }
 
   // EDIT SCHEDULE TAB & // UPDATE EDIT SCHEDULE TAB
   if (action.type === EDIT_SCHEDULE_TAB) {

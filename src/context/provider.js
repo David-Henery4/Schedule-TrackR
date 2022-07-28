@@ -14,6 +14,8 @@ import {
   ACTIVE_GOAL,
   EDIT_GOAL,
   DELETE_GOAL,
+  CLEAR_WHOLE_GOAL_DATA,
+  CLEAR_WHOLE_TODO_DATA,
 } from "../reducer/actions";
 //
 import reducer from "../reducer/mainReducer";
@@ -47,6 +49,14 @@ const AppContext = React.createContext();
 //
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer,initialValue)
+  //
+  const clearWholeTodoData = () => {
+    dispatch({type: CLEAR_WHOLE_TODO_DATA})
+  }
+  //
+  const clearWholeGoalsData = () => {
+    dispatch({type: CLEAR_WHOLE_GOAL_DATA})
+  }
   //
   const openSidebar = () => {
   dispatch({type: SIDEBAR_ACTIVE})
@@ -105,7 +115,30 @@ const AppProvider = ({ children }) => {
     localStorage.setItem("goalsData", JSON.stringify(state.goalsData));
   }, [state])
   //
-  return <AppContext.Provider value={{...state, openSidebar, closeSidebar, selectActivePage, inputFormOpen, inputFormClose, addTodo, activeTodoTab, deleteTodo, handleEditTodo, addGoal, activeGoalTab, editGoal, deleteGoal}}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+        selectActivePage,
+        inputFormOpen,
+        inputFormClose,
+        addTodo,
+        activeTodoTab,
+        deleteTodo,
+        handleEditTodo,
+        addGoal,
+        activeGoalTab,
+        editGoal,
+        deleteGoal,
+        clearWholeTodoData,
+        clearWholeGoalsData,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 // Custom helps overwise we would need to import 'useContext' and 'AppContext' to use the data in other components

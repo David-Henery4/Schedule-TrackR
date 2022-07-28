@@ -6,11 +6,15 @@ export const GET_CALANDAR_NEXT = "GET_CALANDAR_NEXT";
 export const GET_CALANDAR_PREV = "GET_CALANDAR_PREV";
 export const INPUT_ACTIVE = "INPUT_ACTIVE";
 export const INPUT_CLOSE = "INPUT_CLOSE";
+// Todo data
 export const ADD_TODO = "ADD_TODO";
 export const ACTIVE_TODO_TAB = "ACTIVE_TODO_TAB";
 export const DELETE_TODO = "DELETE_TODO";
 export const EDIT_TODO = "EDIT_TODO";
+export const CLEAR_WHOLE_TODO_DATA = "CLEAR_WHOLE_TODO_DATA";
+// Goal Data
 export const ADD_GOAL = "ADD_GOAL";
 export const DELETE_GOAL = "DELETE_GOAL";
 export const EDIT_GOAL = "EDIT_GOAL";
 export const ACTIVE_GOAL = "ACTIVE_GOAL";
+export const CLEAR_WHOLE_GOAL_DATA = "CLEAR_WHOLE_GOAL_DATA";
