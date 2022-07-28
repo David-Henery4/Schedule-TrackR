@@ -20,12 +20,14 @@ export const GoalsForm = () => {
     //
     const handleSubmit = (e) => {
       const goalData = {
-        id : Date.now(),
+        id: Date.now(),
         goalDate,
         goalInput,
         activeTab: false,
-        editActive: false
-      }
+        editActive: false,
+        checkedSuccess: false,
+        checkedFailed: false,
+      };
       addGoal(goalData)
       toast.success("Goal has been added!", {
         hideProgressBar: false,

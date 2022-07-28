@@ -14,6 +14,8 @@ import {
   DELETE_GOAL,
   CLEAR_WHOLE_GOAL_DATA,
   CLEAR_WHOLE_TODO_DATA,
+  MARKING_GOAL_COMPLETED,
+  MARKING_GOAL_FAILED,
 } from "../reducer/actions";
 
 const mainReducer = (state, action) => {
@@ -154,7 +156,36 @@ const mainReducer = (state, action) => {
     const newData = action.payload;
     return { ...state, goalsData: newData };
   }
-
+  // MARK GOAL STATUS
+  if (action.type === MARKING_GOAL_COMPLETED){
+    const {id,success} = action.payload
+    const newData = state.goalsData.map((goal) => {
+      // isn't perfect (toggle needed)
+      if (id === goal.id) {
+        goal.checkedSuccess = success;
+        if (goal.checkedSuccess) {
+          goal.checkedFailed = false;
+        }
+      }
+      return goal;
+    })
+    return {...state, goalsData : newData}
+  }
+  //
+  if (action.type === MARKING_GOAL_FAILED){
+    const {id, failed} = action.payload
+    const newData = state.goalsData.map((goal) => {
+      if (id === goal.id) {
+        // isn't perfect (toggle needed)
+        goal.checkedFailed = failed
+        if (goal.checkedFailed) {
+          goal.checkedSuccess = false;
+        }
+      }
+      return goal
+    })
+    return {...state, goalsData : newData}
+  }
   // NO MATCHING ACTION TYPE ERROR
   throw new Error(`No matching action type: ${action.type}`);
 };

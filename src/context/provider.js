@@ -16,6 +16,8 @@ import {
   DELETE_GOAL,
   CLEAR_WHOLE_GOAL_DATA,
   CLEAR_WHOLE_TODO_DATA,
+  MARKING_GOAL_COMPLETED,
+  MARKING_GOAL_FAILED,
 } from "../reducer/actions";
 //
 import reducer from "../reducer/mainReducer";
@@ -110,6 +112,15 @@ const AppProvider = ({ children }) => {
     dispatch({ type: DELETE_GOAL, payload: goalData});
   }
   //
+  const markingGoalCompleted = (id,success) => {
+    dispatch({type: MARKING_GOAL_COMPLETED, payload: {id,success
+    }})
+  }
+  //
+  const markingGoalFailed = (id,failed) => {
+    dispatch({type: MARKING_GOAL_FAILED, payload: {id,failed}})
+  }
+  //
   useEffect(() => {
     localStorage.setItem("todoData", JSON.stringify(state.todoData));
     localStorage.setItem("goalsData", JSON.stringify(state.goalsData));
@@ -134,6 +145,8 @@ const AppProvider = ({ children }) => {
         deleteGoal,
         clearWholeTodoData,
         clearWholeGoalsData,
+        markingGoalCompleted,
+        markingGoalFailed
       }}
     >
       {children}

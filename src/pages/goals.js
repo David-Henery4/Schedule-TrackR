@@ -40,7 +40,15 @@ export const Goals = () => {
               );
             })
           : goalsData.map((tab) => {
-              const { id, goalDate, goalInput, activeTab } = tab;
+              const {
+                id,
+                goalDate,
+                goalInput,
+                activeTab,
+                checkedSuccess,
+                checkedFailed,
+              } = tab;
+              // console.log(tab)
               return (
                 <div className="goals-tab" key={id}>
                   <p className="goals__start">{goalDate}</p>
@@ -52,7 +60,7 @@ export const Goals = () => {
                     className="goals__edit"
                   />
                   <article className="goals__action">{goalInput}</article>
-                  <GoalsOutcome />
+                  <GoalsOutcome {...tab}/>
                 </div>
               );
             })}

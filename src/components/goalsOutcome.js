@@ -1,17 +1,24 @@
 import React, {useState} from 'react'
+import { useEffect } from 'react';
 import { FiXSquare, FiSquare, FiCheckSquare } from "react-icons/fi";
+import { useGlobalContext } from '../context/provider';
 
-export const GoalsOutcome = () => {
-  const [checkedSuccess, setCheckedSuccess] = useState(false);
-  const [checkedFailed, setCheckedFailed] = useState(false);
+export const GoalsOutcome = ({ id, checkedSuccess, checkedFailed }) => {
+  const { markingGoalCompleted, markingGoalFailed } = useGlobalContext();
+  const [checkedSuccessToggle, setCheckedSuccessToggle] = useState(false);
+  const [checkedFailedToggle, setCheckedFailedToggle] = useState(false);
   //
   const checkMarkSuccess = () => {
-    setCheckedSuccess(!checkedSuccess);
-    if (checkedFailed) setCheckedFailed(false)
+    // markingGoalCompleted(id);
+    setCheckedSuccessToggle(!checkedSuccessToggle);
+    markingGoalCompleted(id,checkedSuccessToggle);
+    // if (checkedFailed) setCheckedFailed(false)
   };
   const checkMarkFailed = () => {
-    setCheckedFailed(!checkedFailed);
-    if (checkedSuccess) setCheckedSuccess(false)
+    // markingGoalFailed(id);
+    setCheckedFailedToggle(!checkedFailedToggle);
+    markingGoalFailed(id,checkedFailedToggle);
+    // if (checkedSuccess) setCheckedSuccess(false)
   };
   //
   return (
