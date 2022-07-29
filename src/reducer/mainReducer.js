@@ -19,23 +19,23 @@ import {
 } from "../reducer/actions";
 
 const mainReducer = (state, action) => {
-  //
-  if (action.type === CLEAR_WHOLE_GOAL_DATA){
-    return {...state, goalsData: []}
+  // CLEAR ALL GOAL DATA
+  if (action.type === CLEAR_WHOLE_GOAL_DATA) {
+    return { ...state, goalsData: [] };
   }
-  //
-  if (action.type === CLEAR_WHOLE_TODO_DATA){
-    return {...state, todoData:[]}
+  // CLEAR ALL TODO DATA
+  if (action.type === CLEAR_WHOLE_TODO_DATA) {
+    return { ...state, todoData: [] };
   }
-  //
+  // SIDEBAR ACTIVE
   if (action.type === SIDEBAR_ACTIVE) {
     return { ...state, sidebarActive: true };
   }
-  //
+  // SIDEBAR CLOSED
   if (action.type === SIDEBAR_CLOSED) {
     return { ...state, sidebarActive: false };
   }
-  //
+  // SETTING ACTIVE PAGES
   if (action.type === SET_ACTIVE_PAGE) {
     return { ...state, activePage: { ...action.payload } };
   }
@@ -157,8 +157,8 @@ const mainReducer = (state, action) => {
     return { ...state, goalsData: newData };
   }
   // MARK GOAL STATUS
-  if (action.type === MARKING_GOAL_COMPLETED){
-    const {id,success} = action.payload
+  if (action.type === MARKING_GOAL_COMPLETED) {
+    const { id, success } = action.payload;
     const newData = state.goalsData.map((goal) => {
       // isn't perfect (toggle needed)
       if (id === goal.id) {
@@ -168,23 +168,23 @@ const mainReducer = (state, action) => {
         }
       }
       return goal;
-    })
-    return {...state, goalsData : newData}
+    });
+    return { ...state, goalsData: newData };
   }
   //
-  if (action.type === MARKING_GOAL_FAILED){
-    const {id, failed} = action.payload
+  if (action.type === MARKING_GOAL_FAILED) {
+    const { id, failed } = action.payload;
     const newData = state.goalsData.map((goal) => {
       if (id === goal.id) {
         // isn't perfect (toggle needed)
-        goal.checkedFailed = failed
+        goal.checkedFailed = failed;
         if (goal.checkedFailed) {
           goal.checkedSuccess = false;
         }
       }
-      return goal
-    })
-    return {...state, goalsData : newData}
+      return goal;
+    });
+    return { ...state, goalsData: newData };
   }
   // NO MATCHING ACTION TYPE ERROR
   throw new Error(`No matching action type: ${action.type}`);

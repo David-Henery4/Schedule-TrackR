@@ -4,7 +4,7 @@ import { navigationDates, navigationDosGoals } from '../data/navbarData'
 import { useGlobalContext } from '../context/provider'
 import { useScheduleContext } from '../context/scheduleContext'
 import {Link, useLocation} from "react-router-dom"
-// make Links!
+import { toast } from "react-toastify";
 
 export const Sidebar = () => {
   const {
@@ -23,13 +23,17 @@ export const Sidebar = () => {
     if (todoHeader) {
       // clear todo data
       clearWholeTodoData();
+      toast.success("Todos have been removed!")
     } else if (goalsHeader) {
       // clear goals data
       clearWholeGoalsData();
+      toast.success("Goals have been removed!");
     } else {
       // clear schedule data
       clearScheduleData();
+      toast.success("Schedules have been removed!");
     }
+    closeSidebar()
   };
   return (
     <aside

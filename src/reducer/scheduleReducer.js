@@ -9,10 +9,18 @@ import {
   DELETE_FROM_SCHEDULE,
   EDIT_SCHEDULE_TAB,
   CLEAR_WHOLE_SCHEDULE_DATA,
+  REMOVE_EXPIRED_SCHEDULE_DATA,
 } from "./scheduleActions";
 import formatDate from "../utils/formatDate";
+import removeExpiredData from "../utils/expiredData";
 
 const scheduleReducer = (state, action) => {
+
+  // REMOVED EXPIRED SCHEDULE 
+  if (action.type === REMOVE_EXPIRED_SCHEDULE_DATA){
+    const upToDateSchedule = removeExpiredData(state.scheduleOverallData)
+    return{...state, scheduleOverallData: upToDateSchedule}
+  }
 
   // CLEAR WHOLE SCHEDULE DATA
   if (action.type === CLEAR_WHOLE_SCHEDULE_DATA){

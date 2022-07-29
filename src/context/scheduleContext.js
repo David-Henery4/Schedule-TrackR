@@ -11,6 +11,7 @@ import {
   DELETE_FROM_SCHEDULE,
   EDIT_SCHEDULE_TAB,
   CLEAR_WHOLE_SCHEDULE_DATA,
+  REMOVE_EXPIRED_SCHEDULE_DATA,
 } from "../reducer/scheduleActions";
 import { useEffect } from "react";
 
@@ -79,6 +80,14 @@ const ScheduleProvider = ({children}) => {
     const incDecMonth = (value) =>{
         dispatch({type: INCREASE_DECREASE_MONTH, payload: value})
     }
+    //
+    const expiredSchedule = () => {
+      dispatch({type: REMOVE_EXPIRED_SCHEDULE_DATA})
+    }
+    //
+    useEffect(() => {
+      expiredSchedule()
+    }, [])
     //
     useEffect(() => {
       setCurrentMonth()

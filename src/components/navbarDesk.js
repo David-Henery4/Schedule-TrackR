@@ -3,6 +3,7 @@ import { Link,useLocation } from 'react-router-dom'
 import { navigationDosGoals, navigationDates } from '../data/navbarData';
 import { useGlobalContext } from '../context/provider';
 import { useScheduleContext } from '../context/scheduleContext';
+import { toast } from "react-toastify";
 
 export const NavbarDesk = () => {
   const { activePage, clearWholeTodoData, clearWholeGoalsData } =
@@ -16,12 +17,15 @@ export const NavbarDesk = () => {
   const handleClearData = () => {
     if(todoHeader){ // clear todo data
       clearWholeTodoData()
+      toast.success("Todos have been removed!");
     }
     else if (goalsHeader){ // clear goals data
       clearWholeGoalsData()
+      toast.success("Goals have been removed!");
     }
     else { // clear schedule data
       clearScheduleData()
+      toast.success("Schedules have been removed!");
     }
   }
   //
