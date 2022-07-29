@@ -24,11 +24,11 @@ function App() {
                 <Route path="currentday" element={<CurrentDay />} />
                 <Route path="todo" element={<Todo />} />
                 <Route path="goals" element={<Goals />} />
-                <Route path="*" element={<ErrorPage/>}/>
+                <Route path="*" element={<ErrorPage />} />
               </Routes>
             </LayoutGrid>
           </Router>
-          <ToastContainer position="top-center"/>
+          <ToastContainer position="top-center" hideProgressBar={true} />
         </ScheduleProvider>
       </AppProvider>
     </>
