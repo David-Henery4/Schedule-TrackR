@@ -3,7 +3,6 @@ import defaultWeekData from "../data/defaultWeekData";
 import { WeekDay } from "../components/weekDay";
 import { DayWeekContainer } from "../components";
 import { useEffect } from "react";
-import { getDatesObj } from "../data/calandarData";
 import formatDate from "../utils/formatDate";
 import { useState } from "react";
 import { useScheduleContext } from "../context/scheduleContext";

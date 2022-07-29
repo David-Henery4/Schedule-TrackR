@@ -1,4 +1,3 @@
-// Might replace placeholders with labels.
 
 .todo-form {
   height: 100%;
@@ -10,7 +9,7 @@
   align-items: center;
   gap: 2rem;
   &-modal {
-    display: none; // temp
+    display: none;
     height: 80%;
     width: 90%;
     max-width: 540px;
@@ -41,9 +40,6 @@
   }
 }
 
-
-
 .input-open {
-  // might be re-used, if so move to more generic folder.
   display: block;
 }

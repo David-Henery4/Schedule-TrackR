@@ -1,7 +1,6 @@
 .week {
   width: 100%;
   overflow-y: scroll;
-  // padding: 4rem 1.5rem;
   @include respond (desktop){
     border-top: 2px solid $color-secondary;
     grid-column: 2/-1;
@@ -9,7 +8,6 @@
     padding: 0;
   }
   &-container {
-    // padding: 2% 0;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -64,7 +62,6 @@
     position: relative;
     display: grid;
     place-items: center;
-    // align-items: end;
   }
   &__times {
     position: absolute;

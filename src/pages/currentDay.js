@@ -6,16 +6,6 @@ import mockCurrentDayData from "../data/mockCurrentDay";
 import { DayWeekContainer, CurrentDayCustom, CurrentDayDefault } from "../components";
 import { useState } from "react";
 
-// might not need current.
-// const currentDate = new Date(`${todaysMonth{todaysDate},${todaysYear}`);
-// console.log(+currentDate)
-// const {
-//   date: todaysDate,
-//   month: todaysMonth,
-//   year: todaysYear,
-// } = todaysDateFormated;
-// todaysDateFormated
-
 export const CurrentDay = () => {
   const { state } = useLocation();
   const [tempDate,setTempDate] = useState();
@@ -36,8 +26,6 @@ export const CurrentDay = () => {
   const todayActivities = () => {
     const scheduleData = scheduleOverallData.slice()
     const currentActivities = scheduleData.filter((a) => a.dateStamp === tempDate)
-    // console.log(scheduleData)
-    // console.log(currentActivities)
     setTodaysActivities(currentActivities)
   }
   //

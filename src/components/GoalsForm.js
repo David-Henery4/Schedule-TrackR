@@ -13,8 +13,6 @@ export const GoalsForm = () => {
     // input values
     const [goalDate,setGoalDate] = useState("")
     const [goalInput,setGoalInput] = useState("")
-    // Edit Values
-    // const [isEditActive, setIsEditActive] = useState(false)
     const [editGoalDate, setEditGoalDate] = useState("")
     const [editGoalInput, setEditGoalInput] = useState("")
     //
@@ -32,7 +30,6 @@ export const GoalsForm = () => {
       toast.success("Goal has been added!", {
         hideProgressBar: false,
       });
-      // inputFormClose()
       resetInputs()
     }
     //
@@ -63,7 +60,6 @@ export const GoalsForm = () => {
       toast.success("Goal has been edited!", {
         hideProgressBar: false,
       });
-      // inputFormClose();
     }
     //
     const setEdit = (edit) => {

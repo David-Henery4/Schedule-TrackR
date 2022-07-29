@@ -1,4 +1,4 @@
-// import {jan,feb,march,april,may,june,july,august,september,october,november,demember} from "../month-images"
+
 import jan from "../month-images/Jan.jpg";
 import feb from "../month-images/feb.jpg";
 import march from "../month-images/march.jpg";

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { useEffect } from 'react';
 import { FiXSquare, FiSquare, FiCheckSquare } from "react-icons/fi";
 import { useGlobalContext } from '../context/provider';
 
@@ -9,16 +8,12 @@ export const GoalsOutcome = ({ id, checkedSuccess, checkedFailed }) => {
   const [checkedFailedToggle, setCheckedFailedToggle] = useState(false);
   //
   const checkMarkSuccess = () => {
-    // markingGoalCompleted(id);
     setCheckedSuccessToggle(!checkedSuccessToggle);
     markingGoalCompleted(id,checkedSuccessToggle);
-    // if (checkedFailed) setCheckedFailed(false)
   };
   const checkMarkFailed = () => {
-    // markingGoalFailed(id);
     setCheckedFailedToggle(!checkedFailedToggle);
     markingGoalFailed(id,checkedFailedToggle);
-    // if (checkedSuccess) setCheckedSuccess(false)
   };
   //
   return (

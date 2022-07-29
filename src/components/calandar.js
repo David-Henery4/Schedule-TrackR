@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { getDatesObj } from "../data/calandarData";
 import { useScheduleContext } from "../context/scheduleContext";
 
-// CREATE DUMMY DATA TO LOOP OVER THE DATES
 export const Calandar = () => {
   const { tempMonthData } = useScheduleContext();
   //
@@ -11,7 +10,6 @@ export const Calandar = () => {
   const [tempYear, setTempYear] = useState();
   const [tempMonth, setTempMonth] = useState();
   const [shownMonth, setShownMonth] = useState();
-  // const [currentDate, setCurrentDate] = useState()
   //
   const handleMonthDataInput = () => {
     if (tempMonthData !== null) {
@@ -59,7 +57,6 @@ export const Calandar = () => {
   //
   useEffect(() => {
     currentDisplayedMonth();
-    // activeMonth()
     // eslint-disable-next-line
   }, [tempMonth]);
   //

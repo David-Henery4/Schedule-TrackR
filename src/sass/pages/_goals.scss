@@ -11,11 +11,9 @@
   }
   &-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // might switch back to 430px
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center; 
     align-items: flex-start;
-    // justify-content: center; // aligns col track
-    // place-items: center;
     gap: 4rem;
     @include respond (desktop){
       justify-items: flex-start;
@@ -82,13 +80,5 @@
   }
   &-icon{
     display: block;
-    // fill: green;
-    // stroke: red;
-  }
-  &__success {
-    
-  }
-  &__failed {
-    
   }
 }

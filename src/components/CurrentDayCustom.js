@@ -5,9 +5,6 @@ import { EditDelete } from "./EditDelete";
 import handleEditClickSchedule from "../utils/handleEditClickSchedule";
 import { ReactComponent as Underline } from "../svgs/Sqiggle.svg";
 
-
-// TODO: CREATING THE DELETE, EDIT AND POPUP MENU BY CHANGING THE 'EDITACTIVE' & 'ACTIVETAB' STATE VALUES.
-
 const CurrentDayCustom = ({ todaysActivities }) => {
   const { markActiveScheduleTab, scheduleOverallData } = useScheduleContext();
 

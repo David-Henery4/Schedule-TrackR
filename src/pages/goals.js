@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {GoalsOutcome, GoalsForm, EditDelete} from '../components';
 import { BsThreeDots } from "react-icons/bs";
 import mockGoalsData from '../data/mockGoalsData';
@@ -45,10 +45,7 @@ export const Goals = () => {
                 goalDate,
                 goalInput,
                 activeTab,
-                checkedSuccess,
-                checkedFailed,
               } = tab;
-              // console.log(tab)
               return (
                 <div className="goals-tab" key={id}>
                   <p className="goals__start">{goalDate}</p>

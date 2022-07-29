@@ -58,7 +58,6 @@ export const EditDelete = ({ activeTab, id }) => {
     <div
       className={activeTab ? "edit-delete-active edit-delete" : "edit-delete"}
     >
-      {/* handleEdit was here onclick */}
       <button className="edit" onClick={() => {
         handleEdit()
       }}>

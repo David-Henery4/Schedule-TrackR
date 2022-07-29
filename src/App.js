@@ -7,7 +7,6 @@ import {ToastContainer} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 function App() {
-  // Will change month path!!!!!
   return (
     <>
       <AppProvider>

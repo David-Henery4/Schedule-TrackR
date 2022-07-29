@@ -2,7 +2,6 @@ import React from 'react'
 import DayWeekForm from './DayWeekForm';
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from '../context/provider';
-import { useScheduleContext } from '../context/scheduleContext';
 import { useState } from 'react';
 
 // make form component

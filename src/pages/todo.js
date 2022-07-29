@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {BsThreeDots} from "react-icons/bs";
 import mockTodos from '../data/mockTodoData';
 import { TodoForm, EditDelete } from '../components';
 import { useGlobalContext } from '../context/provider'
-// import { useGlobalContext } from '../context/provider'
+
 
 export const Todo = () => {
   const {todoData, activeTodoTab} = useGlobalContext()
@@ -16,19 +16,12 @@ export const Todo = () => {
       }
       if (id !== t.id){
         t.activeTodo = false;
-        t.editActive = false; // prob not needed!
+        t.editActive = false;
       }
       return t
     })
     activeTodoTab(updatedData)
   }
-  // COME BACK TOO
-  // CLOSE EDIT MODAL ON BODY CLICK!
-  // document.body.addEventListener("click", function(){
-  //   console.log("body clicked")
-  //   const updated = todoData.map(t => t.activeTodo = false)
-  //   activeTodoTab(updated)
-  // })
   //
   return (
     <section className="todo">

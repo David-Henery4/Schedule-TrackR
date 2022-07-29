@@ -2,10 +2,13 @@ import React from 'react'
 import { useGlobalContext } from '../context/provider';
 
 export const Overlay = () => {
-    const { overlayActive } = useGlobalContext()
+    const { overlayActive, inputFormClose } = useGlobalContext();
     return (
-    <div className={`${overlayActive ? "overlay overlay-active" : "overlay"}`}></div>
-    )
+    <div
+        className={`${overlayActive ? "overlay overlay-active" : "overlay"}`}
+        onClick={inputFormClose}
+    ></div>
+    );
 }
 
 export default Overlay
