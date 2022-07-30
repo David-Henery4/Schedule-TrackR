@@ -98,7 +98,7 @@ export const TodoForm = () => {
             type="text"
             name="todo-when"
             id="todo-when"
-            autocomplete="off"
+            autoComplete='off'
             placeholder="When..."
             onChange={(e) => {
               if (editActive) {
@@ -115,7 +115,7 @@ export const TodoForm = () => {
             type="text"
             name="todo-title"
             id="todo-title"
-            autocomplete="off"
+            autoComplete='off'
             placeholder="Title..."
             onChange={(e) => {
               if (editActive) {
@@ -131,7 +131,7 @@ export const TodoForm = () => {
             className="input-basic todo-form__desc-input"
             name="todo-desc"
             id="todo-desc"
-            autocomplete="off"
+            autoComplete='off'
             placeholder="Description..."
             onChange={(e) => {
               if (editActive) {

@@ -96,7 +96,7 @@ export const GoalsForm = () => {
             }}
             type="text"
             className="goals-form__date"
-            autocomplete="off"
+            autoComplete="off"
             placeholder="Timeframe..."
             value={currentEdit ? editGoalDate : goalDate}
           />
@@ -111,8 +111,8 @@ export const GoalsForm = () => {
             name="goal"
             id="goal"
             className="goals-form__input"
-            autocomplete="off"
             placeholder="Goal details..."
+            autoComplete="off"
             value={currentEdit ? editGoalInput : goalInput}
           ></textarea>
           {formCompleted ? (

@@ -25,7 +25,8 @@ The "current week", "month", "weeks" and "day" all interact or display the sched
 
 The "To do's" page only handles the todos data, while the "Goals" only handles the goals data.
 
-(SCREEN SHOT OF FIRST PAGE HERE)
+
+![schedule trackr home](/readme-images/schedule%20trackr-homepage.png)
 
 
 ## Creating and handling a schedule
@@ -34,18 +35,18 @@ In order to start creating a schedule, the user has to first choose when they wa
 
 (User can also increment though the months from the "weeks" page using the arrow icons.)
 
-(Gif showing date selection.)
+![trackr date selection](/readme-images/schedule-trackr-date-selection.gif)
 
 From then on, all schedule data created for this date will always be visiable on the "day" page on that current date.
 The user can use this to create and view their schedule for any date they want.
 
-(gif showing schedule creation, with form input, for different dates.)
+![trackR form creation](/readme-images/schedule-trackr-schedule-creation.gif)
 
 In the "current week" page the users schedule for that current week will be displayed and split up into the different days of the week, while also remaining in time order.
 
 There is a option for the user to edit or delete individual activities from their schedule in ether the "day" page or the "current week" page by clicking the icon in the top right of the activity tab.
 
-(gif showing delete and edit functionality).
+![trackr delete and edit](/readme-images/schedule-trackr-delete-edit-fucntions.gif)
 
 ### Using the Goals and Todo features
 
@@ -53,7 +54,7 @@ To start using the goals and todo features, the user can select ether the "To Do
 
 The Goals tab is different from the todos tab. In the goals tab users can mark wether they achieved their goal or not, this will enable the user to keep track of their individual goals.
 
-(gif showing add icon functionality & the achieved/ failed toggle)
+![goals functionality](/readme-images/schedule-trackr-goals-functionality.gif)
 
 Both the goals & todo tabs can be deleted and edited individually by selecting the icon in the top right corner of the tab. (The same icon used in the schedule tabs)
 
@@ -61,12 +62,21 @@ Both the goals & todo tabs can be deleted and edited individually by selecting t
 
 The user can choose to clear all data from the relevent page by clicking the "clear all" button that can be found at the bottom of the sidebar. The user has to be on the "todo" page to clear the todo data, the "goal" page to clear the goals and any of the other pages to clear the schedule data.
 
-(gif showing the different clear data buttons.)
+![trackr clear functionality](/readme-images/schedule-trackr-clear-functionality.gif)
 
 ## Schedule data expiry
 
 All schedule data that is older than 7 days will be deleted. This is to prevent old data piling up and taking up to much space.
 
+## Improvements to be added
+
+I will be updating schedule trackr with a few improvements in the future.
+
+One improvement will be to update the calendar ui, so the names of the week days dictate the placement of the dates and not the other way around.
+
+Another update i will be looking to add is to create a chrome extension version of Schedule trackR, so users can toggle notifications on their schedule activities and then be alerted in the browser when it's time to start a activity.
+
+Look out for these updates and more in the future.
 
 
 

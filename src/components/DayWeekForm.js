@@ -102,13 +102,13 @@ useEffect(() => {
             <label htmlFor="">Start time</label>
             <input
               id="dw__time-input--start"
+              autoComplete="off"
               name="dw__time-input--start"
               type="time"
               value={startTime}
               onChange={(e) => {
                 setStartTime(e.target.value);
               }}
-              autocomplete="off"
             />
             {/* End Time */}
           </span>
@@ -119,7 +119,7 @@ useEffect(() => {
               name="dw__time-input--end"
               type="time"
               value={endTime}
-              autocomplete="off"
+              autoComplete="off"
               onChange={(e) => {
                 setEndTime(e.target.value);
               }}
@@ -134,7 +134,7 @@ useEffect(() => {
             id="dw-title"
             type="text"
             value={title}
-            autocomplete="off"
+            autoComplete="off"
             onChange={(e) => {
               setTitle(e.target.value);
             }}
@@ -144,7 +144,7 @@ useEffect(() => {
         <span className="dw-form__text">
           <label htmlFor="dw-text">Activity</label>
           <textarea
-            autocomplete="off"
+            autoComplete="off"
             name="dw-text"
             id="dw-text"
             value={text}
