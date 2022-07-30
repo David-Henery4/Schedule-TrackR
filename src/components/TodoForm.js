@@ -29,9 +29,7 @@ export const TodoForm = () => {
       editActive: false
     })
     resetInputs()
-    toast.success("Todo created!", {
-      hideProgressBar: false,
-    });
+    toast.success("Todo created!");
   }
   //
   const resetInputs = () => {
@@ -60,9 +58,7 @@ export const TodoForm = () => {
         return t
     })
     handleEditTodo(updatedTodo)
-    toast.success("Todo has been edited!", {
-      hideProgressBar: false,
-    });
+    toast.success("Todo has been edited!");
   }
   //
   const editMode = (edit) => {
@@ -88,10 +84,13 @@ export const TodoForm = () => {
       }`}
     >
       <div className="todo-form-container">
-        <FaTimes className="exit-icon" onClick={() => {
-          inputFormClose()
-          resetInputs()
-        }} />
+        <FaTimes
+          className="exit-icon"
+          onClick={() => {
+            inputFormClose();
+            resetInputs();
+          }}
+        />
         <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
           <input
             value={editActive ? todoWhenEdit : todoWhen}
@@ -99,6 +98,7 @@ export const TodoForm = () => {
             type="text"
             name="todo-when"
             id="todo-when"
+            autocomplete="off"
             placeholder="When..."
             onChange={(e) => {
               if (editActive) {
@@ -115,6 +115,7 @@ export const TodoForm = () => {
             type="text"
             name="todo-title"
             id="todo-title"
+            autocomplete="off"
             placeholder="Title..."
             onChange={(e) => {
               if (editActive) {
@@ -130,11 +131,12 @@ export const TodoForm = () => {
             className="input-basic todo-form__desc-input"
             name="todo-desc"
             id="todo-desc"
+            autocomplete="off"
             placeholder="Description..."
             onChange={(e) => {
-              if (editActive){
-                setTodoDescEdit(e.target.value)
-              } else{
+              if (editActive) {
+                setTodoDescEdit(e.target.value);
+              } else {
                 setTodoDesc(e.target.value);
               }
             }}
@@ -146,10 +148,10 @@ export const TodoForm = () => {
               className="btn"
               type="submit"
               onClick={() => {
-                if (editActive){
-                  handleEditUpdate()
+                if (editActive) {
+                  handleEditUpdate();
                   handleFormCompletion();
-                } else{
+                } else {
                   handleSubmit();
                   handleFormCompletion();
                 }

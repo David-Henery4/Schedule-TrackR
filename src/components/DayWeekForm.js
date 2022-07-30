@@ -37,9 +37,7 @@ const creatingActivity = (e) => {
       taskDesc: text,
     };
     addToMainSchedule(activity)
-    toast.success("Schedule activity has been added!", {
-      hideProgressBar: false,
-    });
+    toast.success("Schedule activity has been added!");
     closeAndClearAfterSubmit()
 };
 //
@@ -58,9 +56,7 @@ const creatingEditActivity = (e) => {
   })
   // set new array to the state
   editScheduleTab(updatedTab)
-  toast.success("Schedule activity has been Edited!", {
-    hideProgressBar: false,
-  });
+  toast.success("Schedule activity has been Edited!");
   closeAndClearAfterSubmit()
 }
 //
@@ -109,7 +105,10 @@ useEffect(() => {
               name="dw__time-input--start"
               type="time"
               value={startTime}
-              onChange={(e) => {setStartTime(e.target.value)}}
+              onChange={(e) => {
+                setStartTime(e.target.value);
+              }}
+              autocomplete="off"
             />
             {/* End Time */}
           </span>
@@ -120,8 +119,9 @@ useEffect(() => {
               name="dw__time-input--end"
               type="time"
               value={endTime}
+              autocomplete="off"
               onChange={(e) => {
-                setEndTime(e.target.value)
+                setEndTime(e.target.value);
               }}
             />
           </span>
@@ -134,6 +134,7 @@ useEffect(() => {
             id="dw-title"
             type="text"
             value={title}
+            autocomplete="off"
             onChange={(e) => {
               setTitle(e.target.value);
             }}
@@ -143,6 +144,7 @@ useEffect(() => {
         <span className="dw-form__text">
           <label htmlFor="dw-text">Activity</label>
           <textarea
+            autocomplete="off"
             name="dw-text"
             id="dw-text"
             value={text}
@@ -152,8 +154,13 @@ useEffect(() => {
           ></textarea>
         </span>
         {/* SUBMIT BTN */}
-        <button type="button" className="btn" onClick={(e) => editActive ?creatingEditActivity(e) : creatingActivity(e)
-        }>
+        <button
+          type="button"
+          className="btn"
+          onClick={(e) =>
+            editActive ? creatingEditActivity(e) : creatingActivity(e)
+          }
+        >
           Submit
         </button>
       </form>

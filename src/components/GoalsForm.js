@@ -27,9 +27,7 @@ export const GoalsForm = () => {
         checkedFailed: false,
       };
       addGoal(goalData)
-      toast.success("Goal has been added!", {
-        hideProgressBar: false,
-      });
+      toast.success("Goal has been added!");
       resetInputs()
     }
     //
@@ -57,9 +55,7 @@ export const GoalsForm = () => {
         return goal
       })
       editGoal(updatedData)
-      toast.success("Goal has been edited!", {
-        hideProgressBar: false,
-      });
+      toast.success("Goal has been edited!");
     }
     //
     const setEdit = (edit) => {
@@ -82,10 +78,13 @@ export const GoalsForm = () => {
       }`}
     >
       <div className="goals-form-container">
-        <FaTimes className="exit-icon" onClick={() => {
-          inputFormClose()
-          resetInputs()
-        }} />
+        <FaTimes
+          className="exit-icon"
+          onClick={() => {
+            inputFormClose();
+            resetInputs();
+          }}
+        />
         <form className="goals-form" onSubmit={(e) => e.preventDefault()}>
           <input
             onChange={(e) => {
@@ -97,6 +96,7 @@ export const GoalsForm = () => {
             }}
             type="text"
             className="goals-form__date"
+            autocomplete="off"
             placeholder="Timeframe..."
             value={currentEdit ? editGoalDate : goalDate}
           />
@@ -111,6 +111,7 @@ export const GoalsForm = () => {
             name="goal"
             id="goal"
             className="goals-form__input"
+            autocomplete="off"
             placeholder="Goal details..."
             value={currentEdit ? editGoalInput : goalInput}
           ></textarea>
