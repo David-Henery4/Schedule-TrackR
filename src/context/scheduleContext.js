@@ -17,8 +17,6 @@ import { useEffect } from "react";
 
 const initialScheduleState = {
   scheduleOverallData: JSON.parse(localStorage.getItem("scheduleOverallData")) || [],
-  scheduleTodaysData: [],
-  scheduleWeekData: [],
 };
 
 const initialState = {
