@@ -15,8 +15,8 @@ Schedule TrackR was built using:
 
 ## How to use
 
-Schedule TrackR can be found at [schedule tracker](#"ScheduleTrackR").
-(Link to be added)
+Schedule TrackR can be found here: [Schedule TrackR](https://schedule-trackr.netlify.app/)
+
 
 When you first open schedule trackR you will start on the months page. From here you can choose what one of three main features you would like to use.
 Creating a schedule, creating goals or creating a todo list.
@@ -75,6 +75,8 @@ I will be updating schedule trackr with a few improvements in the future.
 One improvement will be to update the calendar ui, so the names of the week days dictate the placement of the dates and not the other way around.
 
 Another update i will be looking to add is to create a chrome extension version of Schedule trackR, so users can toggle notifications on their schedule activities and then be alerted in the browser when it's time to start a activity.
+
+Also the data in this app, at the moment relies on the local storage but it will be switched to a database eventually.
 
 Look out for these updates and more in the future.
 
