@@ -43,8 +43,8 @@ const initialValue = {
     monthsInput: false,
     dayInput: false,
   },
-  todoData: JSON.parse(localStorage.getItem("todoData")),
-  goalsData: JSON.parse(localStorage.getItem("goalsData")),
+  todoData: JSON.parse(localStorage.getItem("todoData")) || [],
+  goalsData: JSON.parse(localStorage.getItem("goalsData"))|| [],
 };
 //
 const AppContext = React.createContext();
