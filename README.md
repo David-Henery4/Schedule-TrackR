@@ -12,6 +12,7 @@ Schedule TrackR was built using:
 * CSS/SASS
 * Javascript
 * React
+* React Router
 
 ## How to use
 
